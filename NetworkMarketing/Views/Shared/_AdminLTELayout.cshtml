@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <base href="/" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/AdminLTE/css")
+    @Styles.Render("~/Content/SiteCSS")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/AdminLTE")
+</head>
+<body class="skin-blue sidebar-mini fixed" ng-app="printingapp" ng-controller="LandingPageController">
+    <div class="wrapper">
+        <header class="main-header fixed">
+            <a href="javascript:return false;" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>K</b>LN</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b> K Line</span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="javascript:return false;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="javascript:return false;" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Content/AdminLTE/img/user2-160x160.jpg" class="user-image" alt="User Image" onerror="this.onerror = null; this.src = baseUrl + 'Uploads/UserImages/default-user.jpg'">
+                                <span class="hidden-xs">Heshitha Chathuranga</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="~/Content/AdminLTE/img/user2-160x160.jpg" class="img-circle" alt="User Image" onerror="this.onerror = null; this.src = baseUrl + 'Uploads/UserImages/default-user.jpg'">
+                                    <p>
+                                        Heshitha Chathuranga - Developer
+                                        <small>Administrator</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                @*<li class="user-body">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </li>*@
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#/myprofile" class="btn btn-default btn-flat"><i class="fa fa-user"></i>&nbsp;Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="javascript:return false" class="btn btn-default btn-flat" ng-click="SignOut()"><i class="fa fa-sign-out"></i>&nbsp;Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/Content/AdminLTE/img/user2-160x160.jpg" class="img-circle" alt="User Image" onerror="this.onerror = null; this.src = baseUrl+'Uploads/UserImages/default-user.jpg'">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Heshitha Chathuranga</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="javascript:return false;">
+                            <i class="fa fa-calculator"></i>
+                            <span>Quotations</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="subMenuItem searchQuotation"><a href="#/searchQuotation"><i class="fa fa-search"></i> Search Quotation</a></li>
+                            <li class="subMenuItem createQuotation"><a href="#/createQuotation"><i class="fa fa-pencil"></i> New Quotation</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:return false;">
+                            <i class="fa fa-users"></i>
+                            <span>Customers</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="subMenuItem searchCustomer"><a href="#/searchCustomer"><i class="fa fa-search"></i> Search Customer</a></li>
+                            <li class="subMenuItem createCustomer"><a href="#/createCustomer"><i class="fa fa-pencil"></i> New Customer</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:return false;">
+                            <i class="fa fa-archive"></i>
+                            <span>Inventory</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="javascript:return false;">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Purchase Orders</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="subMenuItem searchPurchaseOrder"><a href="#/searchPurchaseOrder"><i class="fa fa-search"></i> Search Purchase Order</a></li>
+                                    <li class="subMenuItem createPurchaseOrder"><a href="#/createInventoryPurchaseOrder"><i class="fa fa-pencil"></i> New Purchase Order</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="javascript:return false;">
+                                    <i class="fa fa-file-text"></i>
+                                    <span>Good Recieved Notes</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="subMenuItem searchGoodRecievedNote"><a href="#/searchGoodRecievedNote"><i class="fa fa-search"></i> Search GRN</a></li>
+                                    <li class="subMenuItem createGoodRecievedNote"><a href="#/createGoodRecievedNote"><i class="fa fa-pencil"></i> New GRN</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:return false;">
+                            <i class="fa fa-truck"></i>
+                            <span>Suppliers</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="subMenuItem searchCustomer"><a href="#/searchCustomer"><i class="fa fa-search"></i> Search Customer</a></li>
+                            <li class="subMenuItem createCustomer"><a href="#/createCustomer"><i class="fa fa-pencil"></i> New Customer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        @RenderBody()
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Copyright © 2016 <a href="javascript:return false;">Ravana Technologies</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
