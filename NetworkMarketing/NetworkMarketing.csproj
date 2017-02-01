@@ -492,6 +492,7 @@
     <Content Include="Views\Test\TestTwo.cshtml" />
     <Content Include="Views\Test\SignUp.cshtml" />
     <Content Include="Views\Test\Profile.cshtml" />
+    <Content Include="Views\Test\FinancialManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
