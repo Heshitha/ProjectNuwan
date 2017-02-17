@@ -28,6 +28,14 @@ namespace NetworkMarketing
                       "~/Content/css/font-awesome.min.css",
                       "~/Content/css/ionicons.min.css"));
 
+            bundles.Add(new StyleBundle("~/Content/HomePageStyles").Include(
+                      "~/Content/css/animate.min.css",
+                      "~/Content/css/owl.carousel.css",
+                      "~/Content/css/owl.transitions.css",
+                      "~/Content/css/prettyPhoto.css",
+                      "~/Content/css/main.css",
+                      "~/Content/css/responsive.css"));
+
             bundles.Add(new StyleBundle("~/AdminLTE/css").Include(
                       "~/Content/AdminLTE/css/AdminLTE.min.css",
                       "~/Content/AdminLTE/plugins/pace/pace.min.css",
@@ -50,6 +58,16 @@ namespace NetworkMarketing
                       "~/Content/AdminLTE/plugins/datepicker/bootstrap-datepicker.js",
                       "~/Content/AdminLTE/js/app.min.js",
                       "~/Scripts/UtilityMethods.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/HomePageScripts").Include(
+                      "~/Scripts/owl.carousel.min.js",
+                      "~/Scripts/mousescroll.js",
+                      "~/Scripts/smoothscroll.js",
+                      "~/Scripts/jquery.prettyPhoto.js",
+                      "~/Scripts/jquery.isotope.min.js",
+                      "~/Scripts/jquery.inview.min.js",
+                      "~/Scripts/wow.min.js",
+                      "~/Scripts/main.js"));
         }
     }
 }

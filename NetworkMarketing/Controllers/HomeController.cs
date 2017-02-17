@@ -26,5 +26,15 @@ namespace NetworkMarketing.Controllers
 
             return View();
         }
+
+        public ActionResult ExampleHomePage()
+        {
+            return View();
+        }
+
+        public ActionResult HomePage()
+        {
+            return View();
+        }
     }
 }

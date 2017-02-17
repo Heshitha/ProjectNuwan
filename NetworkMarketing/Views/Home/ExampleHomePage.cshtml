@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Example Home Page</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@RenderSection("scripts", required: false)*@
+
+    <style>
+
+        body, html {
+            height: 100%;
+        }
+
+        .parallax {
+            /* Full height */
+            height: 100%;
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .parallaxone {
+            background-image: url('../Content/images/cars_0002.jpg');
+        }
+
+        .parallaxtwo {
+            background-image: url('../Content/images/cars_0005.jpg');
+        }
+
+        .parallaxthree {
+            background-image: url('../Content/images/cars_0010.jpg');
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div class="parallax parallaxone">
+        <div style="height:100%; width:100%; background-color:rgba(12, 8, 8, 0.40)">
+
+        </div>
+    </div>
+
+    @*<div style="font-size:36px; background-color:rgba(96, 96, 96, 0.61); color:#fff">
+        Scroll Up and Down this page to see the parallax scrolling effect.
+        This div is just here to enable scrolling.
+        Tip: Try to remove the background-attachment property to remove the scrolling effect.
+    </div>*@
+
+    <div class="parallax parallaxone"></div>
+</body>
+</html>
