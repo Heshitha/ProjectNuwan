@@ -3,3 +3,8 @@ E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkBussiness\bin\Debug\Networ
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.csprojResolveAssemblyReference.cache
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.dll
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkBussiness.dll
+D:\Project Nuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkBussiness.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.csprojResolveAssemblyReference.cache
+D:\Project Nuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.dll
+D:\Project Nuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.pdb

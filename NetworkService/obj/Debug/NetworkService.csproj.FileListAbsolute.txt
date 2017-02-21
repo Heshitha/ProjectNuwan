@@ -4,3 +4,9 @@ E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\bin\NetworkService
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\obj\Debug\NetworkService.csprojResolveAssemblyReference.cache
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\obj\Debug\NetworkService.dll
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\obj\Debug\NetworkService.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkService\bin\NetworkService.dll.config
+D:\Project Nuwan\ProjectNuwan\NetworkService\bin\NetworkService.dll
+D:\Project Nuwan\ProjectNuwan\NetworkService\bin\NetworkService.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkService\obj\Debug\NetworkService.csprojResolveAssemblyReference.cache
+D:\Project Nuwan\ProjectNuwan\NetworkService\obj\Debug\NetworkService.dll
+D:\Project Nuwan\ProjectNuwan\NetworkService\obj\Debug\NetworkService.pdb

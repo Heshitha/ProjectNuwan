@@ -2,3 +2,8 @@ E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\Netwo
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.pdb
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.dll
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.dll
+D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.dll
+D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.pdb
+D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojResolveAssemblyReference.cache
