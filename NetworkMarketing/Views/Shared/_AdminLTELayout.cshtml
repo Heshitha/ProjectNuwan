@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <base href="/" />
+    <base href="http://localhost:4960" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/AdminLTE/css")
     @Styles.Render("~/Content/SiteCSS")
@@ -14,7 +14,7 @@
     @Scripts.Render("~/bundles/AdminLTE")
     @Scripts.Render("~/bundles/angular")
 </head>
-<body class="skin-blue sidebar-mini fixed" ng-app="printingapp" ng-controller="LandingPageController">
+<body class="skin-blue sidebar-mini fixed" ng-app="app" ng-controller="LandingPageController">
     <div class="wrapper">
         <header class="main-header fixed">
             <a href="javascript:return false;" class="logo">
@@ -95,12 +95,12 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="subMenuItem Profile"><a href="/Test/Profile"><i class="fa fa-user"></i> Profile</a></li>
-                            <li class="subMenuItem ViewClass"><a href="/Test/Profile"><i class="fa fa-users"></i> View Class</a></li>
-                            <li class="subMenuItem ViewTeam"><a href="/Test/Profile"><i class="fa fa-sitemap"></i> View Teeam</a></li>
-                            <li class="subMenuItem EVouchers"><a href="/Test/Evouchers"><i class="fa fa-ticket"></i> E-Vouchers</a></li>
-                            <li class="subMenuItem MyEvouchers"><a href="#"><i class="fa fa-envelope"></i> My E-vouchers</a></li>
-                            <li class="subMenuItem EvoucherDetails"><a href="#"><i class="fa fa-list-alt"></i> E-voucher Details</a></li>
+                            <li class="subMenuItem Profile"><a href="#/"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="subMenuItem ViewClass"><a href="#/viewClass"><i class="fa fa-users"></i> View Class</a></li>
+                            <li class="subMenuItem ViewTeam"><a href="#/viewTeam"><i class="fa fa-sitemap"></i> View Team</a></li>
+                            <li class="subMenuItem EVouchers"><a href="#/evouchers"><i class="fa fa-ticket"></i> E-Vouchers</a></li>
+                            <li class="subMenuItem MyEvouchers"><a href="#/myevouchers"><i class="fa fa-envelope"></i> My E-vouchers</a></li>
+                            <li class="subMenuItem EvoucherDetails"><a href="#/evoucherdetails"><i class="fa fa-list-alt"></i> E-voucher Details</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

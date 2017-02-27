@@ -1,0 +1,155 @@
+﻿
+@{
+    Layout = null;
+}
+
+<section class="content">
+    <h2>Profile</h2>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <form ng-submit="saveUser()">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Personal Details</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="txtAddress">Title</label>
+                                    <select class="form-control">
+                                        <option value="0">-- Select Title --</option>
+                                        <option value="1">Mr.</option>
+                                        <option value="2">Mrs.</option>
+                                        <option value="3">Miss.</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtUserName">User Name</label>
+                                    <input type="text" class="form-control" id="txtUserName" placeholder="Enter User Name" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtFirstName">First Name</label>
+                                    <input type="text" class="form-control" id="txtFirstName" placeholder="Enter First Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtLastName">Last Name</label>
+                                    <input type="text" class="form-control" id="txtLastName" placeholder="Enter Last Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtAddress">Address</label>
+                                    <input type="text" class="form-control" id="txtAddress" placeholder="Enter Last Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="form-control">
+                                        <option value="0">-- Select Country --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>District</label>
+                                    <select class="form-control">
+                                        <option value="0">-- Select District --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtMobile">Mobile</label>
+                                    <input type="text" class="form-control" id="txtMobile" placeholder="Enter Mobile">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtTelephone">Telephone</label>
+                                    <input type="text" class="form-control" id="txtTelephone" placeholder="Enter Telephone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtEmail">Email</label>
+                                    <input type="text" class="form-control" id="txtEmail" placeholder="Enter Email" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i>
+                            &nbsp;Save Details
+                        </button>
+                    </div><!-- box-footer -->
+                </form>
+            </div><!-- /.box -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="box box-primary">
+                <form ng-submit="changePassword()">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Change Password</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtCurrentPassword">Current Password</label>
+                                    <input type="password" class="form-control" id="txtCurrentPassword" placeholder="Enter current password" ng-model="currentPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtNewPassword">New Password</label>
+                                    <input type="password" class="form-control" id="txtNewPassword" ng-model="newPassword" placeholder="Enter new password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtConfirmPassword">Confirm Password</label>
+                                    <input type="password" class="form-control" id="txtConfirmPassword" ng-model="confirmPassword" placeholder="Enter confirm password" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i>
+                            &nbsp;Save Details
+                        </button>
+                    </div><!-- box-footer -->
+                </form>
+            </div><!-- /.box -->
+        </div>
+        <div class="col-lg-4">
+            <div class="box box-primary">
+                <form ng-submit="uploadProfileImage()">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Change Profile Image</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <img id="imgPreview" class="profile-user-img img-responsive profile-user-img-profilePage" src="~/Content/AdminLTE/img/user2-160x160.jpg?@(DateTime.Now.Ticks.ToString())" alt="Uploaded Image" hidden onerror="this.onerror = null; this.src = baseUrl+'Uploads/UserImages/default-user.jpg'" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtChooseFile">Choose Image</label>
+                                    <input type="file" id="txtChooseFile" accept="image/gif, image/jpeg, image/png" onchange="angular.element(this).scope().uploadPreviewImage(this)" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-refresh"></i>
+                            &nbsp;Change Profile Image
+                        </button>
+                    </div><!-- box-footer -->
+                </form>
+            </div><!-- /.box -->
+        </div>
+    </div>
+
+    <script>
+        //$(document).ready(function () {
+        //    makeMenuActive('searchCustomer');
+        //});
+    </script>
+</section>

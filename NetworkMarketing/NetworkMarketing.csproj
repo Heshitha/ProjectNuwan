@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -518,6 +519,8 @@
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular\Controllers\ClassController.js" />
+    <Content Include="Scripts\angular\Controllers\LandingPageController.js" />
     <Content Include="Scripts\angular\Factories\GetFactory.js" />
     <Content Include="Scripts\angular\Factories\PostFactory.js" />
     <Content Include="Scripts\angular\app.js" />
@@ -587,10 +590,17 @@
     <Content Include="Views\Test\Evouchers.cshtml" />
     <Content Include="Views\Test\FinancialManager.cshtml" />
     <Content Include="Views\Test\Login.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\SignUp.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\Home\ViewClass.cshtml" />
+    <Content Include="Views\Home\ViewTeam.cshtml" />
+    <Content Include="Views\Home\EVouchers.cshtml" />
+    <Content Include="Views\Home\MyEVouchers.cshtml" />
+    <Content Include="Views\Home\EVoucherDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\angular\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

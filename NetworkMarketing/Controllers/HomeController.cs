@@ -36,5 +36,30 @@ namespace NetworkMarketing.Controllers
         {
             return View();
         }
+
+        public ActionResult ViewClass()
+        {
+            return View();
+        }
+
+        public ActionResult ViewTeam()
+        {
+            return View();
+        }
+
+        public ActionResult EVouchers()
+        {
+            return View();
+        }
+
+        public ActionResult MyEVouchers()
+        {
+            return View();
+        }
+
+        public ActionResult EVoucherDetails()
+        {
+            return View();
+        }
     }
 }

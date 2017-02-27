@@ -57,7 +57,7 @@ input[type="checkbox"].input-validation-error {
     margin-top:0 !important;
 }
 
-.profile-user-img{
+.profile-user-img-profilePage{
     width:200px;
 }
 
@@ -76,6 +76,20 @@ input[type="checkbox"].input-validation-error {
 }
 .register-box1{
     width: 720px !important;
+}
+
+.widget-user{
+    box-shadow:#000 3px 3px 8px
+}
+
+@media (min-width: 992px) {
+    .level4User {
+        width: 14.28571428571429%;
+    }
+}
+
+.chat .item img{
+    margin-bottom: 5px;
 }
 
 /* ANIMATIONS
