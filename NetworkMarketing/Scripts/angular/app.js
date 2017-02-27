@@ -25,6 +25,12 @@ var configFunction = function ($routeProvider, $httpProvider) {
         when('/myevouchers', {
             templateUrl: baseUrl + '/Home/MyEVouchers'
         }).
+        when('/transferPoints', {
+            templateUrl: baseUrl + '/Financial/TransferPoints'
+        }).
+        when('/transfer', {
+            templateUrl: baseUrl + '/Financial/FrmTransferPoints'
+        }).
         when('/evoucherdetails', {
             templateUrl: baseUrl + '/Home/EVoucherDetails'
         }).

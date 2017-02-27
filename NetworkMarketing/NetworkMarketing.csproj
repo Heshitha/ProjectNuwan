@@ -173,6 +173,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FinancialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -598,6 +599,8 @@
     <Content Include="Views\Home\EVouchers.cshtml" />
     <Content Include="Views\Home\MyEVouchers.cshtml" />
     <Content Include="Views\Home\EVoucherDetails.cshtml" />
+    <Content Include="Views\Financial\TransferPoints.cshtml" />
+    <Content Include="Views\Financial\FrmTransferPoints.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
