@@ -518,16 +518,8 @@
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\angular\Controllers\CreateQuotationController.js" />
-    <Content Include="Scripts\angular\Controllers\CustomerControllers.js" />
-    <Content Include="Scripts\angular\Controllers\InventoryPurchaseOrderControllers.js" />
-    <Content Include="Scripts\angular\Controllers\LandingPageController.js" />
-    <Content Include="Scripts\angular\Controllers\SearchQuotationController.js" />
-    <Content Include="Scripts\angular\Controllers\UserControllers.js" />
-    <Content Include="Scripts\angular\Factories\CreateQuotationFactory.js" />
     <Content Include="Scripts\angular\Factories\GetFactory.js" />
     <Content Include="Scripts\angular\Factories\PostFactory.js" />
-    <Content Include="Scripts\angular\Factories\SearchQuotationFactory.js" />
     <Content Include="Scripts\angular\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -598,6 +590,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\angular\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
