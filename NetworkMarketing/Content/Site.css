@@ -61,7 +61,7 @@ input[type="checkbox"].input-validation-error {
     width:200px;
 }
 
-.content-wrapper, .login-page{
+.content-wrapper, .login-page, .register-page{
     background:url('images/field-summer-sun-meadow.jpg') no-repeat fixed;
     background-size:cover;
 }

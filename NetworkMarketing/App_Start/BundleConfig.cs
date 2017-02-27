@@ -68,6 +68,15 @@ namespace NetworkMarketing
                       "~/Scripts/jquery.inview.min.js",
                       "~/Scripts/wow.min.js",
                       "~/Scripts/main.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular")
+                .Include("~/Scripts/angular.min.js")
+                .Include("~/Scripts/angular-route.min.js")
+                .Include("~/Scripts/angular-animate.js")
+                .Include("~/Content/AdminLTE/plugins/pagination/simplePagination.js")
+                .IncludeDirectory("~/Scripts/angular/Controllers", "*.js")
+                .IncludeDirectory("~/Scripts/angular/Factories", "*.js")
+                .Include("~/Scripts/angular/app.js"));
         }
     }
 }
