@@ -43,6 +43,10 @@ namespace NetworkMarketing.Controllers
             return View();
         }
 
+        public ActionResult EvoucherDetails()
+        {
+            return View();
+        }
 
     }
 }

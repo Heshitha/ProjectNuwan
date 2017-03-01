@@ -601,6 +601,8 @@
     <Content Include="Views\Home\EVoucherDetails.cshtml" />
     <Content Include="Views\Financial\TransferPoints.cshtml" />
     <Content Include="Views\Financial\FrmTransferPoints.cshtml" />
+    <Content Include="Views\Test\EvoucherDetails.cshtml" />
+    <Content Include="Views\Financial\TransactionCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -31,8 +31,14 @@ var configFunction = function ($routeProvider, $httpProvider) {
         when('/transfer', {
             templateUrl: baseUrl + '/Financial/FrmTransferPoints'
         }).
+        when('/transactionCode', {
+            templateUrl: baseUrl + '/Financial/TransactionCode'
+        }).
         when('/evoucherdetails', {
-            templateUrl: baseUrl + '/Home/EVoucherDetails'
+            templateUrl: baseUrl + '/Test/EvoucherDetails'
+        }).
+        when('/financialmanager', {
+            templateUrl: baseUrl + '/Test/FinancialManager'
         }).
         when('/', {
             templateUrl: baseUrl + '/User/MyProfile'

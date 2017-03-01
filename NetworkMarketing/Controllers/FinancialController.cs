@@ -23,5 +23,10 @@ namespace NetworkMarketing.Controllers
         {
             return View();
         }
+
+        public ActionResult TransactionCode()
+        {
+            return View();
+        }
     }
 }
