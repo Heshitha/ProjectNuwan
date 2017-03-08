@@ -7,3 +7,7 @@ D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.dll
 D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojResolveAssemblyReference.cache
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.dll.config
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\log4net.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\log4net.xml
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojResolveAssemblyReference.cache

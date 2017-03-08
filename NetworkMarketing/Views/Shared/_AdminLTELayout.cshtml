@@ -1,3 +1,18 @@
+@{
+    NetworkDataAccess.User siteUser = new NetworkDataAccess.User();
+    bool nouser = true;
+    if (Session["User"] != null)
+    {
+        siteUser = (NetworkDataAccess.User)Session["User"];
+        nouser = false;
+    }
+    else
+    {
+        Response.Redirect("~/User/Login");
+        nouser = true;
+    }
+}
+
 <!DOCTYPE html>
 
 <html>
