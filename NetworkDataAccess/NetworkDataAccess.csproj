@@ -78,6 +78,12 @@
       <DependentUpon>NetworkMarketing.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetworkModels\NetworkModels.csproj">
+      <Project>{c3c40452-4bc3-44ff-a8dd-63dcd4cde2b1}</Project>
+      <Name>NetworkModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

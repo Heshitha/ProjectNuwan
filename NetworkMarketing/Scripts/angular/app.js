@@ -41,7 +41,8 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: baseUrl + '/Test/FinancialManager'
         }).
         when('/', {
-            templateUrl: baseUrl + '/User/MyProfile'
+            templateUrl: baseUrl + '/User/MyProfile',
+            controller: UserController
         });
 }
 

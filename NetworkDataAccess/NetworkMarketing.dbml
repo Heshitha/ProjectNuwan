@@ -9,35 +9,6 @@
       <Association Name="Class_ClassUser" Member="ClassUsers" ThisKey="ClassID" OtherKey="ClassID" Type="ClassUser" />
     </Type>
   </Table>
-  <Table Name="dbo.[User]" Member="Users">
-    <Type Name="User">
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Username" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="Title" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="TransctionKey" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Country" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="District" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Mobile" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Telephone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SponserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="User_User" Member="Users" ThisKey="UserID" OtherKey="CreatedBy" Type="User" />
-      <Association Name="User_User1" Member="Users1" ThisKey="UserID" OtherKey="SponserID" Type="User" />
-      <Association Name="User_ClassUser" Member="ClassUsers" ThisKey="UserID" OtherKey="UserID" Type="ClassUser" />
-      <Association Name="User_EVoucher" Member="EVouchers" ThisKey="UserID" OtherKey="CreaterID" Type="EVoucher" />
-      <Association Name="User_EVoucher1" Member="EVouchers1" ThisKey="UserID" OtherKey="UsedBy" Type="EVoucher" />
-      <Association Name="User_Transaction" Member="Transactions" ThisKey="UserID" OtherKey="SenderID" Type="Transaction" />
-      <Association Name="User_Transaction1" Member="Transactions1" ThisKey="UserID" OtherKey="RecieverID" Type="Transaction" />
-      <Association Name="User_User" Member="User1" ThisKey="CreatedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
-      <Association Name="User_User1" Member="User2" ThisKey="SponserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ClassUser" Member="ClassUsers">
     <Type Name="ClassUser">
       <Column Name="ClassUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -58,8 +29,8 @@
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="UsedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="IsUsed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="User_EVoucher" Member="User" ThisKey="CreaterID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-      <Association Name="User_EVoucher1" Member="User1" ThisKey="UsedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_EVoucher" Member="Creator" Storage="_User" ThisKey="CreaterID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_EVoucher1" Member="User" Storage="_User1" ThisKey="UsedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Transactions" Member="Transactions">
@@ -70,8 +41,38 @@
       <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="User_Transaction" Member="User" ThisKey="SenderID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-      <Association Name="User_Transaction1" Member="User1" ThisKey="RecieverID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_Transaction" Member="Sender" Storage="_User" ThisKey="SenderID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_Transaction1" Member="Reciever" Storage="_User1" ThisKey="RecieverID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TransctionKey" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="District" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SponserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageExt" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_ClassUser" Member="ClassUsers" ThisKey="UserID" OtherKey="UserID" Type="ClassUser" />
+      <Association Name="User_EVoucher" Member="EVouchers" ThisKey="UserID" OtherKey="CreaterID" Type="EVoucher" />
+      <Association Name="User_EVoucher1" Member="UsedEVouchers" Storage="_EVouchers1" ThisKey="UserID" OtherKey="UsedBy" Type="EVoucher" />
+      <Association Name="User_Transaction" Member="SentTransactions" Storage="_Transactions" ThisKey="UserID" OtherKey="SenderID" Type="Transaction" />
+      <Association Name="User_Transaction1" Member="RecievedTransactions" Storage="_Transactions1" ThisKey="UserID" OtherKey="RecieverID" Type="Transaction" />
+      <Association Name="User_User" Member="Childrens" Storage="_Users" ThisKey="UserID" OtherKey="CreatedBy" Type="User" />
+      <Association Name="User_User1" Member="Followers" Storage="_Users1" ThisKey="UserID" OtherKey="SponserID" Type="User" />
+      <Association Name="User_User" Member="Creater" Storage="_User1" ThisKey="CreatedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_User1" Member="Sponser" Storage="_User2" ThisKey="SponserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

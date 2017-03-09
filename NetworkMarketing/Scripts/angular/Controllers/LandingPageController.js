@@ -7,12 +7,12 @@
 
     $scope.SignOut = function () {
         //debugger;
-        var url = '/Login/SignOut';
+        var url = '/User/SignOut';
         var data = {};
         var result = PostFactory(url, data);
         result.then(function (result) {
             if (result.success) {
-                window.location = document.location.origin + baseUrl + 'Login';
+                window.location = baseUrl + '/User/Login';
             } else {
                 ShowMessage('danger', 'Error occured while processing.');
             }

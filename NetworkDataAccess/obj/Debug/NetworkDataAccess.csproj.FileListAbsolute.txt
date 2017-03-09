@@ -11,3 +11,5 @@ E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\Netwo
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\log4net.dll
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\log4net.xml
 E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojResolveAssemblyReference.cache
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkModels.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkModels.pdb

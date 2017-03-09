@@ -1,4 +1,5 @@
 ﻿using NetworkDataAccess;
+using NetworkModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,21 @@ namespace NetworkBussiness
         public static User GetUserDetails(int userID)
         {
             return UserDataAccess.GetUserDetails(userID);
+        }
+
+        public static int SignUpUser(SignUpModel signUp)
+        {
+            return UserDataAccess.SignUpUser(signUp);
+        }
+
+        public static bool SaveImageExtension(User user)
+        {
+            return UserDataAccess.SaveImageExtension(user);
+        }
+
+        public static bool ChangePassword(User user)
+        {
+            return UserDataAccess.ChangePassword(user);
         }
     }
 }

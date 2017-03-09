@@ -33,9 +33,6 @@ namespace NetworkDataAccess
     partial void InsertClass(Class instance);
     partial void UpdateClass(Class instance);
     partial void DeleteClass(Class instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertClassUser(ClassUser instance);
     partial void UpdateClassUser(ClassUser instance);
     partial void DeleteClassUser(ClassUser instance);
@@ -45,6 +42,9 @@ namespace NetworkDataAccess
     partial void InsertTransaction(Transaction instance);
     partial void UpdateTransaction(Transaction instance);
     partial void DeleteTransaction(Transaction instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     #endregion
 		
 		public NetworkMarketingDataContext() : 
@@ -85,14 +85,6 @@ namespace NetworkDataAccess
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ClassUser> ClassUsers
 		{
 			get
@@ -114,6 +106,14 @@ namespace NetworkDataAccess
 			get
 			{
 				return this.GetTable<Transaction>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 	}
@@ -277,706 +277,6 @@ namespace NetworkDataAccess
 		{
 			this.SendPropertyChanging();
 			entity.Class = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserID;
-		
-		private string _Username;
-		
-		private string _Title;
-		
-		private string _FirstName;
-		
-		private string _LastName;
-		
-		private string _Address;
-		
-		private string _Email;
-		
-		private string _Password;
-		
-		private string _TransctionKey;
-		
-		private string _Country;
-		
-		private string _District;
-		
-		private string _Mobile;
-		
-		private string _Telephone;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private System.Nullable<int> _CreatedBy;
-		
-		private System.Nullable<int> _SponserID;
-		
-		private EntitySet<User> _Users;
-		
-		private EntitySet<User> _Users1;
-		
-		private EntitySet<ClassUser> _ClassUsers;
-		
-		private EntitySet<EVoucher> _EVouchers;
-		
-		private EntitySet<EVoucher> _EVouchers1;
-		
-		private EntitySet<Transaction> _Transactions;
-		
-		private EntitySet<Transaction> _Transactions1;
-		
-		private EntityRef<User> _User1;
-		
-		private EntityRef<User> _User2;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnTransctionKeyChanging(string value);
-    partial void OnTransctionKeyChanged();
-    partial void OnCountryChanging(string value);
-    partial void OnCountryChanged();
-    partial void OnDistrictChanging(string value);
-    partial void OnDistrictChanged();
-    partial void OnMobileChanging(string value);
-    partial void OnMobileChanged();
-    partial void OnTelephoneChanging(string value);
-    partial void OnTelephoneChanged();
-    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedDateChanged();
-    partial void OnCreatedByChanging(System.Nullable<int> value);
-    partial void OnCreatedByChanged();
-    partial void OnSponserIDChanging(System.Nullable<int> value);
-    partial void OnSponserIDChanged();
-    #endregion
-		
-		public User()
-		{
-			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
-			this._Users1 = new EntitySet<User>(new Action<User>(this.attach_Users1), new Action<User>(this.detach_Users1));
-			this._ClassUsers = new EntitySet<ClassUser>(new Action<ClassUser>(this.attach_ClassUsers), new Action<ClassUser>(this.detach_ClassUsers));
-			this._EVouchers = new EntitySet<EVoucher>(new Action<EVoucher>(this.attach_EVouchers), new Action<EVoucher>(this.detach_EVouchers));
-			this._EVouchers1 = new EntitySet<EVoucher>(new Action<EVoucher>(this.attach_EVouchers1), new Action<EVoucher>(this.detach_EVouchers1));
-			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
-			this._Transactions1 = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions1), new Action<Transaction>(this.detach_Transactions1));
-			this._User1 = default(EntityRef<User>);
-			this._User2 = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(500)")]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(10)")]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(1000)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._FirstName = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(1000)")]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(1000)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(1000)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransctionKey", DbType="VarChar(MAX)")]
-		public string TransctionKey
-		{
-			get
-			{
-				return this._TransctionKey;
-			}
-			set
-			{
-				if ((this._TransctionKey != value))
-				{
-					this.OnTransctionKeyChanging(value);
-					this.SendPropertyChanging();
-					this._TransctionKey = value;
-					this.SendPropertyChanged("TransctionKey");
-					this.OnTransctionKeyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Country", DbType="VarChar(200)")]
-		public string Country
-		{
-			get
-			{
-				return this._Country;
-			}
-			set
-			{
-				if ((this._Country != value))
-				{
-					this.OnCountryChanging(value);
-					this.SendPropertyChanging();
-					this._Country = value;
-					this.SendPropertyChanged("Country");
-					this.OnCountryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_District", DbType="VarChar(200)")]
-		public string District
-		{
-			get
-			{
-				return this._District;
-			}
-			set
-			{
-				if ((this._District != value))
-				{
-					this.OnDistrictChanging(value);
-					this.SendPropertyChanging();
-					this._District = value;
-					this.SendPropertyChanged("District");
-					this.OnDistrictChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="VarChar(20)")]
-		public string Mobile
-		{
-			get
-			{
-				return this._Mobile;
-			}
-			set
-			{
-				if ((this._Mobile != value))
-				{
-					this.OnMobileChanging(value);
-					this.SendPropertyChanging();
-					this._Mobile = value;
-					this.SendPropertyChanged("Mobile");
-					this.OnMobileChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(20)")]
-		public string Telephone
-		{
-			get
-			{
-				return this._Telephone;
-			}
-			set
-			{
-				if ((this._Telephone != value))
-				{
-					this.OnTelephoneChanging(value);
-					this.SendPropertyChanging();
-					this._Telephone = value;
-					this.SendPropertyChanged("Telephone");
-					this.OnTelephoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this.OnCreatedDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedDate = value;
-					this.SendPropertyChanged("CreatedDate");
-					this.OnCreatedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="Int")]
-		public System.Nullable<int> CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					if (this._User1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SponserID", DbType="Int")]
-		public System.Nullable<int> SponserID
-		{
-			get
-			{
-				return this._SponserID;
-			}
-			set
-			{
-				if ((this._SponserID != value))
-				{
-					if (this._User2.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSponserIDChanging(value);
-					this.SendPropertyChanging();
-					this._SponserID = value;
-					this.SendPropertyChanged("SponserID");
-					this.OnSponserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User", Storage="_Users", ThisKey="UserID", OtherKey="CreatedBy")]
-		public EntitySet<User> Users
-		{
-			get
-			{
-				return this._Users;
-			}
-			set
-			{
-				this._Users.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User1", Storage="_Users1", ThisKey="UserID", OtherKey="SponserID")]
-		public EntitySet<User> Users1
-		{
-			get
-			{
-				return this._Users1;
-			}
-			set
-			{
-				this._Users1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_ClassUser", Storage="_ClassUsers", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<ClassUser> ClassUsers
-		{
-			get
-			{
-				return this._ClassUsers;
-			}
-			set
-			{
-				this._ClassUsers.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_EVoucher", Storage="_EVouchers", ThisKey="UserID", OtherKey="CreaterID")]
-		public EntitySet<EVoucher> EVouchers
-		{
-			get
-			{
-				return this._EVouchers;
-			}
-			set
-			{
-				this._EVouchers.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_EVoucher1", Storage="_EVouchers1", ThisKey="UserID", OtherKey="UsedBy")]
-		public EntitySet<EVoucher> EVouchers1
-		{
-			get
-			{
-				return this._EVouchers1;
-			}
-			set
-			{
-				this._EVouchers1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction", Storage="_Transactions", ThisKey="UserID", OtherKey="SenderID")]
-		public EntitySet<Transaction> Transactions
-		{
-			get
-			{
-				return this._Transactions;
-			}
-			set
-			{
-				this._Transactions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction1", Storage="_Transactions1", ThisKey="UserID", OtherKey="RecieverID")]
-		public EntitySet<Transaction> Transactions1
-		{
-			get
-			{
-				return this._Transactions1;
-			}
-			set
-			{
-				this._Transactions1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User", Storage="_User1", ThisKey="CreatedBy", OtherKey="UserID", IsForeignKey=true)]
-		public User User1
-		{
-			get
-			{
-				return this._User1.Entity;
-			}
-			set
-			{
-				User previousValue = this._User1.Entity;
-				if (((previousValue != value) 
-							|| (this._User1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User1.Entity = null;
-						previousValue.Users.Remove(this);
-					}
-					this._User1.Entity = value;
-					if ((value != null))
-					{
-						value.Users.Add(this);
-						this._CreatedBy = value.UserID;
-					}
-					else
-					{
-						this._CreatedBy = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User1", Storage="_User2", ThisKey="SponserID", OtherKey="UserID", IsForeignKey=true)]
-		public User User2
-		{
-			get
-			{
-				return this._User2.Entity;
-			}
-			set
-			{
-				User previousValue = this._User2.Entity;
-				if (((previousValue != value) 
-							|| (this._User2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User2.Entity = null;
-						previousValue.Users1.Remove(this);
-					}
-					this._User2.Entity = value;
-					if ((value != null))
-					{
-						value.Users1.Add(this);
-						this._SponserID = value.UserID;
-					}
-					else
-					{
-						this._SponserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User2");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Users(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.User1 = this;
-		}
-		
-		private void detach_Users(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.User1 = null;
-		}
-		
-		private void attach_Users1(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.User2 = this;
-		}
-		
-		private void detach_Users1(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.User2 = null;
-		}
-		
-		private void attach_ClassUsers(ClassUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_ClassUsers(ClassUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_EVouchers(EVoucher entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_EVouchers(EVoucher entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_EVouchers1(EVoucher entity)
-		{
-			this.SendPropertyChanging();
-			entity.User1 = this;
-		}
-		
-		private void detach_EVouchers1(EVoucher entity)
-		{
-			this.SendPropertyChanging();
-			entity.User1 = null;
-		}
-		
-		private void attach_Transactions(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Transactions(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_Transactions1(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.User1 = this;
-		}
-		
-		private void detach_Transactions1(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.User1 = null;
 		}
 	}
 	
@@ -1420,7 +720,7 @@ namespace NetworkDataAccess
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_EVoucher", Storage="_User", ThisKey="CreaterID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
+		public User Creator
 		{
 			get
 			{
@@ -1448,13 +748,13 @@ namespace NetworkDataAccess
 					{
 						this._CreaterID = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("User");
+					this.SendPropertyChanged("Creator");
 				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_EVoucher1", Storage="_User1", ThisKey="UsedBy", OtherKey="UserID", IsForeignKey=true)]
-		public User User1
+		public User User
 		{
 			get
 			{
@@ -1470,19 +770,19 @@ namespace NetworkDataAccess
 					if ((previousValue != null))
 					{
 						this._User1.Entity = null;
-						previousValue.EVouchers1.Remove(this);
+						previousValue.UsedEVouchers.Remove(this);
 					}
 					this._User1.Entity = value;
 					if ((value != null))
 					{
-						value.EVouchers1.Add(this);
+						value.UsedEVouchers.Add(this);
 						this._UsedBy = value.UserID;
 					}
 					else
 					{
 						this._UsedBy = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("User1");
+					this.SendPropertyChanged("User");
 				}
 			}
 		}
@@ -1684,7 +984,7 @@ namespace NetworkDataAccess
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction", Storage="_User", ThisKey="SenderID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
+		public User Sender
 		{
 			get
 			{
@@ -1700,25 +1000,25 @@ namespace NetworkDataAccess
 					if ((previousValue != null))
 					{
 						this._User.Entity = null;
-						previousValue.Transactions.Remove(this);
+						previousValue.SentTransactions.Remove(this);
 					}
 					this._User.Entity = value;
 					if ((value != null))
 					{
-						value.Transactions.Add(this);
+						value.SentTransactions.Add(this);
 						this._SenderID = value.UserID;
 					}
 					else
 					{
 						this._SenderID = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("User");
+					this.SendPropertyChanged("Sender");
 				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction1", Storage="_User1", ThisKey="RecieverID", OtherKey="UserID", IsForeignKey=true)]
-		public User User1
+		public User Reciever
 		{
 			get
 			{
@@ -1734,19 +1034,19 @@ namespace NetworkDataAccess
 					if ((previousValue != null))
 					{
 						this._User1.Entity = null;
-						previousValue.Transactions1.Remove(this);
+						previousValue.RecievedTransactions.Remove(this);
 					}
 					this._User1.Entity = value;
 					if ((value != null))
 					{
-						value.Transactions1.Add(this);
+						value.RecievedTransactions.Add(this);
 						this._RecieverID = value.UserID;
 					}
 					else
 					{
 						this._RecieverID = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("User1");
+					this.SendPropertyChanged("Reciever");
 				}
 			}
 		}
@@ -1769,6 +1069,730 @@ namespace NetworkDataAccess
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private string _Username;
+		
+		private string _Title;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Address;
+		
+		private string _Email;
+		
+		private string _Password;
+		
+		private string _TransctionKey;
+		
+		private string _Country;
+		
+		private string _District;
+		
+		private string _Mobile;
+		
+		private string _Telephone;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<int> _CreatedBy;
+		
+		private System.Nullable<int> _SponserID;
+		
+		private string _ImageExt;
+		
+		private EntitySet<ClassUser> _ClassUsers;
+		
+		private EntitySet<EVoucher> _EVouchers;
+		
+		private EntitySet<EVoucher> _EVouchers1;
+		
+		private EntitySet<Transaction> _Transactions;
+		
+		private EntitySet<Transaction> _Transactions1;
+		
+		private EntitySet<User> _Users;
+		
+		private EntitySet<User> _Users1;
+		
+		private EntityRef<User> _User1;
+		
+		private EntityRef<User> _User2;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnTransctionKeyChanging(string value);
+    partial void OnTransctionKeyChanged();
+    partial void OnCountryChanging(string value);
+    partial void OnCountryChanged();
+    partial void OnDistrictChanging(string value);
+    partial void OnDistrictChanged();
+    partial void OnMobileChanging(string value);
+    partial void OnMobileChanged();
+    partial void OnTelephoneChanging(string value);
+    partial void OnTelephoneChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnCreatedByChanging(System.Nullable<int> value);
+    partial void OnCreatedByChanged();
+    partial void OnSponserIDChanging(System.Nullable<int> value);
+    partial void OnSponserIDChanged();
+    partial void OnImageExtChanging(string value);
+    partial void OnImageExtChanged();
+    #endregion
+		
+		public User()
+		{
+			this._ClassUsers = new EntitySet<ClassUser>(new Action<ClassUser>(this.attach_ClassUsers), new Action<ClassUser>(this.detach_ClassUsers));
+			this._EVouchers = new EntitySet<EVoucher>(new Action<EVoucher>(this.attach_EVouchers), new Action<EVoucher>(this.detach_EVouchers));
+			this._EVouchers1 = new EntitySet<EVoucher>(new Action<EVoucher>(this.attach_EVouchers1), new Action<EVoucher>(this.detach_EVouchers1));
+			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			this._Transactions1 = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions1), new Action<Transaction>(this.detach_Transactions1));
+			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
+			this._Users1 = new EntitySet<User>(new Action<User>(this.attach_Users1), new Action<User>(this.detach_Users1));
+			this._User1 = default(EntityRef<User>);
+			this._User2 = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(500)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(10)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(1000)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(1000)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(1000)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(1000)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransctionKey", DbType="VarChar(MAX)")]
+		public string TransctionKey
+		{
+			get
+			{
+				return this._TransctionKey;
+			}
+			set
+			{
+				if ((this._TransctionKey != value))
+				{
+					this.OnTransctionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._TransctionKey = value;
+					this.SendPropertyChanged("TransctionKey");
+					this.OnTransctionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Country", DbType="VarChar(200)")]
+		public string Country
+		{
+			get
+			{
+				return this._Country;
+			}
+			set
+			{
+				if ((this._Country != value))
+				{
+					this.OnCountryChanging(value);
+					this.SendPropertyChanging();
+					this._Country = value;
+					this.SendPropertyChanged("Country");
+					this.OnCountryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_District", DbType="VarChar(200)")]
+		public string District
+		{
+			get
+			{
+				return this._District;
+			}
+			set
+			{
+				if ((this._District != value))
+				{
+					this.OnDistrictChanging(value);
+					this.SendPropertyChanging();
+					this._District = value;
+					this.SendPropertyChanged("District");
+					this.OnDistrictChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="VarChar(20)")]
+		public string Mobile
+		{
+			get
+			{
+				return this._Mobile;
+			}
+			set
+			{
+				if ((this._Mobile != value))
+				{
+					this.OnMobileChanging(value);
+					this.SendPropertyChanging();
+					this._Mobile = value;
+					this.SendPropertyChanged("Mobile");
+					this.OnMobileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(20)")]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this.OnTelephoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telephone = value;
+					this.SendPropertyChanged("Telephone");
+					this.OnTelephoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="Int")]
+		public System.Nullable<int> CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					if (this._User1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SponserID", DbType="Int")]
+		public System.Nullable<int> SponserID
+		{
+			get
+			{
+				return this._SponserID;
+			}
+			set
+			{
+				if ((this._SponserID != value))
+				{
+					if (this._User2.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSponserIDChanging(value);
+					this.SendPropertyChanging();
+					this._SponserID = value;
+					this.SendPropertyChanged("SponserID");
+					this.OnSponserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageExt", DbType="VarChar(50)")]
+		public string ImageExt
+		{
+			get
+			{
+				return this._ImageExt;
+			}
+			set
+			{
+				if ((this._ImageExt != value))
+				{
+					this.OnImageExtChanging(value);
+					this.SendPropertyChanging();
+					this._ImageExt = value;
+					this.SendPropertyChanged("ImageExt");
+					this.OnImageExtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_ClassUser", Storage="_ClassUsers", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<ClassUser> ClassUsers
+		{
+			get
+			{
+				return this._ClassUsers;
+			}
+			set
+			{
+				this._ClassUsers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_EVoucher", Storage="_EVouchers", ThisKey="UserID", OtherKey="CreaterID")]
+		public EntitySet<EVoucher> EVouchers
+		{
+			get
+			{
+				return this._EVouchers;
+			}
+			set
+			{
+				this._EVouchers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_EVoucher1", Storage="_EVouchers1", ThisKey="UserID", OtherKey="UsedBy")]
+		public EntitySet<EVoucher> UsedEVouchers
+		{
+			get
+			{
+				return this._EVouchers1;
+			}
+			set
+			{
+				this._EVouchers1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction", Storage="_Transactions", ThisKey="UserID", OtherKey="SenderID")]
+		public EntitySet<Transaction> SentTransactions
+		{
+			get
+			{
+				return this._Transactions;
+			}
+			set
+			{
+				this._Transactions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction1", Storage="_Transactions1", ThisKey="UserID", OtherKey="RecieverID")]
+		public EntitySet<Transaction> RecievedTransactions
+		{
+			get
+			{
+				return this._Transactions1;
+			}
+			set
+			{
+				this._Transactions1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User", Storage="_Users", ThisKey="UserID", OtherKey="CreatedBy")]
+		public EntitySet<User> Childrens
+		{
+			get
+			{
+				return this._Users;
+			}
+			set
+			{
+				this._Users.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User1", Storage="_Users1", ThisKey="UserID", OtherKey="SponserID")]
+		public EntitySet<User> Followers
+		{
+			get
+			{
+				return this._Users1;
+			}
+			set
+			{
+				this._Users1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User", Storage="_User1", ThisKey="CreatedBy", OtherKey="UserID", IsForeignKey=true)]
+		public User Creater
+		{
+			get
+			{
+				return this._User1.Entity;
+			}
+			set
+			{
+				User previousValue = this._User1.Entity;
+				if (((previousValue != value) 
+							|| (this._User1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User1.Entity = null;
+						previousValue.Childrens.Remove(this);
+					}
+					this._User1.Entity = value;
+					if ((value != null))
+					{
+						value.Childrens.Add(this);
+						this._CreatedBy = value.UserID;
+					}
+					else
+					{
+						this._CreatedBy = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Creater");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User1", Storage="_User2", ThisKey="SponserID", OtherKey="UserID", IsForeignKey=true)]
+		public User Sponser
+		{
+			get
+			{
+				return this._User2.Entity;
+			}
+			set
+			{
+				User previousValue = this._User2.Entity;
+				if (((previousValue != value) 
+							|| (this._User2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User2.Entity = null;
+						previousValue.Followers.Remove(this);
+					}
+					this._User2.Entity = value;
+					if ((value != null))
+					{
+						value.Followers.Add(this);
+						this._SponserID = value.UserID;
+					}
+					else
+					{
+						this._SponserID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Sponser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ClassUsers(ClassUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_ClassUsers(ClassUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_EVouchers(EVoucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.Creator = this;
+		}
+		
+		private void detach_EVouchers(EVoucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.Creator = null;
+		}
+		
+		private void attach_EVouchers1(EVoucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_EVouchers1(EVoucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sender = this;
+		}
+		
+		private void detach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sender = null;
+		}
+		
+		private void attach_Transactions1(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Reciever = this;
+		}
+		
+		private void detach_Transactions1(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Reciever = null;
+		}
+		
+		private void attach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Creater = this;
+		}
+		
+		private void detach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Creater = null;
+		}
+		
+		private void attach_Users1(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sponser = this;
+		}
+		
+		private void detach_Users1(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sponser = null;
 		}
 	}
 }

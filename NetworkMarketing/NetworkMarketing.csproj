@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\UserAPIController.cs" />
     <Compile Include="Controllers\FinancialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogClass.cs" />
+    <Compile Include="Models\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -527,6 +529,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular\Controllers\ClassController.js" />
     <Content Include="Scripts\angular\Controllers\LandingPageController.js" />
+    <Content Include="Scripts\angular\Controllers\UserController.js" />
     <Content Include="Scripts\angular\Factories\GetFactory.js" />
     <Content Include="Scripts\angular\Factories\PostFactory.js" />
     <Content Include="Scripts\angular\app.js" />
@@ -611,6 +614,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\ProfileImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

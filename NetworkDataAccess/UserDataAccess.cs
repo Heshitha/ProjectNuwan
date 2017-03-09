@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,132 @@ namespace NetworkDataAccess
                 if (usr != null)
                 {
                     retVal = usr;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return retVal;
+        }
+
+        public static int SignUpUser(SignUpModel signUp)
+        {
+            int retVal = 0;
+            try
+            {
+                User sponsor = db.Users.Where(x => x.Username == signUp.SponserUserName).FirstOrDefault();
+                if (sponsor != null)
+                {
+                    Class cls = db.Classes.Where(x => x.ClassID == signUp.ClassID && x.IsActive == true).FirstOrDefault();
+                    if (cls != null)
+                    {
+                        if (!db.Users.Any(x => x.Username == signUp.Username))
+                        {
+                            EVoucher evou = db.EVouchers.Where(x => x.VoucherCode == signUp.EVoucher && x.IsUsed != true).FirstOrDefault();
+                            if (evou != null)
+                            {
+                                User newUser = new User()
+                                {
+                                    Username = signUp.Username,
+                                    Title = signUp.Title,
+                                    FirstName = signUp.FirstName,
+                                    LastName = signUp.LastName,
+                                    Address = signUp.Address,
+                                    Email = signUp.Email,
+                                    Password = signUp.Password,
+                                    TransctionKey = signUp.TransactionKey,
+                                    Country = signUp.Country,
+                                    District = signUp.District,
+                                    Mobile = signUp.Mobile,
+                                    Telephone = signUp.Telephone,
+                                    CreatedDate = DateTime.Now,
+                                    Sponser = sponsor
+                                };
+                                db.Users.InsertOnSubmit(newUser);
+
+                                int? nullPosition = cls.ClassUsers.Select(x => x.Position).Max();
+                                int userPosition = nullPosition.HasValue ? nullPosition.Value + 1 : 1;
+
+                                if (userPosition <= 13)
+                                {
+                                    ClassUser clsUsr = new ClassUser()
+                                    {
+                                        Class = cls,
+                                        IsActive = true,
+                                        Position = userPosition,
+                                        User = newUser,
+                                    };
+                                    db.ClassUsers.InsertOnSubmit(clsUsr);
+                                }
+
+                                evou.IsUsed = true;
+                                evou.User = newUser;
+                                db.SubmitChanges();
+                                retVal = newUser.UserID;
+                            }
+                            else
+                            {
+                                //Evoucher invalid
+                                retVal = -4;
+                            }
+                        }
+                        else
+                        {
+                            //Username already exists
+                            retVal = -3;
+                        }
+                    }
+                    else
+                    {
+                        //class not available
+                        retVal = -2;
+                    }
+                }
+                else
+                {
+                    //sponsor is null
+                    retVal = -1;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return retVal;
+        }
+
+        public static bool SaveImageExtension(User user)
+        {
+            bool retVal = false;
+            try
+            {
+                User usr = db.Users.Where(x => x.UserID == user.UserID).FirstOrDefault();
+                if (usr != null)
+                {
+                    usr.ImageExt = user.ImageExt;
+                    db.SubmitChanges();
+                    retVal = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return retVal;
+        }
+
+        public static bool ChangePassword(User user)
+        {
+            bool retVal = false;
+            try
+            {
+                User usr = db.Users.Where(x => x.UserID == user.UserID).FirstOrDefault();
+                if (usr != null)
+                {
+                    usr.Password = user.Password;
+                    db.SubmitChanges();
+                    retVal = true;
                 }
             }
             catch (Exception ex)

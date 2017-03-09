@@ -1,7 +1,9 @@
 ﻿using NetworkBussiness;
 using NetworkMarketing.Models;
+using NetworkModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -58,14 +60,113 @@ namespace NetworkMarketing.Controllers
             return View();
         }
 
+        [HttpPost]
+        public bool SignOut()
+        {
+            bool retVal = false;
+            try
+            {
+                if (Session["User"] != null)
+                {
+                    Session.Abandon();
+                    retVal = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
+            return retVal;
+        }
+
+        [HttpGet]
         public ActionResult SignUp()
         {
+            ViewBag.IsError = false;
+            ViewBag.Error = "";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(SignUpModel signUp)
+        {
+            ViewBag.IsError = false;
+            ViewBag.Error = "";
+            try
+            {
+                int result = UserManager.SignUpUser(signUp);
+                if (result == 0)
+                {
+                    ViewBag.IsError = true;
+                    ViewBag.Error = "Oops!, Something went wrong. Please try again.";
+                }
+                else if(result == -1)
+                {
+                    ViewBag.IsError = true;
+                    ViewBag.Error = "Looks like you have entered the wrong Sponsor username. Please check and try again.";
+                }
+                else if (result == -2)
+                {
+                    ViewBag.IsError = true;
+                    ViewBag.Error = "Looks like the class you have entered does not exists or already filled out. Please check and try again.";
+                }
+                else if (result == -3)
+                {
+                    ViewBag.IsError = true;
+                    ViewBag.Error = "The username you have entered already exists. Please change and try again.";
+                }
+                else if (result == -4)
+                {
+                    ViewBag.IsError = true;
+                    ViewBag.Error = "Looks like the E Voucher you have entered does not exists or already used. Please check and try again.";
+                }
+                else
+                {
+                    Session["User"] = UserManager.GetUserDetails(result);
+                    Response.Redirect("~/", false);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+                ViewBag.IsError = true;
+                ViewBag.Error = "Oops!, Something went wrong. Please try again.";
+            }
             return View();
         }
 
         public ActionResult MyProfile()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult SaveProfileImage(int userID, HttpPostedFileBase file)
+        {
+            bool retVal = false;
+            try
+            {
+                string path = Server.MapPath("~") + "//Uploads//ProfileImages//" + userID + Path.GetExtension(file.FileName);
+                file.SaveAs(path);
+                NetworkDataAccess.User usr = new NetworkDataAccess.User()
+                {
+                    UserID = userID,
+                    ImageExt = Path.GetExtension(file.FileName)
+                };
+
+                retVal = UserManager.SaveImageExtension(usr);
+                if (retVal)
+                {
+                    usr = (NetworkDataAccess.User)Session["User"];
+                    usr.ImageExt = Path.GetExtension(file.FileName);
+                    Session["User"] = usr;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Json(retVal, JsonRequestBehavior.AllowGet);
         }
 	}
 }
