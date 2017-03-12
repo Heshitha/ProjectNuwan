@@ -22,7 +22,7 @@ namespace NetworkDataAccess
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="NetworkMarketing")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="NetworkMaketing")]
 	public partial class NetworkMarketingDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,9 +30,6 @@ namespace NetworkDataAccess
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertClass(Class instance);
-    partial void UpdateClass(Class instance);
-    partial void DeleteClass(Class instance);
     partial void InsertClassUser(ClassUser instance);
     partial void UpdateClassUser(ClassUser instance);
     partial void DeleteClassUser(ClassUser instance);
@@ -45,6 +42,9 @@ namespace NetworkDataAccess
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertClass(Class instance);
+    partial void UpdateClass(Class instance);
+    partial void DeleteClass(Class instance);
     #endregion
 		
 		public NetworkMarketingDataContext() : 
@@ -75,14 +75,6 @@ namespace NetworkDataAccess
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Class> Classes
-		{
-			get
-			{
-				return this.GetTable<Class>();
-			}
 		}
 		
 		public System.Data.Linq.Table<ClassUser> ClassUsers
@@ -116,167 +108,20 @@ namespace NetworkDataAccess
 				return this.GetTable<User>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Classes")]
-	public partial class Class : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ClassID;
-		
-		private System.Nullable<System.DateTime> _ClassCreatedDate;
-		
-		private System.Nullable<System.DateTime> _ClassBrokenDate;
-		
-		private System.Nullable<bool> _IsActive;
-		
-		private EntitySet<ClassUser> _ClassUsers;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnClassIDChanging(int value);
-    partial void OnClassIDChanged();
-    partial void OnClassCreatedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnClassCreatedDateChanged();
-    partial void OnClassBrokenDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnClassBrokenDateChanged();
-    partial void OnIsActiveChanging(System.Nullable<bool> value);
-    partial void OnIsActiveChanged();
-    #endregion
-		
-		public Class()
-		{
-			this._ClassUsers = new EntitySet<ClassUser>(new Action<ClassUser>(this.attach_ClassUsers), new Action<ClassUser>(this.detach_ClassUsers));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ClassID
+		public System.Data.Linq.Table<Class> Classes
 		{
 			get
 			{
-				return this._ClassID;
-			}
-			set
-			{
-				if ((this._ClassID != value))
-				{
-					this.OnClassIDChanging(value);
-					this.SendPropertyChanging();
-					this._ClassID = value;
-					this.SendPropertyChanged("ClassID");
-					this.OnClassIDChanged();
-				}
+				return this.GetTable<Class>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassCreatedDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ClassCreatedDate
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspGet_All_TransActionsByUser")]
+		public ISingleResult<uspGet_All_TransActionsByUserResult> uspGet_All_TransActionsByUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
 		{
-			get
-			{
-				return this._ClassCreatedDate;
-			}
-			set
-			{
-				if ((this._ClassCreatedDate != value))
-				{
-					this.OnClassCreatedDateChanging(value);
-					this.SendPropertyChanging();
-					this._ClassCreatedDate = value;
-					this.SendPropertyChanged("ClassCreatedDate");
-					this.OnClassCreatedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassBrokenDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ClassBrokenDate
-		{
-			get
-			{
-				return this._ClassBrokenDate;
-			}
-			set
-			{
-				if ((this._ClassBrokenDate != value))
-				{
-					this.OnClassBrokenDateChanging(value);
-					this.SendPropertyChanging();
-					this._ClassBrokenDate = value;
-					this.SendPropertyChanged("ClassBrokenDate");
-					this.OnClassBrokenDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit")]
-		public System.Nullable<bool> IsActive
-		{
-			get
-			{
-				return this._IsActive;
-			}
-			set
-			{
-				if ((this._IsActive != value))
-				{
-					this.OnIsActiveChanging(value);
-					this.SendPropertyChanging();
-					this._IsActive = value;
-					this.SendPropertyChanged("IsActive");
-					this.OnIsActiveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Class_ClassUser", Storage="_ClassUsers", ThisKey="ClassID", OtherKey="ClassID")]
-		public EntitySet<ClassUser> ClassUsers
-		{
-			get
-			{
-				return this._ClassUsers;
-			}
-			set
-			{
-				this._ClassUsers.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ClassUsers(ClassUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.Class = this;
-		}
-		
-		private void detach_ClassUsers(ClassUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.Class = null;
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<uspGet_All_TransActionsByUserResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -296,9 +141,9 @@ namespace NetworkDataAccess
 		
 		private System.Nullable<bool> _IsActive;
 		
-		private EntityRef<Class> _Class;
-		
 		private EntityRef<User> _User;
+		
+		private EntityRef<Class> _Class;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -318,8 +163,8 @@ namespace NetworkDataAccess
 		
 		public ClassUser()
 		{
-			this._Class = default(EntityRef<Class>);
 			this._User = default(EntityRef<User>);
+			this._Class = default(EntityRef<Class>);
 			OnCreated();
 		}
 		
@@ -431,40 +276,6 @@ namespace NetworkDataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Class_ClassUser", Storage="_Class", ThisKey="ClassID", OtherKey="ClassID", IsForeignKey=true)]
-		public Class Class
-		{
-			get
-			{
-				return this._Class.Entity;
-			}
-			set
-			{
-				Class previousValue = this._Class.Entity;
-				if (((previousValue != value) 
-							|| (this._Class.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Class.Entity = null;
-						previousValue.ClassUsers.Remove(this);
-					}
-					this._Class.Entity = value;
-					if ((value != null))
-					{
-						value.ClassUsers.Add(this);
-						this._ClassID = value.ClassID;
-					}
-					else
-					{
-						this._ClassID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Class");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_ClassUser", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
 		public User User
 		{
@@ -495,6 +306,40 @@ namespace NetworkDataAccess
 						this._UserID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Class_ClassUser", Storage="_Class", ThisKey="ClassID", OtherKey="ClassID", IsForeignKey=true)]
+		public Class Class
+		{
+			get
+			{
+				return this._Class.Entity;
+			}
+			set
+			{
+				Class previousValue = this._Class.Entity;
+				if (((previousValue != value) 
+							|| (this._Class.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Class.Entity = null;
+						previousValue.ClassUsers.Remove(this);
+					}
+					this._Class.Entity = value;
+					if ((value != null))
+					{
+						value.ClassUsers.Add(this);
+						this._ClassID = value.ClassID;
+					}
+					else
+					{
+						this._ClassID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Class");
 				}
 			}
 		}
@@ -1793,6 +1638,302 @@ namespace NetworkDataAccess
 		{
 			this.SendPropertyChanging();
 			entity.Sponser = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Classes")]
+	public partial class Class : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ClassID;
+		
+		private System.Nullable<System.DateTime> _ClassCreatedDate;
+		
+		private System.Nullable<System.DateTime> _ClassBrokenDate;
+		
+		private System.Nullable<bool> _IsActive;
+		
+		private EntitySet<ClassUser> _ClassUsers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnClassIDChanging(int value);
+    partial void OnClassIDChanged();
+    partial void OnClassCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnClassCreatedDateChanged();
+    partial void OnClassBrokenDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnClassBrokenDateChanged();
+    partial void OnIsActiveChanging(System.Nullable<bool> value);
+    partial void OnIsActiveChanged();
+    #endregion
+		
+		public Class()
+		{
+			this._ClassUsers = new EntitySet<ClassUser>(new Action<ClassUser>(this.attach_ClassUsers), new Action<ClassUser>(this.detach_ClassUsers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ClassID
+		{
+			get
+			{
+				return this._ClassID;
+			}
+			set
+			{
+				if ((this._ClassID != value))
+				{
+					this.OnClassIDChanging(value);
+					this.SendPropertyChanging();
+					this._ClassID = value;
+					this.SendPropertyChanged("ClassID");
+					this.OnClassIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassCreatedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ClassCreatedDate
+		{
+			get
+			{
+				return this._ClassCreatedDate;
+			}
+			set
+			{
+				if ((this._ClassCreatedDate != value))
+				{
+					this.OnClassCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ClassCreatedDate = value;
+					this.SendPropertyChanged("ClassCreatedDate");
+					this.OnClassCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassBrokenDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ClassBrokenDate
+		{
+			get
+			{
+				return this._ClassBrokenDate;
+			}
+			set
+			{
+				if ((this._ClassBrokenDate != value))
+				{
+					this.OnClassBrokenDateChanging(value);
+					this.SendPropertyChanging();
+					this._ClassBrokenDate = value;
+					this.SendPropertyChanged("ClassBrokenDate");
+					this.OnClassBrokenDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit")]
+		public System.Nullable<bool> IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Class_ClassUser", Storage="_ClassUsers", ThisKey="ClassID", OtherKey="ClassID")]
+		public EntitySet<ClassUser> ClassUsers
+		{
+			get
+			{
+				return this._ClassUsers;
+			}
+			set
+			{
+				this._ClassUsers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ClassUsers(ClassUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Class = this;
+		}
+		
+		private void detach_ClassUsers(ClassUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Class = null;
+		}
+	}
+	
+	public partial class uspGet_All_TransActionsByUserResult
+	{
+		
+		private int _TransactionID;
+		
+		private string _SenderName;
+		
+		private string _RecieverName;
+		
+		private System.Nullable<double> _Amount;
+		
+		private string _Description;
+		
+		private System.Nullable<System.DateTime> _TransactionDate;
+		
+		private string _TransactionType;
+		
+		public uspGet_All_TransActionsByUserResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionID", DbType="Int NOT NULL")]
+		public int TransactionID
+		{
+			get
+			{
+				return this._TransactionID;
+			}
+			set
+			{
+				if ((this._TransactionID != value))
+				{
+					this._TransactionID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderName", DbType="VarChar(500)")]
+		public string SenderName
+		{
+			get
+			{
+				return this._SenderName;
+			}
+			set
+			{
+				if ((this._SenderName != value))
+				{
+					this._SenderName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecieverName", DbType="VarChar(500)")]
+		public string RecieverName
+		{
+			get
+			{
+				return this._RecieverName;
+			}
+			set
+			{
+				if ((this._RecieverName != value))
+				{
+					this._RecieverName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float")]
+		public System.Nullable<double> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TransactionDate
+		{
+			get
+			{
+				return this._TransactionDate;
+			}
+			set
+			{
+				if ((this._TransactionDate != value))
+				{
+					this._TransactionDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionType", DbType="VarChar(8)")]
+		public string TransactionType
+		{
+			get
+			{
+				return this._TransactionType;
+			}
+			set
+			{
+				if ((this._TransactionType != value))
+				{
+					this._TransactionType = value;
+				}
+			}
 		}
 	}
 }

@@ -34,6 +34,7 @@ namespace NetworkMarketing.Controllers
             ViewBag.Error = "";
             try
             {
+
                 int result = UserManager.LoginUser(username, password);
                 if (result == 0)
                 {

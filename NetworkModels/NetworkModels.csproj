@@ -46,6 +46,7 @@
     <Compile Include="LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignUpModel.cs" />
+    <Compile Include="TransactionModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

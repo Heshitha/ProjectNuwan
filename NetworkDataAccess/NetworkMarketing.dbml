@@ -1,14 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NetworkMarketing" Class="NetworkMarketingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TE3A2ID\SQLEXPRESS;Initial Catalog=NetworkMarketing;Integrated Security=True" SettingsObjectName="NetworkDataAccess.Properties.Settings" SettingsPropertyName="NetworkMarketingConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Classes" Member="Classes">
-    <Type Name="Class">
-      <Column Name="ClassID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ClassCreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ClassBrokenDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Class_ClassUser" Member="ClassUsers" ThisKey="ClassID" OtherKey="ClassID" Type="ClassUser" />
-    </Type>
-  </Table>
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NetworkMaketing" Class="NetworkMarketingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PUBUDU-PC\SQLEXPRESS;Initial Catalog=NetworkMaketing;User ID=sa" SettingsObjectName="NetworkDataAccess.Properties.Settings" SettingsPropertyName="NetworkMarketingConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ClassUser" Member="ClassUsers">
     <Type Name="ClassUser">
       <Column Name="ClassUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -16,8 +7,8 @@
       <Column Name="ClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Class_ClassUser" Member="Class" ThisKey="ClassID" OtherKey="ClassID" Type="Class" IsForeignKey="true" />
       <Association Name="User_ClassUser" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Class_ClassUser" Member="Class" ThisKey="ClassID" OtherKey="ClassID" Type="Class" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.EVouchers" Member="EVouchers">
@@ -75,4 +66,25 @@
       <Association Name="User_User1" Member="Sponser" Storage="_User2" ThisKey="SponserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Classes" Member="Classes">
+    <Type Name="Class">
+      <Column Name="ClassID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClassCreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ClassBrokenDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Class_ClassUser" Member="ClassUsers" ThisKey="ClassID" OtherKey="ClassID" Type="ClassUser" />
+    </Type>
+  </Table>
+  <Function Name="dbo.uspGet_All_TransActionsByUser" Method="uspGet_All_TransActionsByUser">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspGet_All_TransActionsByUserResult">
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SenderName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RecieverName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TransactionType" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
