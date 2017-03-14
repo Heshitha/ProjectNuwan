@@ -9,8 +9,58 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="box box-primary">
-
+            <div id="Table" ></div>
             </div><!-- /.box -->
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{{TransactionData.length}} Transaction(s) Found</h3>
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li><a href="javascript:return false;" ng-click="pagination.prevPage()">«</a></li>
+                        <li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
+                            <a href="" ng-click="pagination.toPageId(n)">{{n + 1}}</a>
+                        </li>
+                        <li><a href="javascript:return false;" ng-click="pagination.nextPage()">»</a></li>
+                    </ul>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered table-striped" id="tblAddedItems">
+                        <tr>
+                            <th style="width: 10%">Transaction id</th>
+                            <th>Sender Name</th>
+                            <th>Reciever Name</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Transaction Date</th>
+                            <th>Transaction Type</th>
+                        </tr>
+                        <tr ng-repeat="item in TransactionData | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" class="quotitemrow" ng-click="openQuotation(item.id)">
+                            <td>{{item.TransactionID}}</td>
+                            <td>{{item.SenderName}}</td>
+                            <td>{{item.RecieverName}}</td>
+                            <td>{{item.Amount}}</td>
+                            <td>{{item.Description}}</td>
+                            <td>{{item.TransactionDate}}</td>
+                            <td>{{item.TransactionType}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li><a href="javascript:return false;" ng-click="pagination.prevPage()">«</a></li>
+                        <li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
+                            <a href="" ng-click="pagination.toPageId(n)">{{n + 1}}</a>
+                        </li>
+                        <li><a href="javascript:return false;" ng-click="pagination.nextPage()">»</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </section>

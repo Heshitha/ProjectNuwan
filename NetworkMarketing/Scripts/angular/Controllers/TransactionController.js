@@ -1,26 +1,40 @@
-﻿var TransactionController = function ($scope, $location, GetFactory, PostFactory) {
+﻿var TransactionController = function ($scope, $location, Pagination, GetFactory, PostFactory) {
     $scope.userID = Number($('#hdnUserID').val());
-    $scope.TransactionData = Array();
+    $scope.TransactionData = [];
+    $scope.pagination = Pagination.getNew(10);
+
+    debugger;
 
     $scope.GetAllTransactionsByUser = function () {
         if ($scope.userID != 0) {
-            var url = 'api/TransactionAPI/GetAllTransactionsByUser';
+            var url = '/api/TransactionAPI/GetAllTransactionsByUser';
             var result = PostFactory(url, $scope.userID);
             result.then(function (result) {
                 if (result.success) {
-                    $scope.TransactionID = result.data.TransactionID;
-                    $scope.SenderName = result.data.SenderName;
-                    $scope.RecieverName = result.data.RecieverName;
-                    $scope.Amount = result.data.Amount;
-                    $scope.Description = result.data.Description;
-                    $scope.TransactionDate = result.data.TransactionDate;
-                    $scope.TransactionType = result.data.TransactionType;
+                    console.log(result.data)
+                    $scope.TransactionData = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
                 } else {
                     ShowMessage('danger', 'Error occured while processing.');
                 }
             });
         }
-    }
-}
+    };
 
-TransactionController.$inject = ['$scope', '$location', 'GetFactory', 'PostFactory']
+    //var resultData = GetFactory(result);
+    //resultData.then(function (result) {
+    //    if (result.success) {
+    //        $scope.TransactionData = result.data;
+    //        $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
+    //    } else {
+    //        ShowMessage('danger', 'Error occured while processing.');
+    //    }
+    //});
+
+
+    $scope.GetAllTransactionsByUser();
+
+};
+
+
+TransactionController.$inject = ['$scope', '$location','Pagination', 'GetFactory', 'PostFactory']

@@ -24,6 +24,7 @@ namespace NetworkMarketing.Controllers.API
                 foreach (var item in result)
                 {
                     TransactionModel TranseModel = new TransactionModel();
+                    TranseModel.TransactionID = item.TransactionID;
                     TranseModel.SenderName = item.SenderName;
                     TranseModel.RecieverName = item.RecieverName;
                     TranseModel.Amount = (float)item.Amount;

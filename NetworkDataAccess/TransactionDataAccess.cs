@@ -23,6 +23,7 @@ namespace NetworkDataAccess
                     foreach (var item in AllTrans)
                     {
                         TransactionModel TranseModel = new TransactionModel();
+                        TranseModel.TransactionID = item.TransactionID;
                         TranseModel.SenderName = item.SenderName;
                         TranseModel.RecieverName = item.RecieverName;
                         TranseModel.Amount = (float)item.Amount;

@@ -3,6 +3,7 @@ var baseUrl = $("base").first().attr("href");
 
 //Controllers
 app.controller('LandingPageController', LandingPageController);
+app.controller('TransactionController', TransactionController);
 
 //Factories
 app.factory('PostFactory', PostFactory);
@@ -33,7 +34,7 @@ var configFunction = function ($routeProvider, $httpProvider) {
         }).
         when('/Transactionhistory', {
             templateUrl: baseUrl + '/Home/TransactionHistory',
-            Controller: TransactionController
+            controller: TransactionController
         }).
         when('/transactionCode', {
             templateUrl: baseUrl + '/Financial/TransactionCode'
