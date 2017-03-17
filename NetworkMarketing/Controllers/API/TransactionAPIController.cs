@@ -1,4 +1,5 @@
 ﻿using NetworkBussiness;
+using NetworkMarketing.Models;
 using NetworkModels;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,13 @@ namespace NetworkMarketing.Controllers.API
                 }
             }
             return retData;
+        }
+
+        [HttpPost]
+        public bool CheckTransactionKey([FromBody]TransactionKeyVM TransactionKeyData)
+        {
+            bool retval = TransactionManager.CheckTransactionKey(TransactionKeyData.userID, TransactionKeyData.TransctionKey);
+            return retval;
         }
 
         // PUT: api/TransactionAPI/5

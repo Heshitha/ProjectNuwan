@@ -37,13 +37,14 @@ var configFunction = function ($routeProvider, $httpProvider) {
             controller: TransactionController
         }).
         when('/transactionCode', {
-            templateUrl: baseUrl + '/Financial/TransactionCode'
+            templateUrl: baseUrl + '/Financial/TransactionCode',
+            controller: TransactionKeyController
         }).
         when('/evoucherdetails', {
             templateUrl: baseUrl + '/Test/EvoucherDetails'
         }).
         when('/financialmanager', {
-            templateUrl: baseUrl + '/Test/FinancialManager'
+            templateUrl: baseUrl + '/Financial/FinancialManager'
         }).
         when('/', {
             templateUrl: baseUrl + '/User/MyProfile',

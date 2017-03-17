@@ -190,6 +190,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogClass.cs" />
+    <Compile Include="Models\TransactionKeyVM.cs" />
     <Compile Include="Models\TransactionVM.cs" />
     <Compile Include="Models\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -616,6 +617,7 @@
     <Content Include="Views\Test\EvoucherDetails.cshtml" />
     <Content Include="Views\Financial\TransactionCode.cshtml" />
     <Content Include="Views\Home\TransactionHistory.cshtml" />
+    <Content Include="Views\Financial\FinancialManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -45,5 +45,25 @@ namespace NetworkDataAccess
             return retData;
 
         }
+
+        public static bool CheckTransactionKey(int userID, string TransctionKey)
+        {
+            bool retval = false;
+            User usr = db.Users.Where(x => x.UserID == userID).SingleOrDefault();
+            if(usr!=null)
+            {
+                if(usr.TransctionKey==TransctionKey)
+                {
+                    retval = true;
+                }
+                else
+                {
+                    retval =false;
+                }
+            }
+
+            return retval;
+        }
+
     }
 }

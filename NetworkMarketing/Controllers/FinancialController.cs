@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NetworkDataAccess;
+using NetworkMarketing.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,6 +28,12 @@ namespace NetworkMarketing.Controllers
 
         public ActionResult TransactionCode()
         {
+            return View();
+        }
+
+        public ActionResult FinancialManager(TransactionKeyVM TransactionKeyMV)
+        {
+            var tmv = TransactionKeyMV;
             return View();
         }
     }

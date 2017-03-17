@@ -3,7 +3,7 @@
     $scope.TransactionData = [];
     $scope.pagination = Pagination.getNew(10);
 
-    debugger;
+    //debugger;
 
     $scope.GetAllTransactionsByUser = function () {
         if ($scope.userID != 0) {
@@ -30,11 +30,49 @@
     //        ShowMessage('danger', 'Error occured while processing.');
     //    }
     //});
-
-
     $scope.GetAllTransactionsByUser();
 
 };
 
-
 TransactionController.$inject = ['$scope', '$location','Pagination', 'GetFactory', 'PostFactory']
+
+
+var TransactionKeyController = function ($scope, $location, GetFactory, PostFactory) {
+    $scope.userID = Number($('#hdnUserID').val());
+    $scope.Status = '';
+    debugger;
+
+    $scope.CheckTranactionKey = function () {
+        console.log($scope.userID);
+        console.log($scope.TransactionKey);
+        var TransactionKeyMV = {
+
+            UserID: $scope.userID,
+            TransctionKey: $scope.TransactionKey
+        }
+
+        if ($scope.userID != 0) {
+            var url = '/api/TransactionAPI/CheckTransactionKey';
+            var result = PostFactory(url, TransactionKeyMV);
+            result.then(function (result) {
+                if (result.success && result.data) {
+                    if (result.data == "false") {
+                        ShowMessage('danger', 'Invalied Transaction Key.');
+
+                    }
+                    else {
+                       window.location = baseUrl + "#/financialmanager", { TransactionKey: TransactionKeyMV };
+                    }
+                }
+                else {
+                ShowMessage('danger', 'Opps We got an error.');
+            }
+            });
+        }
+
+    };
+    //$scope.CheckTranactionKey();
+};
+
+TransactionKeyController.$inject = ['$scope', '$location', 'GetFactory', 'PostFactory']
+

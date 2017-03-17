@@ -14,5 +14,11 @@ namespace NetworkBussiness
         {
             return TransactionDataAccess.GetAllTransactionsByUser(userID);
         }
+
+        public static bool CheckTransactionKey(int userID, string TransctionKey)
+        {
+            return TransactionDataAccess.CheckTransactionKey(userID, TransctionKey);
+        }
+
     }
 }
