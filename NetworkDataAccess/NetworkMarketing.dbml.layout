@@ -88,5 +88,18 @@
         <classShapeMoniker Id="e372af29-dba2-47ce-bcb0-6210a7b02b44" />
       </nodes>
     </associationConnector>
+    <classShape Id="466d4a51-b0e6-4df0-9a2d-c894e8949db6" absoluteBounds="6.875, 4.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NetworkMarketingDataContext/BankDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c22bc452-0065-4bcd-beb2-a327979ec3a1" absoluteBounds="6.89, 4.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 5.01044840494792); (6.875 : 5.01044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NetworkMarketingDataContext/User/User_BankDetail" />
+      <nodes>
+        <classShapeMoniker Id="8a1dccf4-55b1-4089-961f-f12cf58f84cd" />
+        <classShapeMoniker Id="466d4a51-b0e6-4df0-9a2d-c894e8949db6" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

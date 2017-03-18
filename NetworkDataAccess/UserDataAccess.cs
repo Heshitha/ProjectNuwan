@@ -73,7 +73,7 @@ namespace NetworkDataAccess
                             EVoucher evou = db.EVouchers.Where(x => x.VoucherCode == signUp.EVoucher && x.IsUsed != true).FirstOrDefault();
                             if (evou != null)
                             {
-                                User newUser = new User()
+                                User newUser = new User()   
                                 {
                                     Username = signUp.Username,
                                     Title = signUp.Title,

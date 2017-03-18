@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\FinancialAPIController.cs" />
     <Compile Include="Controllers\API\TransactionAPIController.cs" />
     <Compile Include="Controllers\API\UserAPIController.cs" />
     <Compile Include="Controllers\FinancialController.cs" />
@@ -188,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BankTransferVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogClass.cs" />
     <Compile Include="Models\TransactionKeyVM.cs" />
@@ -532,6 +534,7 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular\Controllers\ClassController.js" />
+    <Content Include="Scripts\angular\Controllers\FinancialController.js" />
     <Content Include="Scripts\angular\Controllers\LandingPageController.js" />
     <Content Include="Scripts\angular\Controllers\TransactionController.js" />
     <Content Include="Scripts\angular\Controllers\UserController.js" />

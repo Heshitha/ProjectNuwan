@@ -11,7 +11,6 @@
             var result = PostFactory(url, $scope.userID);
             result.then(function (result) {
                 if (result.success) {
-                    console.log(result.data)
                     $scope.TransactionData = result.data;
                     $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
                 } else {
@@ -43,8 +42,6 @@ var TransactionKeyController = function ($scope, $location, GetFactory, PostFact
     debugger;
 
     $scope.CheckTranactionKey = function () {
-        console.log($scope.userID);
-        console.log($scope.TransactionKey);
         var TransactionKeyMV = {
 
             UserID: $scope.userID,
@@ -61,7 +58,7 @@ var TransactionKeyController = function ($scope, $location, GetFactory, PostFact
 
                     }
                     else {
-                       window.location = baseUrl + "#/financialmanager", { TransactionKey: TransactionKeyMV };
+                        window.location = baseUrl + '#/financialmanager?TransactionKey=' + $scope.TransactionKey;
                     }
                 }
                 else {

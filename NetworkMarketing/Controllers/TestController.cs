@@ -29,10 +29,10 @@ namespace NetworkMarketing.Controllers
             return View();
         }
 
-        public ActionResult FinancialManager()
-        {
-            return View();
-        }
+        //public ActionResult FinancialManager()
+        //{
+        //    return View();
+        //}
 
         public ActionResult Evouchers()
         {

@@ -43,8 +43,10 @@ var configFunction = function ($routeProvider, $httpProvider) {
         when('/evoucherdetails', {
             templateUrl: baseUrl + '/Test/EvoucherDetails'
         }).
-        when('/financialmanager', {
-            templateUrl: baseUrl + '/Financial/FinancialManager'
+        when('/financialmanager/:TransactionKey', {
+            templateUrl: function (params) { return baseUrl + '/Financial/FinancialManager?TransactionKey=' + params.TransactionKey },
+            //templateUrl: baseUrl + '/Financial/FinancialManager',
+            controller: FinancialController
         }).
         when('/', {
             templateUrl: baseUrl + '/User/MyProfile',

@@ -62,6 +62,7 @@
       <Association Name="User_Transaction1" Member="RecievedTransactions" Storage="_Transactions1" ThisKey="UserID" OtherKey="RecieverID" Type="Transaction" />
       <Association Name="User_User" Member="Childrens" Storage="_Users" ThisKey="UserID" OtherKey="CreatedBy" Type="User" />
       <Association Name="User_User1" Member="Followers" Storage="_Users1" ThisKey="UserID" OtherKey="SponserID" Type="User" />
+      <Association Name="User_BankDetail" Member="BankDetails" ThisKey="UserID" OtherKey="UserID" Type="BankDetail" />
       <Association Name="User_User" Member="Creater" Storage="_User1" ThisKey="CreatedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
       <Association Name="User_User1" Member="Sponser" Storage="_User2" ThisKey="SponserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
@@ -73,6 +74,17 @@
       <Column Name="ClassBrokenDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Class_ClassUser" Member="ClassUsers" ThisKey="ClassID" OtherKey="ClassID" Type="ClassUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BankDetails" Member="BankDetails">
+    <Type Name="BankDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransferType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_BankDetail" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.uspGet_All_TransActionsByUser" Method="uspGet_All_TransActionsByUser">

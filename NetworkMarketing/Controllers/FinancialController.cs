@@ -31,10 +31,20 @@ namespace NetworkMarketing.Controllers
             return View();
         }
 
-        public ActionResult FinancialManager(TransactionKeyVM TransactionKeyMV)
+        public ActionResult FinancialManager(string TransactionKey = "")
         {
-            var tmv = TransactionKeyMV;
-            return View();
+            //var tmv = TransactionKeyMV;
+            //string TransactionKey = Request.QueryString["TransactionKey"];
+            User usr = (User)Session["User"];
+            if (usr.TransctionKey == TransactionKey)
+            {
+                return View();
+            }
+            else
+            {
+                return View("/transactionCode");
+            }
+
         }
     }
 }

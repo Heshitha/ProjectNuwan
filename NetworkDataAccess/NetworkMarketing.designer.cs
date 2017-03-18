@@ -45,6 +45,9 @@ namespace NetworkDataAccess
     partial void InsertClass(Class instance);
     partial void UpdateClass(Class instance);
     partial void DeleteClass(Class instance);
+    partial void InsertBankDetail(BankDetail instance);
+    partial void UpdateBankDetail(BankDetail instance);
+    partial void DeleteBankDetail(BankDetail instance);
     #endregion
 		
 		public NetworkMarketingDataContext() : 
@@ -114,6 +117,14 @@ namespace NetworkDataAccess
 			get
 			{
 				return this.GetTable<Class>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BankDetail> BankDetails
+		{
+			get
+			{
+				return this.GetTable<BankDetail>();
 			}
 		}
 		
@@ -971,6 +982,8 @@ namespace NetworkDataAccess
 		
 		private EntitySet<User> _Users1;
 		
+		private EntitySet<BankDetail> _BankDetails;
+		
 		private EntityRef<User> _User1;
 		
 		private EntityRef<User> _User2;
@@ -1024,6 +1037,7 @@ namespace NetworkDataAccess
 			this._Transactions1 = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions1), new Action<Transaction>(this.detach_Transactions1));
 			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			this._Users1 = new EntitySet<User>(new Action<User>(this.attach_Users1), new Action<User>(this.detach_Users1));
+			this._BankDetails = new EntitySet<BankDetail>(new Action<BankDetail>(this.attach_BankDetails), new Action<BankDetail>(this.detach_BankDetails));
 			this._User1 = default(EntityRef<User>);
 			this._User2 = default(EntityRef<User>);
 			OnCreated();
@@ -1468,6 +1482,19 @@ namespace NetworkDataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankDetail", Storage="_BankDetails", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<BankDetail> BankDetails
+		{
+			get
+			{
+				return this._BankDetails;
+			}
+			set
+			{
+				this._BankDetails.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User", Storage="_User1", ThisKey="CreatedBy", OtherKey="UserID", IsForeignKey=true)]
 		public User Creater
 		{
@@ -1639,6 +1666,18 @@ namespace NetworkDataAccess
 			this.SendPropertyChanging();
 			entity.Sponser = null;
 		}
+		
+		private void attach_BankDetails(BankDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_BankDetails(BankDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Classes")]
@@ -1800,6 +1839,229 @@ namespace NetworkDataAccess
 		{
 			this.SendPropertyChanging();
 			entity.Class = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BankDetails")]
+	public partial class BankDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _UserID;
+		
+		private string _TransferType;
+		
+		private string _AccType;
+		
+		private string _AccountName;
+		
+		private string _AccountNumber;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnTransferTypeChanging(string value);
+    partial void OnTransferTypeChanged();
+    partial void OnAccTypeChanging(string value);
+    partial void OnAccTypeChanged();
+    partial void OnAccountNameChanging(string value);
+    partial void OnAccountNameChanged();
+    partial void OnAccountNumberChanging(string value);
+    partial void OnAccountNumberChanged();
+    #endregion
+		
+		public BankDetail()
+		{
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferType", DbType="VarChar(50)")]
+		public string TransferType
+		{
+			get
+			{
+				return this._TransferType;
+			}
+			set
+			{
+				if ((this._TransferType != value))
+				{
+					this.OnTransferTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TransferType = value;
+					this.SendPropertyChanged("TransferType");
+					this.OnTransferTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccType", DbType="VarChar(50)")]
+		public string AccType
+		{
+			get
+			{
+				return this._AccType;
+			}
+			set
+			{
+				if ((this._AccType != value))
+				{
+					this.OnAccTypeChanging(value);
+					this.SendPropertyChanging();
+					this._AccType = value;
+					this.SendPropertyChanged("AccType");
+					this.OnAccTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="VarChar(50)")]
+		public string AccountName
+		{
+			get
+			{
+				return this._AccountName;
+			}
+			set
+			{
+				if ((this._AccountName != value))
+				{
+					this.OnAccountNameChanging(value);
+					this.SendPropertyChanging();
+					this._AccountName = value;
+					this.SendPropertyChanged("AccountName");
+					this.OnAccountNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="VarChar(50)")]
+		public string AccountNumber
+		{
+			get
+			{
+				return this._AccountNumber;
+			}
+			set
+			{
+				if ((this._AccountNumber != value))
+				{
+					this.OnAccountNumberChanging(value);
+					this.SendPropertyChanging();
+					this._AccountNumber = value;
+					this.SendPropertyChanged("AccountNumber");
+					this.OnAccountNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankDetail", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.BankDetails.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.BankDetails.Add(this);
+						this._UserID = value.UserID;
+					}
+					else
+					{
+						this._UserID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
