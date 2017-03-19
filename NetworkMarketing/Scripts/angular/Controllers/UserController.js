@@ -120,6 +120,31 @@
             ShowMessage('danger', 'New password and confirm password mismatched.');
         }
     }
+
+    $scope.saveUserDetails = function () {
+
+        var user = {
+            UserID: $scope.userID,
+            Title: $scope.title,
+            FirstName: $scope.firstName,
+            LastName: $scope.lastName,
+            Address: $scope.address,
+            Country: $scope.country,
+            District: $scope.district,
+            Mobile: $scope.mobile,
+            Telephone: $scope.telephone,
+            Email: $scope.email
+        }
+        var url = '/api/UserAPI/UpdateUserDetails'
+        var result = PostFactory(url, user);
+        result.then(function (result) {
+            if (result.success && result.data) {
+                ShowMessage('success', 'Changes saved successfully.');
+            } else {
+                ShowMessage('danger', 'Error occured while processing.');
+            }
+        });
+    }
 }
 
 UserController.$inject = ['$scope', '$location', 'GetFactory', 'PostFactory']

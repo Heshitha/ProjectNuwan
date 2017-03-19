@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="BusinessDataAccess.cs" />
     <Compile Include="FinancialDataAccess.cs" />
+    <Compile Include="NetworkMarketing.cs">
+      <DependentUpon>NetworkMarketing.dbml</DependentUpon>
+    </Compile>
     <Compile Include="NetworkMarketing.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

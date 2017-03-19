@@ -34,5 +34,10 @@ namespace NetworkBussiness
         {
             return UserDataAccess.ChangePassword(user);
         }
+
+        public static bool UpdateUserDetails(User user)
+        {
+            return UserDataAccess.UpdateUserDetails(user);
+        }
     }
 }

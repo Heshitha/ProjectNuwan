@@ -12,7 +12,7 @@ namespace NetworkDataAccess.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,11 +26,22 @@ namespace NetworkDataAccess.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PUBUDU-PC\\SQLEXPRESS;Initial Catalog=NetworkMaketing;User ID=sa;Passw" +
-            "ord=123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-TE3A2ID\\SQLEXPRESS;Initial Catalog=NetworkMarketing;User ID=N" +
+            "etworkMarketing;Password=temp@12345")]
         public string NetworkMarketingConnectionString {
             get {
                 return ((string)(this["NetworkMarketingConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-TE3A2ID\\SQLEXPRESS;Initial Catalog=NetworkMarketing;User ID=N" +
+            "etworkMarketing;Password=temp@12345")]
+        public string NetworkMarketingConnectionString1 {
+            get {
+                return ((string)(this["NetworkMarketingConnectionString1"]));
             }
         }
     }

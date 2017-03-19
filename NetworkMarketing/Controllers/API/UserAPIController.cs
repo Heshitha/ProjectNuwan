@@ -54,17 +54,45 @@ namespace NetworkMarketing.Controllers.API
                 NetworkDataAccess.User usr = UserManager.GetUserDetails(user.UserID);
                 if (user.NewPassword == user.ConfirmPassword && usr.Password == user.CurrentPassword)
                 {
-                    UserManager.ChangePassword(new NetworkDataAccess.User()
+                    retVal = UserManager.ChangePassword(new NetworkDataAccess.User()
                     {
                         UserID = user.UserID,
                         Password = user.NewPassword
                     });
-                    retVal = true;
                 }
                 else
                 {
                     retVal = false;
                 }
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
+            return retVal;
+        }
+
+        [HttpPost]
+        public bool UpdateUserDetails([FromBody]UserVM user)
+        {
+            bool retVal = false;
+            try
+            {
+                NetworkDataAccess.User usr = UserManager.GetUserDetails(user.UserID);
+
+                retVal = UserManager.UpdateUserDetails(new NetworkDataAccess.User()
+                {
+                    UserID = user.UserID,
+                    Title = user.Title,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Address = user.Address,
+                    Country = user.Country,
+                    District = user.District,
+                    Mobile = user.Mobile,
+                    Telephone = user.Telephone,
+                    Email = user.Email
+                });
             }
             catch (Exception ex)
             {

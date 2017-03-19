@@ -22,7 +22,7 @@ namespace NetworkDataAccess
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="NetworkMaketing")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="NetworkMarketing")]
 	public partial class NetworkMarketingDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -51,7 +51,7 @@ namespace NetworkDataAccess
     #endregion
 		
 		public NetworkMarketingDataContext() : 
-				base(global::NetworkDataAccess.Properties.Settings.Default.NetworkMarketingConnectionString, mappingSource)
+				base(global::NetworkDataAccess.Properties.Settings.Default.NetworkMarketingConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1694,6 +1694,8 @@ namespace NetworkDataAccess
 		
 		private System.Nullable<bool> _IsActive;
 		
+		private System.Nullable<int> _ClassType;
+		
 		private EntitySet<ClassUser> _ClassUsers;
 		
     #region Extensibility Method Definitions
@@ -1708,6 +1710,8 @@ namespace NetworkDataAccess
     partial void OnClassBrokenDateChanged();
     partial void OnIsActiveChanging(System.Nullable<bool> value);
     partial void OnIsActiveChanged();
+    partial void OnClassTypeChanging(System.Nullable<int> value);
+    partial void OnClassTypeChanged();
     #endregion
 		
 		public Class()
@@ -1792,6 +1796,26 @@ namespace NetworkDataAccess
 					this._IsActive = value;
 					this.SendPropertyChanged("IsActive");
 					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassType", DbType="Int")]
+		public System.Nullable<int> ClassType
+		{
+			get
+			{
+				return this._ClassType;
+			}
+			set
+			{
+				if ((this._ClassType != value))
+				{
+					this.OnClassTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ClassType = value;
+					this.SendPropertyChanged("ClassType");
+					this.OnClassTypeChanged();
 				}
 			}
 		}

@@ -107,6 +107,14 @@ namespace NetworkDataAccess
                                     db.ClassUsers.InsertOnSubmit(clsUsr);
                                 }
 
+                                //starting of the class break
+                                if (userPosition == 13)
+                                {
+                                    //var classMemberList = from x in cls.ClassUsers
+                                    //                      where x.User.Followers
+                                    //                      orderby x.User.Followers
+                                }
+
                                 evou.IsUsed = true;
                                 evou.User = newUser;
                                 db.SubmitChanges();
@@ -172,6 +180,34 @@ namespace NetworkDataAccess
                 if (usr != null)
                 {
                     usr.Password = user.Password;
+                    db.SubmitChanges();
+                    retVal = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return retVal;
+        }
+
+        public static bool UpdateUserDetails(User user)
+        {
+            bool retVal = false;
+            try
+            {
+                User usr = db.Users.Where(x => x.UserID == user.UserID).FirstOrDefault();
+                if (usr != null)
+                {
+                    usr.Title = user.Title;
+                    usr.FirstName = user.FirstName;
+                    usr.LastName = user.LastName;
+                    usr.Address = user.Address;
+                    usr.Country = user.Country;
+                    usr.District = user.District;
+                    usr.Mobile = user.Mobile;
+                    usr.Telephone = user.Telephone;
+                    usr.Email = user.Email;
                     db.SubmitChanges();
                     retVal = true;
                 }
