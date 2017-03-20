@@ -100,4 +100,10 @@
       <Column Name="TransactionType" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.usp_Get_User_points" Method="usp_Get_User_points">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Get_User_pointsResult">
+      <Column Name="Points" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

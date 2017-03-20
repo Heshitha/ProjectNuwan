@@ -46,6 +46,12 @@ namespace NetworkDataAccess
 
         }
 
+        //public static float GetUserTransactions(int userID)
+        //{
+        //    //var retData = db.usp_Get_User_points(userID);
+        //    //float Allpoints = (float)retData.;
+        //}
+
         public static bool CheckTransactionKey(int userID, string TransctionKey)
         {
             bool retval = false;

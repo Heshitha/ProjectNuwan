@@ -280,6 +280,14 @@
                                         <option value="3">Bank Transfer</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>Account Type</label>
+                                    <select class="form-control" ng-model="AccType">
+                                        <option value="0">-- Select Type --</option>
+                                        <option value="1">Saving</option>
+                                        <option value="2">Current</option>
+                                    </select>
+                                </div>
                                 @*<div class="form-group">
                                         <label>Bank</label>
                                         <select class="form-control">
@@ -291,14 +299,6 @@
                                     </div>*@
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Account Type</label>
-                                    <select class="form-control" ng-model="AccType">
-                                        <option value="0">-- Select Type --</option>
-                                        <option value="1">Saving</option>
-                                        <option value="2">Current</option>
-                                    </select>
-                                </div>
                                 <div class="form-group">
                                     <label for="txtAccountName">Account Name</label>
                                     <input type="text" class="form-control" id="txtAccountName" ng-model="AccountName" placeholder="Enter User Name">

@@ -134,6 +134,13 @@ namespace NetworkDataAccess
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
 			return ((ISingleResult<uspGet_All_TransActionsByUserResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_User_points")]
+		public ISingleResult<usp_Get_User_pointsResult> usp_Get_User_points([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<usp_Get_User_pointsResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ClassUser")]
@@ -2218,6 +2225,32 @@ namespace NetworkDataAccess
 				if ((this._TransactionType != value))
 				{
 					this._TransactionType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class usp_Get_User_pointsResult
+	{
+		
+		private System.Nullable<double> _Points;
+		
+		public usp_Get_User_pointsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Points", DbType="Float")]
+		public System.Nullable<double> Points
+		{
+			get
+			{
+				return this._Points;
+			}
+			set
+			{
+				if ((this._Points != value))
+				{
+					this._Points = value;
 				}
 			}
 		}

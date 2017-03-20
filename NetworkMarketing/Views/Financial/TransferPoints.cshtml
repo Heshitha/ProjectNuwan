@@ -9,22 +9,24 @@
     <div class="row">
             <div class="col-lg-12">
                 <div class="box box-primary">
+                    <form ng-submit="CheckTranactionKey('transfer')">
                         <div class="box-header with-border">
                             <h3 class="box-title">Transfer Points</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="form-group has-feedback">
-                                <input type="password" class="form-control" placeholder="Transaction Code" name="password" required>
+                                <input type="password" class="form-control" ng-model="TransactionKey" placeholder="Transaction Code" name="password" required>
                                 <span class="form-control-feedback"><i class="fa fa-lock"></i></span>
                             </div>
                         </div><!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" onclick="location.href = '#/transfer' " class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-floppy-o"></i>
                                 &nbsp;Submit
                             </button>
                         </div><!-- box-footer -->
-                </div><!-- /.box -->
+                    </form>
+</div><!-- /.box -->
             </div>
         </div>
 </section>

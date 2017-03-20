@@ -81,7 +81,7 @@
         <elementListCompartment Id="7d194d84-acf7-4fd5-b488-2ea0a6158218" absoluteBounds="8.39, 1.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.375 : 2.94794840494792); (5.5 : 2.94794840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.375 : 2.94794840494792); (5.5 : 2.94794840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/NetworkMarketingDataContext/Class/Class_ClassUser" />
       <nodes>
         <classShapeMoniker Id="8bca1777-8793-4238-a651-24be5085a4fc" />

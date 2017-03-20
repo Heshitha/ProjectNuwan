@@ -18,12 +18,21 @@ namespace NetworkMarketing.Controllers
 
         public ActionResult TransferPoints()
         {
-            return View();
+                return View();
         }
 
-        public ActionResult FrmTransferPoints()
+        public ActionResult FrmTransferPoints(string TransactionKey)
         {
-            return View();
+            User usr = (User)Session["User"];
+            if (usr.TransctionKey == TransactionKey)
+            {
+                return View();
+            }
+            else
+            {
+                Response.Redirect("#/Financial/TransferPoints");
+                return View("TransferPoints");
+            }
         }
 
         public ActionResult TransactionCode()
@@ -42,6 +51,7 @@ namespace NetworkMarketing.Controllers
             }
             else
             {
+                Response.Redirect("#/Financial/TransactionCode");
                 return View("/transactionCode");
             }
 

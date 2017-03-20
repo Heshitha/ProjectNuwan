@@ -38,10 +38,9 @@ TransactionController.$inject = ['$scope', '$location','Pagination', 'GetFactory
 
 var TransactionKeyController = function ($scope, $location, GetFactory, PostFactory) {
     $scope.userID = Number($('#hdnUserID').val());
-    $scope.Status = '';
     debugger;
 
-    $scope.CheckTranactionKey = function () {
+    $scope.CheckTranactionKey = function ($Page) {
         var TransactionKeyMV = {
 
             UserID: $scope.userID,
@@ -55,10 +54,9 @@ var TransactionKeyController = function ($scope, $location, GetFactory, PostFact
                 if (result.success && result.data) {
                     if (result.data == "false") {
                         ShowMessage('danger', 'Invalied Transaction Key.');
-
                     }
                     else {
-                        window.location = baseUrl + '#/financialmanager?TransactionKey=' + $scope.TransactionKey;
+                        window.location = baseUrl + '#/'+$Page+'/' + $scope.TransactionKey;
                     }
                 }
                 else {
