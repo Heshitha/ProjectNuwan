@@ -116,6 +116,7 @@ namespace NetworkDataAccess
                                 }
 
                                 evou.IsUsed = true;
+                                evou.UsedDate = DateTime.Now;
                                 evou.User = newUser;
                                 db.SubmitChanges();
                                 retVal = newUser.UserID;
