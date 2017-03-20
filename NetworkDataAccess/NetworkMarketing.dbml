@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NetworkMarketing" Class="NetworkMarketingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TE3A2ID\SQLEXPRESS;Initial Catalog=NetworkMarketing;User ID=NetworkMarketing" SettingsObjectName="NetworkDataAccess.Properties.Settings" SettingsPropertyName="NetworkMarketingConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TE3A2ID\SQLEXPRESS;Initial Catalog=NetworkMarketing;Persist Security Info=True;User ID=NetworkMarketing" SettingsObjectName="NetworkDataAccess.Properties.Settings" SettingsPropertyName="NetworkMarketingConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ClassUser" Member="ClassUsers">
     <Type Name="ClassUser">
       <Column Name="ClassUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -63,6 +63,8 @@
       <Association Name="User_User" Member="Childrens" Storage="_Users" ThisKey="UserID" OtherKey="CreatedBy" Type="User" />
       <Association Name="User_User1" Member="Followers" Storage="_Users1" ThisKey="UserID" OtherKey="SponserID" Type="User" />
       <Association Name="User_BankDetail" Member="BankDetails" ThisKey="UserID" OtherKey="UserID" Type="BankDetail" />
+      <Association Name="User_LeaderFollower" Member="LeaderFollowers" ThisKey="UserID" OtherKey="LeaderID" Type="LeaderFollower" />
+      <Association Name="User_LeaderFollower1" Member="RealFollowers" ThisKey="UserID" OtherKey="FollowerID" Type="LeaderFollower" />
       <Association Name="User_User" Member="Creater" Storage="_User1" ThisKey="CreatedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
       <Association Name="User_User1" Member="Sponser" Storage="_User2" ThisKey="SponserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
@@ -75,6 +77,7 @@
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ClassType" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Class_ClassUser" Member="ClassUsers" ThisKey="ClassID" OtherKey="ClassID" Type="ClassUser" />
+      <Association Name="Class_LeaderFollower" Member="LeaderFollowers" ThisKey="ClassID" OtherKey="LeaderClassID" Type="LeaderFollower" />
     </Type>
   </Table>
   <Table Name="dbo.BankDetails" Member="BankDetails">
@@ -86,6 +89,18 @@
       <Column Name="AccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="User_BankDetail" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LeaderFollower" Member="LeaderFollowers">
+    <Type Name="LeaderFollower">
+      <Column Name="LeaderFollowerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LeaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FollowerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeaderClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FollowedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Class_LeaderFollower" Member="Class" ThisKey="LeaderClassID" OtherKey="ClassID" Type="Class" IsForeignKey="true" />
+      <Association Name="User_LeaderFollower" Member="Leader" ThisKey="LeaderID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_LeaderFollower1" Member="Follower" ThisKey="FollowerID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.uspGet_All_TransActionsByUser" Method="uspGet_All_TransActionsByUser">
@@ -104,6 +119,15 @@
     <Parameter Name="userID" Type="System.Int32" DbType="Int" />
     <ElementType Name="usp_Get_User_pointsResult">
       <Column Name="Points" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Get_User_List_Order_By_Performance_For_Class" Method="usp_Get_User_List_Order_By_Performance_For_Class">
+    <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Get_User_List_Order_By_Performance_For_ClassResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FollowerCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
