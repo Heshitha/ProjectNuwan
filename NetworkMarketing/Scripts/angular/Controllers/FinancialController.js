@@ -57,6 +57,24 @@
             });
         }
     }
+
+    $scope.GetUserTransactions = function () {
+        if ($scope.userID != 0) {
+            var url = '/api/TransactionAPI/GetUserTransactions';
+            var result = PostFactory(url, $scope.userID);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.Points = result.data;
+                }
+                else {
+                    $scope.Points = 0.00;
+                }
+            });
+        }
+    }
+    $scope.GetUserTransactions();
+
 };
 
 

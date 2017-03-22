@@ -17,7 +17,7 @@ namespace NetworkBussiness
 
         public static int GenerateEpins(EpinGenerateModel EpinData)
         {
-            double epinVal = EpinData.EpinVal;
+            double epinVal = TransactionManager.GetUserTransactions(EpinData.userID);
             double totalPoints = EpinData.TotalPoints;
             int NoofPins = EpinData.NoOfPins;
             List<EpinModel> lstEpin = null;
