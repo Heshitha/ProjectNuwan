@@ -8,6 +8,6 @@ namespace NetworkDataAccess
 {
     class BusinessDataAccess
     {
-        private static NetworkMarketingDataContext db = new NetworkMarketingDataContext();
+        private static NetworkMarketingDataContext db = GetDataAccess.GetDataContext();
     }
 }

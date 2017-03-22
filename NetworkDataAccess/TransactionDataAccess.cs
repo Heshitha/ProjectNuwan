@@ -9,7 +9,7 @@ namespace NetworkDataAccess
 {
     public class TransactionDataAccess
     {
-        private static NetworkMarketingDataContext db = new NetworkMarketingDataContext();
+        private static NetworkMarketingDataContext db = GetDataAccess.GetDataContext();
 
         public static List<TransactionModel> GetAllTransactionsByUser(int userID)
         {

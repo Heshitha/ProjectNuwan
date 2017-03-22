@@ -9,7 +9,7 @@ namespace NetworkDataAccess
 {
     public class ClassDataAccess
     {
-        static NetworkMarketingDataContext db = new NetworkMarketingDataContext();
+        static NetworkMarketingDataContext db = GetDataAccess.GetDataContext();
         public static ViewClassModel GetClassDetailsForViewClass(int ClassID)
         {
             ViewClassModel retVal = new ViewClassModel();

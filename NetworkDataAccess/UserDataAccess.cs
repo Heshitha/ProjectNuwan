@@ -9,7 +9,7 @@ namespace NetworkDataAccess
 {
     public class UserDataAccess
     {
-        private static NetworkMarketingDataContext db = new NetworkMarketingDataContext();
+        private static NetworkMarketingDataContext db = GetDataAccess.GetDataContext();
         public static int LoginUser(string userName, string password)
         {
             int retVal = 0;
@@ -92,7 +92,7 @@ namespace NetworkDataAccess
                                 };
                                 db.Users.InsertOnSubmit(newUser);
 
-                                var classUserResult = sponsor.ClassUsers.Where(x => x.Class.IsActive == true && x.Class.ClassBrokenDate != null && x.IsActive == true).FirstOrDefault();
+                                var classUserResult = sponsor.ClassUsers.Where(x => x.Class.IsActive == true && x.Class.ClassBrokenDate == null && x.IsActive == true).FirstOrDefault();
 
                                 if (classUserResult != null)
                                 {
