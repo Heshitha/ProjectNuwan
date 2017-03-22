@@ -48,6 +48,9 @@ namespace NetworkDataAccess
     partial void InsertBankDetail(BankDetail instance);
     partial void UpdateBankDetail(BankDetail instance);
     partial void DeleteBankDetail(BankDetail instance);
+    partial void InsertLeaderFollower(LeaderFollower instance);
+    partial void UpdateLeaderFollower(LeaderFollower instance);
+    partial void DeleteLeaderFollower(LeaderFollower instance);
     #endregion
 		
 		public NetworkMarketingDataContext() : 
@@ -128,6 +131,14 @@ namespace NetworkDataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<LeaderFollower> LeaderFollowers
+		{
+			get
+			{
+				return this.GetTable<LeaderFollower>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspGet_All_TransActionsByUser")]
 		public ISingleResult<uspGet_All_TransActionsByUserResult> uspGet_All_TransActionsByUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
 		{
@@ -148,6 +159,13 @@ namespace NetworkDataAccess
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, recUserName, amount, description, transactionDate, transactionType);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_User_List_Order_By_Performance_For_Class")]
+		public ISingleResult<usp_Get_User_List_Order_By_Performance_For_ClassResult> usp_Get_User_List_Order_By_Performance_For_Class([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClassID", DbType="Int")] System.Nullable<int> classID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), classID);
+			return ((ISingleResult<usp_Get_User_List_Order_By_Performance_For_ClassResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -999,6 +1017,10 @@ namespace NetworkDataAccess
 		
 		private EntitySet<BankDetail> _BankDetails;
 		
+		private EntitySet<LeaderFollower> _LeaderFollowers;
+		
+		private EntitySet<LeaderFollower> _RealFollowers;
+		
 		private EntityRef<User> _User1;
 		
 		private EntityRef<User> _User2;
@@ -1053,6 +1075,8 @@ namespace NetworkDataAccess
 			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			this._Users1 = new EntitySet<User>(new Action<User>(this.attach_Users1), new Action<User>(this.detach_Users1));
 			this._BankDetails = new EntitySet<BankDetail>(new Action<BankDetail>(this.attach_BankDetails), new Action<BankDetail>(this.detach_BankDetails));
+			this._LeaderFollowers = new EntitySet<LeaderFollower>(new Action<LeaderFollower>(this.attach_LeaderFollowers), new Action<LeaderFollower>(this.detach_LeaderFollowers));
+			this._RealFollowers = new EntitySet<LeaderFollower>(new Action<LeaderFollower>(this.attach_RealFollowers), new Action<LeaderFollower>(this.detach_RealFollowers));
 			this._User1 = default(EntityRef<User>);
 			this._User2 = default(EntityRef<User>);
 			OnCreated();
@@ -1510,6 +1534,32 @@ namespace NetworkDataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LeaderFollower", Storage="_LeaderFollowers", ThisKey="UserID", OtherKey="LeaderID")]
+		public EntitySet<LeaderFollower> LeaderFollowers
+		{
+			get
+			{
+				return this._LeaderFollowers;
+			}
+			set
+			{
+				this._LeaderFollowers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LeaderFollower1", Storage="_RealFollowers", ThisKey="UserID", OtherKey="FollowerID")]
+		public EntitySet<LeaderFollower> RealFollowers
+		{
+			get
+			{
+				return this._RealFollowers;
+			}
+			set
+			{
+				this._RealFollowers.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_User", Storage="_User1", ThisKey="CreatedBy", OtherKey="UserID", IsForeignKey=true)]
 		public User Creater
 		{
@@ -1693,6 +1743,30 @@ namespace NetworkDataAccess
 			this.SendPropertyChanging();
 			entity.User = null;
 		}
+		
+		private void attach_LeaderFollowers(LeaderFollower entity)
+		{
+			this.SendPropertyChanging();
+			entity.Leader = this;
+		}
+		
+		private void detach_LeaderFollowers(LeaderFollower entity)
+		{
+			this.SendPropertyChanging();
+			entity.Leader = null;
+		}
+		
+		private void attach_RealFollowers(LeaderFollower entity)
+		{
+			this.SendPropertyChanging();
+			entity.Follower = this;
+		}
+		
+		private void detach_RealFollowers(LeaderFollower entity)
+		{
+			this.SendPropertyChanging();
+			entity.Follower = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Classes")]
@@ -1713,6 +1787,8 @@ namespace NetworkDataAccess
 		
 		private EntitySet<ClassUser> _ClassUsers;
 		
+		private EntitySet<LeaderFollower> _LeaderFollowers;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1732,6 +1808,7 @@ namespace NetworkDataAccess
 		public Class()
 		{
 			this._ClassUsers = new EntitySet<ClassUser>(new Action<ClassUser>(this.attach_ClassUsers), new Action<ClassUser>(this.detach_ClassUsers));
+			this._LeaderFollowers = new EntitySet<LeaderFollower>(new Action<LeaderFollower>(this.attach_LeaderFollowers), new Action<LeaderFollower>(this.detach_LeaderFollowers));
 			OnCreated();
 		}
 		
@@ -1848,6 +1925,19 @@ namespace NetworkDataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Class_LeaderFollower", Storage="_LeaderFollowers", ThisKey="ClassID", OtherKey="LeaderClassID")]
+		public EntitySet<LeaderFollower> LeaderFollowers
+		{
+			get
+			{
+				return this._LeaderFollowers;
+			}
+			set
+			{
+				this._LeaderFollowers.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1875,6 +1965,18 @@ namespace NetworkDataAccess
 		}
 		
 		private void detach_ClassUsers(ClassUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Class = null;
+		}
+		
+		private void attach_LeaderFollowers(LeaderFollower entity)
+		{
+			this.SendPropertyChanging();
+			entity.Class = this;
+		}
+		
+		private void detach_LeaderFollowers(LeaderFollower entity)
 		{
 			this.SendPropertyChanging();
 			entity.Class = null;
@@ -2104,6 +2206,287 @@ namespace NetworkDataAccess
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LeaderFollower")]
+	public partial class LeaderFollower : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _LeaderFollowerID;
+		
+		private System.Nullable<int> _LeaderID;
+		
+		private System.Nullable<int> _FollowerID;
+		
+		private System.Nullable<int> _LeaderClassID;
+		
+		private System.Nullable<System.DateTime> _FollowedDate;
+		
+		private EntityRef<Class> _Class;
+		
+		private EntityRef<User> _Leader;
+		
+		private EntityRef<User> _Follower;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLeaderFollowerIDChanging(int value);
+    partial void OnLeaderFollowerIDChanged();
+    partial void OnLeaderIDChanging(System.Nullable<int> value);
+    partial void OnLeaderIDChanged();
+    partial void OnFollowerIDChanging(System.Nullable<int> value);
+    partial void OnFollowerIDChanged();
+    partial void OnLeaderClassIDChanging(System.Nullable<int> value);
+    partial void OnLeaderClassIDChanged();
+    partial void OnFollowedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnFollowedDateChanged();
+    #endregion
+		
+		public LeaderFollower()
+		{
+			this._Class = default(EntityRef<Class>);
+			this._Leader = default(EntityRef<User>);
+			this._Follower = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderFollowerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int LeaderFollowerID
+		{
+			get
+			{
+				return this._LeaderFollowerID;
+			}
+			set
+			{
+				if ((this._LeaderFollowerID != value))
+				{
+					this.OnLeaderFollowerIDChanging(value);
+					this.SendPropertyChanging();
+					this._LeaderFollowerID = value;
+					this.SendPropertyChanged("LeaderFollowerID");
+					this.OnLeaderFollowerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderID", DbType="Int")]
+		public System.Nullable<int> LeaderID
+		{
+			get
+			{
+				return this._LeaderID;
+			}
+			set
+			{
+				if ((this._LeaderID != value))
+				{
+					if (this._Leader.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLeaderIDChanging(value);
+					this.SendPropertyChanging();
+					this._LeaderID = value;
+					this.SendPropertyChanged("LeaderID");
+					this.OnLeaderIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowerID", DbType="Int")]
+		public System.Nullable<int> FollowerID
+		{
+			get
+			{
+				return this._FollowerID;
+			}
+			set
+			{
+				if ((this._FollowerID != value))
+				{
+					if (this._Follower.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFollowerIDChanging(value);
+					this.SendPropertyChanging();
+					this._FollowerID = value;
+					this.SendPropertyChanged("FollowerID");
+					this.OnFollowerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderClassID", DbType="Int")]
+		public System.Nullable<int> LeaderClassID
+		{
+			get
+			{
+				return this._LeaderClassID;
+			}
+			set
+			{
+				if ((this._LeaderClassID != value))
+				{
+					if (this._Class.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLeaderClassIDChanging(value);
+					this.SendPropertyChanging();
+					this._LeaderClassID = value;
+					this.SendPropertyChanged("LeaderClassID");
+					this.OnLeaderClassIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FollowedDate
+		{
+			get
+			{
+				return this._FollowedDate;
+			}
+			set
+			{
+				if ((this._FollowedDate != value))
+				{
+					this.OnFollowedDateChanging(value);
+					this.SendPropertyChanging();
+					this._FollowedDate = value;
+					this.SendPropertyChanged("FollowedDate");
+					this.OnFollowedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Class_LeaderFollower", Storage="_Class", ThisKey="LeaderClassID", OtherKey="ClassID", IsForeignKey=true)]
+		public Class Class
+		{
+			get
+			{
+				return this._Class.Entity;
+			}
+			set
+			{
+				Class previousValue = this._Class.Entity;
+				if (((previousValue != value) 
+							|| (this._Class.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Class.Entity = null;
+						previousValue.LeaderFollowers.Remove(this);
+					}
+					this._Class.Entity = value;
+					if ((value != null))
+					{
+						value.LeaderFollowers.Add(this);
+						this._LeaderClassID = value.ClassID;
+					}
+					else
+					{
+						this._LeaderClassID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Class");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LeaderFollower", Storage="_Leader", ThisKey="LeaderID", OtherKey="UserID", IsForeignKey=true)]
+		public User Leader
+		{
+			get
+			{
+				return this._Leader.Entity;
+			}
+			set
+			{
+				User previousValue = this._Leader.Entity;
+				if (((previousValue != value) 
+							|| (this._Leader.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Leader.Entity = null;
+						previousValue.LeaderFollowers.Remove(this);
+					}
+					this._Leader.Entity = value;
+					if ((value != null))
+					{
+						value.LeaderFollowers.Add(this);
+						this._LeaderID = value.UserID;
+					}
+					else
+					{
+						this._LeaderID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Leader");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LeaderFollower1", Storage="_Follower", ThisKey="FollowerID", OtherKey="UserID", IsForeignKey=true)]
+		public User Follower
+		{
+			get
+			{
+				return this._Follower.Entity;
+			}
+			set
+			{
+				User previousValue = this._Follower.Entity;
+				if (((previousValue != value) 
+							|| (this._Follower.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Follower.Entity = null;
+						previousValue.RealFollowers.Remove(this);
+					}
+					this._Follower.Entity = value;
+					if ((value != null))
+					{
+						value.RealFollowers.Add(this);
+						this._FollowerID = value.UserID;
+					}
+					else
+					{
+						this._FollowerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Follower");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class uspGet_All_TransActionsByUserResult
 	{
 		
@@ -2237,5 +2620,114 @@ namespace NetworkDataAccess
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
+	
+	public partial class usp_Get_User_pointsResult
+	{
+		
+		private System.Nullable<double> _Points;
+		
+		public usp_Get_User_pointsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Points", DbType="Float")]
+		public System.Nullable<double> Points
+		{
+			get
+			{
+				return this._Points;
+			}
+			set
+			{
+				if ((this._Points != value))
+				{
+					this._Points = value;
+				}
+			}
+		}
+	}
+	
+	public partial class usp_Get_User_List_Order_By_Performance_For_ClassResult
+	{
+		
+		private System.Nullable<int> _UserID;
+		
+		private string _UserName;
+		
+		private System.Nullable<int> _Position;
+		
+		private System.Nullable<int> _FollowerCount;
+		
+		public usp_Get_User_List_Order_By_Performance_For_ClassResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(MAX)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this._UserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="Int")]
+		public System.Nullable<int> Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this._Position = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowerCount", DbType="Int")]
+		public System.Nullable<int> FollowerCount
+		{
+			get
+			{
+				return this._FollowerCount;
+			}
+			set
+			{
+				if ((this._FollowerCount != value))
+				{
+					this._FollowerCount = value;
+				}
+			}
+		}
+	}
+>>>>>>> origin/master
 }
 #pragma warning restore 1591

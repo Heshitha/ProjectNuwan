@@ -101,5 +101,32 @@
         <classShapeMoniker Id="466d4a51-b0e6-4df0-9a2d-c894e8949db6" />
       </nodes>
     </associationConnector>
+    <classShape Id="a53a3428-ff8a-4500-a6b2-7b7d2ddfb55d" absoluteBounds="6.5, 7.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NetworkMarketingDataContext/LeaderFollower" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7573b1eb-0d3b-41e4-8008-92c87d1decff" absoluteBounds="6.5150000000000006, 8.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.65625 : 3.27089680989583); (9.65625 : 8.76044840494792); (8.5 : 8.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NetworkMarketingDataContext/Class/Class_LeaderFollower" />
+      <nodes>
+        <classShapeMoniker Id="8bca1777-8793-4238-a651-24be5085a4fc" />
+        <classShapeMoniker Id="a53a3428-ff8a-4500-a6b2-7b7d2ddfb55d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.881824423076925 : 7.57851399739583); (0.881824423076925 : 8.09375); (1.24282051282052 : 8.09375 : JumpStart); (1.40948717948718 : 8.09375 : JumpEnd); (1.86099608974359 : 8.09375 : JumpStart); (2.02766275641025 : 8.09375 : JumpEnd); (6.5 : 8.09375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NetworkMarketingDataContext/User/User_LeaderFollower" />
+      <nodes>
+        <classShapeMoniker Id="8a1dccf4-55b1-4089-961f-f12cf58f84cd" />
+        <classShapeMoniker Id="a53a3428-ff8a-4500-a6b2-7b7d2ddfb55d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.25341721153846 : 7.57851399739583); (2.25341721153846 : 7.9531225); (6.5 : 7.9531225)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NetworkMarketingDataContext/User/User_LeaderFollower1" />
+      <nodes>
+        <classShapeMoniker Id="8a1dccf4-55b1-4089-961f-f12cf58f84cd" />
+        <classShapeMoniker Id="a53a3428-ff8a-4500-a6b2-7b7d2ddfb55d" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
