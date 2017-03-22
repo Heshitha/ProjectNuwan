@@ -99,7 +99,7 @@
                         <img src="~/Uploads/ProfileImages/@(!nouser ? siteUser.UserID.ToString() + siteUser.ImageExt : "")?@(DateTime.Now.Ticks.ToString())" class="img-circle" alt="User Image" onerror="this.onerror = null; this.src = baseUrl+'/Uploads/ProfileImages/default-user.jpg'">
                     </div>
                     <div class="pull-left info">
-                        <p>Heshitha Chathuranga</p>
+                        <p>@(!nouser ? siteUser.FirstName + " " + siteUser.LastName : "")</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>

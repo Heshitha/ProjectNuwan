@@ -9,27 +9,28 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="box box-primary">
-                <form ng-submit="saveUser()">
+                <form ng-submit="GenerateEpins()">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Financial Transaction Form</h3>
+                        <h3 class="box-title">Financial Transaction Form</h3>                        
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
+                                <h2 class="box-title">Your Points<span ng-controller="TransactionKeyController" ng-model="Points" data-ng-init="GetUserTransactions()"></span></h2>
                                 <div class="form-group">
                                     <label>E-Pin Value</label>
-                                    <select class="form-control">
+                                    <select class="form-control" ng-model="EpinVal">
                                         <option value="0">-- Select Value --</option>
-                                        <option value="1">$120.</option>
+                                        <option value="1">$120</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtTransKey">Transaction Key</label>
-                                    <input type="text" class="form-control" id="txtTransKey" placeholder="Enter Transaction Key" required>
+                                    <input type="text" class="form-control" id="txtTransKey" ng-model="TransactionKey" ng-controller="TransactionKeyController" ng-blur="CheckTranactionKey()" placeholder="Enter Transaction Key" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtNoOfKeys">How Many Keys</label>
-                                    <input type="text" class="form-control" id="txtNoOfKeys" placeholder="Enter Number of Keys" required>
+                                    <input type="text" class="form-control" id="txtNoOfKeys" ng-model="NoOfPins" placeholder="Enter Number of Keys" required>
                                 </div>
                             </div>
                         </div>

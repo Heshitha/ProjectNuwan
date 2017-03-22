@@ -46,6 +46,20 @@ namespace NetworkMarketing.Controllers.API
             return retval;
         }
 
+        [HttpPost]
+        public double GetUserTransactions([FromBody]int userID)
+        {
+            double retval = TransactionManager.GetUserTransactions(userID);
+            return retval;
+        }
+
+        [HttpPost]
+        public int SaveTransaction([FromBody]TransactionAddModel trans)
+        {
+            int retval = TransactionManager.SaveTransaction(trans);
+            return retval;
+        }
+
         // PUT: api/TransactionAPI/5
         public void Put(int id, [FromBody]string value)
         {

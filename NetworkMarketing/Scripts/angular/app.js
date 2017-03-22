@@ -21,7 +21,8 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: baseUrl + '/Home/ViewTeam'
         }).
         when('/evouchers', {
-            templateUrl: baseUrl + '/Home/EVouchers'
+            templateUrl: baseUrl + '/Home/EVouchers',
+            controller: FinancialController
         }).
         when('/myevouchers', {
             templateUrl: baseUrl + '/Home/MyEVouchers'
@@ -33,6 +34,7 @@ var configFunction = function ($routeProvider, $httpProvider) {
         when('/transfer/:TransactionKey', {
             //templateUrl: baseUrl + '/Financial/FrmTransferPoints',
             templateUrl: function (params) { return baseUrl + '/Financial/FrmTransferPoints?TransactionKey=' + params.TransactionKey },
+            controller: UserTransactionsController
         }).
         when('/Transactionhistory', {
             templateUrl: baseUrl + '/Home/TransactionHistory',

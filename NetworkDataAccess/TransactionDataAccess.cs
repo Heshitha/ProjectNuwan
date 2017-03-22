@@ -46,11 +46,28 @@ namespace NetworkDataAccess
 
         }
 
-        //public static float GetUserTransactions(int userID)
-        //{
-        //    //var retData = db.usp_Get_User_points(userID);
-        //    //float Allpoints = (float)retData.;
-        //}
+        public static int SaveTransaction(TransactionAddModel trans)
+        {
+            try
+            {
+                DateTime utcTime = DateTime.UtcNow;
+                var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
+                var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
+                var retval = db.usp_Add_New_Transaction((int)trans.userID, trans.RecieverName, (double)trans.Amount, "Point Transfer", tzTime, "Send");
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public static double GetUserTransactions(int userID)
+        {
+            double? Allpoints = 0;
+            var retData = db.usp_Get_User_points(userID,ref Allpoints);
+            return Allpoints.HasValue ? Allpoints.Value : 0.00;
+        }
 
         public static bool CheckTransactionKey(int userID, string TransctionKey)
         {

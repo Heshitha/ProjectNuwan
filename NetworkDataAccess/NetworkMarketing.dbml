@@ -117,9 +117,17 @@
   </Function>
   <Function Name="dbo.usp_Get_User_points" Method="usp_Get_User_points">
     <Parameter Name="userID" Type="System.Int32" DbType="Int" />
-    <ElementType Name="usp_Get_User_pointsResult">
-      <Column Name="Points" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
+    <Parameter Name="Points" Parameter="points" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Add_New_Transaction" Method="usp_Add_New_Transaction">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RecUserName" Parameter="recUserName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TransactionDate" Parameter="transactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TransactionType" Parameter="transactionType" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.usp_Get_User_List_Order_By_Performance_For_Class" Method="usp_Get_User_List_Order_By_Performance_For_Class">
     <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
