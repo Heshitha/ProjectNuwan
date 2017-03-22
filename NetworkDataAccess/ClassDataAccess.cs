@@ -10,14 +10,18 @@ namespace NetworkDataAccess
     public class ClassDataAccess
     {
         static NetworkMarketingDataContext db = new NetworkMarketingDataContext();
-        public static List<ViewClassUser> GetClassDetailsForViewClass(int ClassID)
+        public static ViewClassModel GetClassDetailsForViewClass(int ClassID)
         {
-            List<ViewClassUser> retVal = new List<ViewClassUser>();
+            ViewClassModel retVal = new ViewClassModel();
+            retVal.UserList = new List<ViewClassUser>();
+            List<ViewClassUser> UserList = new List<ViewClassUser>();
             try
             {
                 var ClassDetails = db.Classes.Where(x => x.ClassID == ClassID).FirstOrDefault();
                 if (ClassDetails != null)
                 {
+                    retVal.ClassID = ClassDetails.ClassID;
+                    retVal.ClassType = ClassDetails.ClassType.Value == 1 ? "Economy" : "Business";
                     foreach (var item in ClassDetails.ClassUsers)
                     {
                         ViewClassUser vcu = new ViewClassUser()
@@ -26,16 +30,17 @@ namespace NetworkDataAccess
                             FirstName = item.User.FirstName,
                             LastName = item.User.LastName,
                             UserName = item.User.Username,
+                            Position = item.Position,
                             ImageExt = item.User.ImageExt,
                             FollowerCount = item.User.LeaderFollowers.Where(x => x.LeaderClassID == ClassDetails.ClassID).Count(),
                             Followers = item.User.LeaderFollowers.Where(x => x.LeaderClassID == ClassDetails.ClassID).Select(x => new ViewClassFollower() { 
-                                Name = x.Follower.FirstName + " " + x.Follower.LastName,
+                                Name = x.Follower.Username,
                                 UserID = x.Follower.UserID,
                                 ImageExt = x.Follower.ImageExt
                             }).ToList()
                         };
 
-                        retVal.Add(vcu);
+                        UserList.Add(vcu);
                     }
                 }
             }
@@ -43,12 +48,13 @@ namespace NetworkDataAccess
             {
                 throw ex;
             }
+            retVal.UserList = UserList.OrderBy(x => x.Position).ToList();
             return retVal;
         }
 
         public static int[] GetClassHistory(int UserID)
         {
-            int[] retVal = new int[10];
+            int[] retVal = new int[1];
             try
             {
                 var result = db.Users.Where(x => x.UserID == UserID).FirstOrDefault();

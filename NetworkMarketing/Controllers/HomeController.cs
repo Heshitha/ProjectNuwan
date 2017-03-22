@@ -39,6 +39,19 @@ namespace NetworkMarketing.Controllers
 
         public ActionResult ViewClass()
         {
+            NetworkDataAccess.User user = (NetworkDataAccess.User)Session["User"];
+            var result = NetworkDataAccess.ClassDataAccess.GetClassHistory(user.UserID);
+            string classList = "[";
+            for (int i = 0; i < result.Length; i++)
+            {
+                classList += result[i].ToString();
+                if (i < result.Length - 1)
+                {
+                    classList += ", ";
+                }
+            }
+            classList += "]";
+            ViewBag.ClassList = classList;
             return View();
         }
 

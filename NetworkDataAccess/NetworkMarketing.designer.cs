@@ -2620,8 +2620,6 @@ namespace NetworkDataAccess
 			}
 		}
 	}
-<<<<<<< HEAD
-=======
 	
 	public partial class usp_Get_User_pointsResult
 	{
@@ -2728,6 +2726,5 @@ namespace NetworkDataAccess
 			}
 		}
 	}
->>>>>>> origin/master
 }
 #pragma warning restore 1591

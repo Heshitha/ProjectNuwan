@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\ClassAPIController.cs" />
     <Compile Include="Controllers\API\FinancialAPIController.cs" />
     <Compile Include="Controllers\API\TransactionAPIController.cs" />
     <Compile Include="Controllers\API\UserAPIController.cs" />

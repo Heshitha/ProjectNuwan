@@ -10,7 +10,7 @@ namespace NetworkBussiness
 {
     public class ClassManager
     {
-        public static List<ViewClassUser> GetClassDetailsForViewClass(int ClassID)
+        public static ViewClassModel GetClassDetailsForViewClass(int ClassID)
         {
             return ClassDataAccess.GetClassDetailsForViewClass(ClassID);
         }
