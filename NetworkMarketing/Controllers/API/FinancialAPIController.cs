@@ -17,5 +17,12 @@ namespace NetworkMarketing.Controllers.API
             int retval = FinancialManager.SaveBankDetails(BankDetails);
             return retval;
         }
+
+        [HttpPost]
+        public int GenerateEpins([FromBody]EpinGenerateModel EpinModel)
+        {
+            int retval = FinancialManager.GenerateEpins(EpinModel);
+            return retval;
+        }
     }
 }

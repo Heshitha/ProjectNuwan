@@ -136,10 +136,18 @@ namespace NetworkDataAccess
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_User_points")]
-		public ISingleResult<usp_Get_User_pointsResult> usp_Get_User_points([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
+		public int usp_Get_User_points([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Points", DbType="Float")] ref System.Nullable<double> points)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
-			return ((ISingleResult<usp_Get_User_pointsResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, points);
+			points = ((System.Nullable<double>)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Add_New_Transaction")]
+		public int usp_Add_New_Transaction([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RecUserName", DbType="VarChar(50)")] string recUserName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Float")] System.Nullable<double> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="VarChar(50)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransactionDate", DbType="DateTime")] System.Nullable<System.DateTime> transactionDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransactionType", DbType="VarChar(10)")] string transactionType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, recUserName, amount, description, transactionDate, transactionType);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -2225,32 +2233,6 @@ namespace NetworkDataAccess
 				if ((this._TransactionType != value))
 				{
 					this._TransactionType = value;
-				}
-			}
-		}
-	}
-	
-	public partial class usp_Get_User_pointsResult
-	{
-		
-		private System.Nullable<double> _Points;
-		
-		public usp_Get_User_pointsResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Points", DbType="Float")]
-		public System.Nullable<double> Points
-		{
-			get
-			{
-				return this._Points;
-			}
-			set
-			{
-				if ((this._Points != value))
-				{
-					this._Points = value;
 				}
 			}
 		}

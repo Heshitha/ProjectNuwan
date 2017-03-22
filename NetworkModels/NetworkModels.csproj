@@ -44,9 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankTransferModel.cs" />
+    <Compile Include="EpinGenerateModel.cs" />
+    <Compile Include="EpinModel.cs" />
     <Compile Include="LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignUpModel.cs" />
+    <Compile Include="TransactionAddModel.cs" />
     <Compile Include="TransactionModel.cs" />
   </ItemGroup>
   <ItemGroup>

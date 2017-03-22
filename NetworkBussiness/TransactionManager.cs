@@ -20,5 +20,14 @@ namespace NetworkBussiness
             return TransactionDataAccess.CheckTransactionKey(userID, TransctionKey);
         }
 
+        public static double GetUserTransactions(int userID)
+        {
+            return TransactionDataAccess.GetUserTransactions(userID);
+        }
+
+        public static int SaveTransaction(TransactionAddModel trans)
+        {
+            return TransactionDataAccess.SaveTransaction(trans);
+        }
     }
 }

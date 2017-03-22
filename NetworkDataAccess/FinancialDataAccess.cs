@@ -36,5 +36,33 @@ namespace NetworkDataAccess
                 throw ex;
             }
         }
+
+        public static int CreateEpins(List<EpinModel> Epins)
+        {
+            try
+            {
+                foreach (var item in Epins)
+                {
+                    DateTime utcTime = DateTime.UtcNow;
+                    var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
+                    var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
+
+                    EVoucher Ev = new EVoucher()
+                    {
+                        CreaterID = item.CreaterID,
+                        VoucherCode = item.VoucherCode,
+                        CreatedDate = tzTime,
+                        IsUsed = false
+                    };
+                    db.EVouchers.InsertOnSubmit(Ev);
+                    db.SubmitChanges();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
     }
 }
