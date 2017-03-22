@@ -209,6 +209,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, leftClass, user);
 
             user = GetUserDetails(result[2].UserID.Value);
             clsusr = new ClassUser()
@@ -219,6 +220,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, rightClass, user);
 
             user = GetUserDetails(result[3].UserID.Value);
             clsusr = new ClassUser()
@@ -229,6 +231,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, leftClass, user);
 
             user = GetUserDetails(result[4].UserID.Value);
             clsusr = new ClassUser()
@@ -239,6 +242,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, leftClass, user);
 
             user = GetUserDetails(result[5].UserID.Value);
             clsusr = new ClassUser()
@@ -249,6 +253,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, rightClass, user);
 
             user = GetUserDetails(result[6].UserID.Value);
             clsusr = new ClassUser()
@@ -259,6 +264,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, rightClass, user);
 
             user = GetUserDetails(result[7].UserID.Value);
             clsusr = new ClassUser()
@@ -269,6 +275,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, leftClass, user);
 
             user = GetUserDetails(result[8].UserID.Value);
             clsusr = new ClassUser()
@@ -279,6 +286,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, leftClass, user);
 
             user = GetUserDetails(result[9].UserID.Value);
             clsusr = new ClassUser()
@@ -289,6 +297,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, leftClass, user);
 
             user = GetUserDetails(result[10].UserID.Value);
             clsusr = new ClassUser()
@@ -299,6 +308,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, rightClass, user);
 
             user = GetUserDetails(result[11].UserID.Value);
             clsusr = new ClassUser()
@@ -309,6 +319,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, rightClass, user);
 
             user = GetUserDetails(result[12].UserID.Value);
             clsusr = new ClassUser()
@@ -319,6 +330,7 @@ namespace NetworkDataAccess
                 User = user,
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
+            BringPrevFollowersForward(cls, rightClass, user);
             db.SubmitChanges();
 
             int firstUserSponcerID = firstUser.SponserID.HasValue ? firstUser.SponserID.Value : 0;
@@ -466,6 +478,25 @@ namespace NetworkDataAccess
                 
             }
             db.SubmitChanges();
+        }
+
+        private static void BringPrevFollowersForward(Class prevClass, Class newClass, User user)
+        {
+            var userPrevFollowers = user.LeaderFollowers.Where(x => x.LeaderClassID == prevClass.ClassID);
+            List<LeaderFollower> lstList = new List<LeaderFollower>();
+            foreach (var item in userPrevFollowers.ToList())
+            {
+                LeaderFollower lef = new LeaderFollower()
+                {
+                    Class = newClass,
+                    Follower = item.Follower,
+                    FollowedDate = item.FollowedDate,
+                    Leader = user
+                };
+                lstList.Add(lef);
+
+            }
+            db.LeaderFollowers.InsertAllOnSubmit(lstList);
         }
 
         public static bool SaveImageExtension(User user)
