@@ -1,0 +1,10 @@
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\NetworkDataAccess.dll.config
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\NetworkDataAccess.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\NetworkDataAccess.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\log4net.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\NetworkModels.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\NetworkModels.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\bin\Release\log4net.xml
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Release\NetworkDataAccess.csprojResolveAssemblyReference.cache
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Release\NetworkDataAccess.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkDataAccess\obj\Release\NetworkDataAccess.pdb

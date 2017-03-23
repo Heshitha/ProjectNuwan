@@ -2620,7 +2620,6 @@ namespace NetworkDataAccess
 			}
 		}
 	}
-
 	
 	public partial class usp_Get_User_pointsResult
 	{

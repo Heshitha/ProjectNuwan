@@ -51,6 +51,8 @@
     <Compile Include="SignUpModel.cs" />
     <Compile Include="TransactionAddModel.cs" />
     <Compile Include="TransactionModel.cs" />
+    <Compile Include="ViewClassModel.cs" />
+    <Compile Include="ViewTeamModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -177,7 +177,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\ClassAPIController.cs" />
     <Compile Include="Controllers\API\FinancialAPIController.cs" />
+    <Compile Include="Controllers\API\TeamAPIController.cs" />
     <Compile Include="Controllers\API\TransactionAPIController.cs" />
     <Compile Include="Controllers\API\UserAPIController.cs" />
     <Compile Include="Controllers\FinancialController.cs" />
@@ -526,6 +528,7 @@
     <Content Include="Content\images\testimonial\01.jpg" />
     <Content Include="Content\images\testimonial\bg.jpg" />
     <Content Include="Content\images\work-process\bg.jpg" />
+    <Content Include="Content\PrintStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -558,6 +561,7 @@
     <Content Include="Content\fonts\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons.woff" />
     <Content Include="Content\css\main.less" />
+    <None Include="Properties\PublishProfiles\NetworkMarketing.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -573,7 +577,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\UtilityMethods.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

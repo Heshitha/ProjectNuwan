@@ -9,7 +9,7 @@ namespace NetworkDataAccess
 {
     public class FinancialDataAccess
     {
-        private static NetworkMarketingDataContext db = new NetworkMarketingDataContext();
+        private static NetworkMarketingDataContext db = GetDataAccess.GetDataContext();
         public static int SaveBankDetails(BankTransferModel BankDetails)
         {
             //int retVal = 0;

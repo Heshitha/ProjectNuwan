@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessDataAccess.cs" />
+    <Compile Include="ClassDataAccess.cs" />
     <Compile Include="FinancialDataAccess.cs" />
+    <Compile Include="GetDataAccess.cs" />
     <Compile Include="NetworkMarketing.cs">
       <DependentUpon>NetworkMarketing.dbml</DependentUpon>
     </Compile>
@@ -60,6 +62,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TeamDataAccess.cs" />
     <Compile Include="UserDataAccess.cs" />
     <Compile Include="TransactionDataAccess.cs" />
   </ItemGroup>
