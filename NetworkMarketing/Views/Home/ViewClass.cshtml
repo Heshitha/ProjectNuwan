@@ -3,8 +3,65 @@
 }
 
 <section class="content">
-    <h2>View Class <small>#{{classID}} - {{classType}}</small></h2>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>View Class <small>#{{classID}} - {{classType}}</small></h2>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                @*<div class="box-header with-border">
+                    <h3 class="box-title">Class Details</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtClassNo">Class No</label>
+                                <input type="text" class="form-control" id="txtClassNo" readonly ng-model="classID">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtClassType">Class Type</label>
+                                <input type="text" class="form-control" id="txtClassType" readonly ng-model="classType">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtCreatedDate">Founded Date</label>
+                                <input type="text" class="form-control" id="txtCreatedDate" readonly ng-model="createdDate">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtCompletedDate">Completed Date</label>
+                                <input type="text" class="form-control" id="txtCompletedDate" readonly ng-model="brokenDate">
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-group pull-right">
+                                <button type="button" ng-class="{true:'btn btn-primary disabled', false:'btn btn-primary'}[currentIndex == (classList.length - 1)]" ng-click="loadPrev()">
+                                    <i class="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;Previous Class
+                                </button>
+                                <button type="button" ng-class="{true:'btn btn-primary disabled', false:'btn btn-primary'}[currentIndex==0]" ng-click="loadNext()">
+                                    Next Class&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- box-footer -->
+            </div>
+
+        </div>
+    </div>
+    
     @*<div class="row">
             <div class="col-lg-12">
                 <div class="box box-primary">

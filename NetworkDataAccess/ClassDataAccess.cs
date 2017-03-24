@@ -22,6 +22,8 @@ namespace NetworkDataAccess
                 {
                     retVal.ClassID = ClassDetails.ClassID;
                     retVal.ClassType = ClassDetails.ClassType.Value == 1 ? "Economy" : "Business";
+                    retVal.CreatedDate = ClassDetails.ClassCreatedDate.HasValue ? ClassDetails.ClassCreatedDate.Value.ToString("dd/MMM/yyyy") : "";
+                    retVal.BrokenDate = ClassDetails.ClassBrokenDate.HasValue ? ClassDetails.ClassBrokenDate.Value.ToString("dd/MMM/yyyy") : "";
                     foreach (var item in ClassDetails.ClassUsers)
                     {
                         ViewClassUser vcu = new ViewClassUser()
