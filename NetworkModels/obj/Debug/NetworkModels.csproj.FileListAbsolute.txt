@@ -16,4 +16,3 @@ F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\bin\Deb
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\bin\Debug\log4net.xml
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.dll
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.csprojResolveAssemblyReference.cache
