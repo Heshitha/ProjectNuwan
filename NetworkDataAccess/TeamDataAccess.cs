@@ -22,7 +22,7 @@ namespace NetworkDataAccess
                     ViewTeamModel mainObj = new ViewTeamModel()
                     {
                         UserID = user.UserID,
-                        UserName = "Direct Sponcership",
+                        UserName = "Direct",
                         ImageExt = user.ImageExt,
                         TeamMembers = user.Followers.Where(x => x.CreatedDate >= startDate && x.CreatedDate <= endDate).Select(x => new TeamMember()
                         {

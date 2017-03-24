@@ -18,7 +18,8 @@ var configFunction = function ($routeProvider, $httpProvider) {
             controller: ClassController
         }).
         when('/viewTeam', {
-            templateUrl: baseUrl + '/Home/ViewTeam'
+            templateUrl: baseUrl + '/Home/ViewTeam',
+            controller: TeamViewerController
         }).
         when('/evouchers', {
             templateUrl: baseUrl + '/Home/EVouchers',
