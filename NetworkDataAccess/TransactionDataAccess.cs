@@ -53,7 +53,7 @@ namespace NetworkDataAccess
                 DateTime utcTime = DateTime.UtcNow;
                 var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
                 var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
-                var retval = db.usp_Add_New_Transaction((int)trans.userID, trans.RecieverName, (double)trans.Amount, "Point Transfer", tzTime, "Send");
+                var retval = db.usp_Add_New_Transaction((int)trans.userID, trans.RecieverName, (double)trans.Amount, trans.Description, tzTime,trans.TransactionType);
                 return 1;
             }
             catch (Exception ex)

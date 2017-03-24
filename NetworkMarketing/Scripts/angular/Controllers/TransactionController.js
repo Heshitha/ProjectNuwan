@@ -103,7 +103,6 @@ var UserTransactionsController = function ($scope, $location, GetFactory, PostFa
             result.then(function (result) {
                 if (result.success && result.data) {
                     ShowMessage('success', 'Changes saved successfully.');
-                    $scope.GetUserTransactions();
                 } else {
                     ShowMessage('danger', 'Error occured while processing.');
                 }

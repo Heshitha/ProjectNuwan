@@ -17,24 +17,43 @@ namespace NetworkBussiness
 
         public static int GenerateEpins(EpinGenerateModel EpinData)
         {
-            double epinVal = TransactionManager.GetUserTransactions(EpinData.userID);
-            double totalPoints = EpinData.TotalPoints;
+            DateTime utcTime = DateTime.UtcNow;
+            var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
+            var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
+
+            double epinVal = EpinData.EpinVal;
+            double totalPoints = TransactionManager.GetUserTransactions(EpinData.userID);
             int NoofPins = EpinData.NoOfPins;
             List<EpinModel> lstEpin = null;
-            if (totalPoints>=(epinVal*NoofPins))
+            if (totalPoints >= (epinVal * NoofPins))
             {
                 lstEpin = new List<EpinModel>();
                 for (int i = 0; i < NoofPins; i++)
                 {
                     EpinModel Ep = new EpinModel();
-                    Guid Ev = new Guid();
+                    Guid Ev = Guid.NewGuid();
 
                     Ep.CreaterID = EpinData.userID;
                     Ep.VoucherCode = Ev.ToString();
 
                     lstEpin.Add(Ep);
                 }
-                return FinancialDataAccess.CreateEpins(lstEpin);
+                int retval = FinancialDataAccess.CreateEpins(lstEpin);
+
+                TransactionAddModel Tm = new TransactionAddModel()
+                {
+                    userID = EpinData.userID,
+                    RecieverName = "admin",
+                    Amount = (float)(epinVal * NoofPins),
+                    Description = "E-Pin Creation",
+                    TransactionDate = tzTime,
+                    TransactionType = "Send"
+
+                };
+                int retval2 = TransactionManager.SaveTransaction(Tm);
+               // if(retval!=0 && retval2!=0)
+                    return 1;
+
             }
             else
             {

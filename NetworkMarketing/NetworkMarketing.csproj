@@ -194,6 +194,7 @@
     <Compile Include="Models\BankTransferVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogClass.cs" />
+    <Compile Include="Models\TeamVM.cs" />
     <Compile Include="Models\TransactionKeyVM.cs" />
     <Compile Include="Models\TransactionVM.cs" />
     <Compile Include="Models\UserVM.cs" />
@@ -539,6 +540,7 @@
     <Content Include="Scripts\angular\Controllers\ClassController.js" />
     <Content Include="Scripts\angular\Controllers\FinancialController.js" />
     <Content Include="Scripts\angular\Controllers\LandingPageController.js" />
+    <Content Include="Scripts\angular\Controllers\TeamController.js" />
     <Content Include="Scripts\angular\Controllers\TransactionController.js" />
     <Content Include="Scripts\angular\Controllers\UserController.js" />
     <Content Include="Scripts\angular\Factories\GetFactory.js" />
@@ -546,6 +548,7 @@
     <Content Include="Scripts\angular\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
@@ -568,14 +571,22 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery.inview.min.js" />
+    <Content Include="Scripts\jquery.isotope.min.js" />
+    <Content Include="Scripts\jquery.prettyPhoto.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mousescroll.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\smoothscroll.js" />
     <Content Include="Scripts\UtilityMethods.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

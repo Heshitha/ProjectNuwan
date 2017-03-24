@@ -1,5 +1,6 @@
 ﻿var FinancialController = function ($scope, $location, PostFactory) {
     $scope.userID = Number($('#hdnUserID').val());
+    $scope.EpinVal=0;
     debugger;
     $scope.SaveBankDetails = function () {
         var BankTransferModel = {
@@ -17,6 +18,7 @@
                 if (result.success && result.data) {
                     if (result.data == 0) {
                         ShowMessage('danger', 'Invalied Transaction Key.');
+                        $scope.GetUserTransactions();
                     }
                     else {
                         ShowMessage('success', 'Bank Details added.');
@@ -49,6 +51,7 @@
                     }
                     else {
                         ShowMessage('success', 'Epin Generated.');
+                        $scope.GetUserTransactions();
                     }
                 }
                 else {
