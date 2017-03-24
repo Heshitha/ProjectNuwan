@@ -185,6 +185,8 @@ namespace NetworkDataAccess
 		
 		private System.Nullable<bool> _IsActive;
 		
+		private System.Nullable<System.DateTime> _JoinedDate;
+		
 		private EntityRef<User> _User;
 		
 		private EntityRef<Class> _Class;
@@ -203,6 +205,8 @@ namespace NetworkDataAccess
     partial void OnUserIDChanged();
     partial void OnIsActiveChanging(System.Nullable<bool> value);
     partial void OnIsActiveChanged();
+    partial void OnJoinedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnJoinedDateChanged();
     #endregion
 		
 		public ClassUser()
@@ -316,6 +320,26 @@ namespace NetworkDataAccess
 					this._IsActive = value;
 					this.SendPropertyChanged("IsActive");
 					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JoinedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> JoinedDate
+		{
+			get
+			{
+				return this._JoinedDate;
+			}
+			set
+			{
+				if ((this._JoinedDate != value))
+				{
+					this.OnJoinedDateChanging(value);
+					this.SendPropertyChanging();
+					this._JoinedDate = value;
+					this.SendPropertyChanged("JoinedDate");
+					this.OnJoinedDateChanged();
 				}
 			}
 		}
@@ -2616,32 +2640,6 @@ namespace NetworkDataAccess
 				if ((this._TransactionType != value))
 				{
 					this._TransactionType = value;
-				}
-			}
-		}
-	}
-	
-	public partial class usp_Get_User_pointsResult
-	{
-		
-		private System.Nullable<double> _Points;
-		
-		public usp_Get_User_pointsResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Points", DbType="Float")]
-		public System.Nullable<double> Points
-		{
-			get
-			{
-				return this._Points;
-			}
-			set
-			{
-				if ((this._Points != value))
-				{
-					this._Points = value;
 				}
 			}
 		}

@@ -118,6 +118,7 @@ namespace NetworkDataAccess
                                             IsActive = true,
                                             Position = userPosition,
                                             User = newUser,
+                                            JoinedDate = DateTime.Now
                                         };
                                         db.ClassUsers.InsertOnSubmit(clsUsr);
                                     }
@@ -207,6 +208,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 1,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, leftClass, user);
@@ -218,6 +220,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 1,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
@@ -229,6 +232,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 2,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, leftClass, user);
@@ -240,6 +244,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 3,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, leftClass, user);
@@ -251,6 +256,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 2,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
@@ -262,6 +268,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 3,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
@@ -273,6 +280,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 4,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, leftClass, user);
@@ -284,6 +292,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 5,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, leftClass, user);
@@ -295,6 +304,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 6,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, leftClass, user);
@@ -306,6 +316,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 4,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
@@ -317,6 +328,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 5,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
@@ -328,6 +340,7 @@ namespace NetworkDataAccess
                 IsActive = true,
                 Position = 6,
                 User = user,
+                JoinedDate = DateTime.Now
             };
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
@@ -349,7 +362,8 @@ namespace NetworkDataAccess
                     Class = biClass,
                     IsActive = true,
                     Position = 1,
-                    User = firstUser
+                    User = firstUser,
+                    JoinedDate = DateTime.Now
                 };
                 db.ClassUsers.InsertOnSubmit(cuser);
             }
@@ -358,7 +372,7 @@ namespace NetworkDataAccess
                 var userSponcer = GetUserDetails(firstUserSponcerID);
                 var userActiveBusinessClass = userSponcer.ClassUsers.Where(x => x.IsActive == true && x.Class.ClassBrokenDate == null && x.Class.ClassType == 2).FirstOrDefault();
 
-                var userSponcerActiveClass = userActiveBusinessClass != null ? userActiveBusinessClass.Class : new Class();
+                var userSponcerActiveClass = userActiveBusinessClass != null ? userActiveBusinessClass.Class : null;
 
                 if (userActiveBusinessClass != null && userSponcerActiveClass != null && userSponcer.LeaderFollowers.Where(x => x.Class.ClassID == userSponcerActiveClass.ClassID).Count() < 2)
                 {
@@ -421,7 +435,8 @@ namespace NetworkDataAccess
                         Class = userSponcerActiveClass,
                         IsActive = true,
                         Position = position,
-                        User = firstUser
+                        User = firstUser,
+                        JoinedDate = DateTime.Now
                     };
                     db.ClassUsers.InsertOnSubmit(cuser);
                     if (position == 13)
@@ -465,7 +480,8 @@ namespace NetworkDataAccess
                             Class = greatClass,
                             IsActive = true,
                             Position = position,
-                            User = firstUser
+                            User = firstUser,
+                            JoinedDate = DateTime.Now
                         };
                         db.ClassUsers.InsertOnSubmit(cuser);
                         if (position == 13)

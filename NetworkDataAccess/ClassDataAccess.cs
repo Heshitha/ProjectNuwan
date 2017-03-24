@@ -60,7 +60,7 @@ namespace NetworkDataAccess
                 var result = db.Users.Where(x => x.UserID == UserID).FirstOrDefault();
                 if (result != null)
                 {
-                    var resultList = result.ClassUsers.Select(x => x.ClassID.Value).Distinct().OrderByDescending(x => x);
+                    var resultList = result.ClassUsers.OrderByDescending(x => x.JoinedDate).ThenByDescending(x => x.ClassID).Select(x => x.ClassID.Value).Distinct();
                     retVal = resultList.ToArray();
                 }
                 

@@ -194,6 +194,7 @@
     <Compile Include="Models\BankTransferVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogClass.cs" />
+    <Compile Include="Models\TeamVM.cs" />
     <Compile Include="Models\TransactionKeyVM.cs" />
     <Compile Include="Models\TransactionVM.cs" />
     <Compile Include="Models\UserVM.cs" />
@@ -539,6 +540,7 @@
     <Content Include="Scripts\angular\Controllers\ClassController.js" />
     <Content Include="Scripts\angular\Controllers\FinancialController.js" />
     <Content Include="Scripts\angular\Controllers\LandingPageController.js" />
+    <Content Include="Scripts\angular\Controllers\TeamController.js" />
     <Content Include="Scripts\angular\Controllers\TransactionController.js" />
     <Content Include="Scripts\angular\Controllers\UserController.js" />
     <Content Include="Scripts\angular\Factories\GetFactory.js" />
