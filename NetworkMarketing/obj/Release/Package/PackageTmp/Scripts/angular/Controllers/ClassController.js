@@ -3,6 +3,8 @@
     $scope.classList = Array();
     $scope.currentIndex = 0;
     $scope.classDetails = Array();
+    $scope.createdDate = '';
+    $scope.brokenDate = '';
     $scope.classID = 0;
     $scope.classType = '';
 
@@ -33,6 +35,8 @@
             if (result.success) {
                 $scope.classDetails = Array();
                 $scope.classType = result.data.ClassType;
+                $scope.createdDate = result.data.CreatedDate;
+                $scope.brokenDate = result.data.BrokenDate;
                 for (var i = 0; i < 13; i++) {
                     if (typeof (result.data.UserList[i]) !== "undefined") {
                         $scope.classDetails.push(result.data.UserList[i]);
@@ -56,6 +60,24 @@
                 ShowMessage('danger', 'Error occured while processing.');
             }
         });
+    }
+
+    $scope.loadNext = function () {
+        debugger;
+        if ($scope.currentIndex > 0) {
+            $scope.currentIndex = $scope.currentIndex - 1;
+            $scope.classID = $scope.classList[$scope.currentIndex];
+            $scope.loadClassDetails();
+        }
+    }
+
+    $scope.loadPrev= function () {
+        debugger;
+        if ($scope.currentIndex < ($scope.classList.length - 1)) {
+            $scope.currentIndex = $scope.currentIndex + 1;
+            $scope.classID = $scope.classList[$scope.currentIndex];
+            $scope.loadClassDetails();
+        }
     }
 }
 

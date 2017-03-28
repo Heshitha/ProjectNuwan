@@ -37,8 +37,8 @@ namespace NetworkDataAccess.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-TE3A2ID\\SQLEXPRESS;Initial Catalog=NetworkMarketing;User ID=N" +
-            "etworkMarketing;Password=temp@12345")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-TE3A2ID\\SQLEXPRESS;Initial Catalog=NetworkMarketing;Persist S" +
+            "ecurity Info=True;User ID=NetworkMarketing;Password=temp@12345")]
         public string NetworkMarketingConnectionString {
             get {
                 return ((string)(this["NetworkMarketingConnectionString"]));

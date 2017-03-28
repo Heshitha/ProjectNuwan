@@ -35,6 +35,7 @@
       <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -67,7 +68,9 @@
     <Compile Include="TransactionDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="NetworkMarketing.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>NetworkMarketing.designer.cs</LastGenOutput>
