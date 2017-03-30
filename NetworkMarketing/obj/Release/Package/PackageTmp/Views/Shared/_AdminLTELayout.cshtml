@@ -18,7 +18,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>Welcome @(!nouser ? siteUser.FirstName : "") to FindRICH Marketing Manager</title>
     <base href="http://localhost:4960" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/AdminLTE/css")
@@ -34,7 +34,7 @@
     <input type="hidden" value="@(!nouser ? siteUser.UserID : 0)" id="hdnUserID" />
     <div class="wrapper">
         <header class="main-header fixed">
-            <a href="javascript:return false;" class="logo">
+            <a href="../Home" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>R</b>ICH</span>
                 <!-- logo for regular state and mobile devices -->

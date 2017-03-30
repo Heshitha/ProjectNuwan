@@ -97,9 +97,12 @@ namespace NetworkDataAccess
                                 Transaction tran = new Transaction()
                                 {
                                     Amount = 5,
-                                    Description = "Direct commission from introducing a new member.",
-
+                                    Description = "Direct commission from introducing a new member. Member Username : "+newUser.Username,
+                                    Reciever = sponsor,
+                                    Sender = findRichUser,
+                                    TransactionDate = DateTime.Now
                                 };
+                                db.Transactions.InsertOnSubmit(tran);
 
 
                                 var classUserResult = sponsor.ClassUsers.Where(x => x.Class.IsActive == true && x.Class.ClassBrokenDate == null && x.IsActive == true).FirstOrDefault();
@@ -368,6 +371,30 @@ namespace NetworkDataAccess
             db.ClassUsers.InsertOnSubmit(clsusr);
             BringPrevFollowersForward(cls, rightClass, user);
             db.SubmitChanges();
+
+            double amount = 0;
+            string description = "";
+            if ((cls.ClassType.HasValue ? cls.ClassType.Value : 1) == 1)
+            {
+                amount = 120;
+                description = "Silver step break down. Class ID : " + cls.ClassID;
+            }
+            else
+            {
+                amount = 1500;
+                description = "Gold step break down. Class ID : " + cls.ClassID;
+            }
+
+            Transaction tran = new Transaction()
+            {
+                Amount = amount,
+                Description = description,
+                Reciever = firstUser,
+                Sender = findRichUser,
+                TransactionDate = DateTime.Now
+            };
+            db.Transactions.InsertOnSubmit(tran);
+
 
             int firstUserSponcerID = firstUser.SponserID.HasValue ? firstUser.SponserID.Value : 0;
             if (firstUserSponcerID == 0)
