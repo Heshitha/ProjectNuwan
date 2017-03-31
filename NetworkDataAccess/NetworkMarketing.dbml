@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NetworkMarketing" Class="NetworkMarketingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TE3A2ID\SQLEXPRESS;Initial Catalog=NetworkMarketing;Persist Security Info=True;User ID=NetworkMarketing" SettingsObjectName="NetworkDataAccess.Properties.Settings" SettingsPropertyName="NetworkMarketingConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PUBUDU-PC\SQLEXPRESS;Initial Catalog=NetworkMaketing;User ID=sa" SettingsObjectName="NetworkDataAccess.Properties.Settings" SettingsPropertyName="NetworkMarketingConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ClassUser" Member="ClassUsers">
     <Type Name="ClassUser">
       <Column Name="ClassUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -137,6 +137,32 @@
       <Column Name="UserName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FollowerCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Get_Evoucher_Details" Method="usp_Get_Evoucher_Details">
+    <Parameter Name="VoucherCode" Parameter="voucherCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Get_Evoucher_DetailsResult">
+      <Column Name="EVouchersID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RecievedBy" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="VoucherCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UsedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsUsed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Get_All_Evoucher_Details" Method="usp_Get_All_Evoucher_Details">
+    <Parameter Name="VoucherCode" Parameter="voucherCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Get_All_Evoucher_DetailsResult">
+      <Column Name="EVouchersID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RecievedBy" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="VoucherCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UsedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsUsed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

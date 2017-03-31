@@ -64,5 +64,69 @@ namespace NetworkDataAccess
                 return 0;
             }
         }
+
+        public static List<EvoucherModel> GetEvoucherDetails(int userID, string Epin)
+        {
+            List<EvoucherModel> retData = new List<EvoucherModel>();
+            try
+            {
+                var AllEvouchers = db.usp_Get_Evoucher_Details(Epin,userID);
+                if(AllEvouchers!=null)
+                {
+                    foreach (var item in AllEvouchers)
+                    {
+                        EvoucherModel EM = new EvoucherModel();
+                        EM.EVouchersID = Convert.ToInt32(item.EVouchersID);
+                        EM.CreaterName = item.Username;
+                        EM.RecieverName = item.RecievedBy;
+                        EM.VoucherCode = item.VoucherCode;
+                        EM.CreatedDate = Convert.ToDateTime(item.CreatedDate);
+                        EM.UsedDate = Convert.ToDateTime(item.UsedDate);
+                        EM.IsUsed = Convert.ToBoolean(item.IsUsed);
+
+                        retData.Add(EM);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return retData;
+
+        }
+
+        public static List<EvoucherModel> GetAllEvoucherDetails(int userID, string Epin)
+        {
+            List<EvoucherModel> retData = new List<EvoucherModel>();
+            try
+            {
+                var AllEvouchers = db.usp_Get_All_Evoucher_Details(Epin, userID);
+                if (AllEvouchers != null)
+                {
+                    foreach (var item in AllEvouchers.ToList())
+                    {
+                        EvoucherModel EM = new EvoucherModel();
+                        EM.EVouchersID = Convert.ToInt32(item.EVouchersID);
+                        EM.CreaterName = item.Username;
+                        EM.RecieverName = item.RecievedBy;
+                        EM.VoucherCode = item.VoucherCode;
+                        EM.CreatedDate = Convert.ToDateTime(item.CreatedDate);
+                        EM.UsedDate = Convert.ToDateTime(item.UsedDate);
+                        EM.IsUsed = Convert.ToBoolean(item.IsUsed);
+
+                        retData.Add(EM);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return retData;
+
+        }
     }
 }

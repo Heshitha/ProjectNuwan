@@ -29,7 +29,7 @@ namespace NetworkMarketing.Controllers.API
                     TranseModel.SenderName = item.SenderName;
                     TranseModel.RecieverName = item.RecieverName;
                     TranseModel.Amount = (float)item.Amount;
-                    TranseModel.Description = item.RecieverName;
+                    TranseModel.Description = item.Description;
                     TranseModel.TransactionDate = Convert.ToDateTime(item.TransactionDate);
                     TranseModel.TransactionType = item.TransactionType;
 

@@ -26,7 +26,8 @@ var configFunction = function ($routeProvider, $httpProvider) {
             controller: FinancialController
         }).
         when('/myevouchers', {
-            templateUrl: baseUrl + '/Home/MyEVouchers'
+            templateUrl: baseUrl + '/Home/MyEVouchers',
+            controller: FinancialController
         }).
         when('/transferPoints', {
             templateUrl: baseUrl + '/Financial/TransferPoints',

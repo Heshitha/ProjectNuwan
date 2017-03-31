@@ -24,5 +24,16 @@ namespace NetworkMarketing.Controllers.API
             int retval = FinancialManager.GenerateEpins(EpinModel);
             return retval;
         }
+        [HttpPost]
+        public List<EvoucherModel> GetEvoucherDetails([FromBody]EvoucherGetModel EV)
+        {
+            return FinancialManager.GetEvoucherDetails(Convert.ToInt32(EV.userID), EV.Epin);
+        }
+
+        [HttpPost]
+        public List<EvoucherModel> GetALLEvoucherDetails([FromBody]EvoucherGetModel EV)
+        {
+            return FinancialManager.GetAllEvoucherDetails(Convert.ToInt32(EV.userID), EV.Epin);
+        }
     }
 }

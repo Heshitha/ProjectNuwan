@@ -51,7 +51,6 @@ namespace NetworkBussiness
 
                 };
                 int retval2 = TransactionManager.SaveTransaction(Tm);
-               // if(retval!=0 && retval2!=0)
                     return 1;
 
             }
@@ -59,8 +58,16 @@ namespace NetworkBussiness
             {
                 return -1;
             }
+        }
 
+        public static List<EvoucherModel> GetEvoucherDetails(int userID, string Epin)
+        {
+            return FinancialDataAccess.GetEvoucherDetails(userID, Epin);
+        }
 
+        public static List<EvoucherModel> GetAllEvoucherDetails(int userID, string Epin)
+        {
+            return FinancialDataAccess.GetAllEvoucherDetails(userID, Epin);
         }
     }
 }
