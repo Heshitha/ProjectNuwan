@@ -30,7 +30,7 @@ namespace NetworkMarketing.Controllers.API
                     TranseModel.RecieverName = item.RecieverName;
                     TranseModel.Amount = (float)item.Amount;
                     TranseModel.Description = item.Description;
-                    TranseModel.TransactionDate = Convert.ToDateTime(item.TransactionDate);
+                    TranseModel.TransactionDate = item.TransactionDate==null?"N/A": Convert.ToDateTime(item.TransactionDate).ToString("g");
                     TranseModel.TransactionType = item.TransactionType;
 
                     retData.Add(TranseModel);

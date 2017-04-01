@@ -1,6 +1,8 @@
 ﻿var FinancialController = function ($scope, $location, Pagination, PostFactory) {
     $scope.userID = Number($('#hdnUserID').val());
     $scope.EpinVal = 0;
+    $scope.TransferType = 0;
+    $scope.AccType = 0;
     $scope.pagination = Pagination.getNew(10);
     $scope.EvouchersData = [];
     debugger;

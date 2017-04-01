@@ -80,8 +80,8 @@ namespace NetworkDataAccess
                         EM.CreaterName = item.Username;
                         EM.RecieverName = item.RecievedBy;
                         EM.VoucherCode = item.VoucherCode;
-                        EM.CreatedDate = Convert.ToDateTime(item.CreatedDate);
-                        EM.UsedDate = Convert.ToDateTime(item.UsedDate);
+                        EM.CreatedDate = item.CreatedDate == null?"N/A": Convert.ToDateTime(item.CreatedDate).ToString("g");
+                        EM.UsedDate = item.UsedDate == null?"N/A": Convert.ToDateTime(item.UsedDate).ToString("g");
                         EM.IsUsed = Convert.ToBoolean(item.IsUsed);
 
                         retData.Add(EM);
@@ -112,8 +112,8 @@ namespace NetworkDataAccess
                         EM.CreaterName = item.Username;
                         EM.RecieverName = item.RecievedBy;
                         EM.VoucherCode = item.VoucherCode;
-                        EM.CreatedDate = Convert.ToDateTime(item.CreatedDate);
-                        EM.UsedDate = Convert.ToDateTime(item.UsedDate);
+                        EM.CreatedDate = item.CreatedDate == null ? "N/A" : Convert.ToDateTime(item.CreatedDate).ToString("g");
+                        EM.UsedDate = item.UsedDate == null ? "N/A" : Convert.ToDateTime(item.UsedDate).ToString("g");
                         EM.IsUsed = Convert.ToBoolean(item.IsUsed);
 
                         retData.Add(EM);

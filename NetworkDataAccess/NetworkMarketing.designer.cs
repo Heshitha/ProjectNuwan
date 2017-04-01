@@ -22,7 +22,7 @@ namespace NetworkDataAccess
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="NetworkMarketing")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="NetworkMaketing")]
 	public partial class NetworkMarketingDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -139,13 +139,6 @@ namespace NetworkDataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspGet_All_TransActionsByUser")]
-		public ISingleResult<uspGet_All_TransActionsByUserResult> uspGet_All_TransActionsByUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
-			return ((ISingleResult<uspGet_All_TransActionsByUserResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_User_points")]
 		public int usp_Get_User_points([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Points", DbType="Float")] ref System.Nullable<double> points)
 		{
@@ -180,6 +173,13 @@ namespace NetworkDataAccess
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), voucherCode, userID);
 			return ((ISingleResult<usp_Get_All_Evoucher_DetailsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspGet_All_TransActionsByUser")]
+		public ISingleResult<uspGet_All_TransActionsByUserResult> uspGet_All_TransActionsByUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<uspGet_All_TransActionsByUserResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -2525,140 +2525,6 @@ namespace NetworkDataAccess
 		}
 	}
 	
-	public partial class uspGet_All_TransActionsByUserResult
-	{
-		
-		private int _TransactionID;
-		
-		private string _SenderName;
-		
-		private string _RecieverName;
-		
-		private System.Nullable<double> _Amount;
-		
-		private string _Description;
-		
-		private System.Nullable<System.DateTime> _TransactionDate;
-		
-		private string _TransactionType;
-		
-		public uspGet_All_TransActionsByUserResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionID", DbType="Int NOT NULL")]
-		public int TransactionID
-		{
-			get
-			{
-				return this._TransactionID;
-			}
-			set
-			{
-				if ((this._TransactionID != value))
-				{
-					this._TransactionID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderName", DbType="VarChar(500)")]
-		public string SenderName
-		{
-			get
-			{
-				return this._SenderName;
-			}
-			set
-			{
-				if ((this._SenderName != value))
-				{
-					this._SenderName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecieverName", DbType="VarChar(500)")]
-		public string RecieverName
-		{
-			get
-			{
-				return this._RecieverName;
-			}
-			set
-			{
-				if ((this._RecieverName != value))
-				{
-					this._RecieverName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float")]
-		public System.Nullable<double> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this._Amount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this._Description = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TransactionDate
-		{
-			get
-			{
-				return this._TransactionDate;
-			}
-			set
-			{
-				if ((this._TransactionDate != value))
-				{
-					this._TransactionDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionType", DbType="VarChar(8)")]
-		public string TransactionType
-		{
-			get
-			{
-				return this._TransactionType;
-			}
-			set
-			{
-				if ((this._TransactionType != value))
-				{
-					this._TransactionType = value;
-				}
-			}
-		}
-	}
-	
 	public partial class usp_Get_User_List_Order_By_Performance_For_ClassResult
 	{
 		
@@ -3002,6 +2868,140 @@ namespace NetworkDataAccess
 				if ((this._IsUsed != value))
 				{
 					this._IsUsed = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspGet_All_TransActionsByUserResult
+	{
+		
+		private int _TransactionID;
+		
+		private string _SenderName;
+		
+		private string _RecieverName;
+		
+		private System.Nullable<double> _Amount;
+		
+		private string _Description;
+		
+		private System.Nullable<System.DateTime> _TransactionDate;
+		
+		private string _TransactionType;
+		
+		public uspGet_All_TransActionsByUserResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionID", DbType="Int NOT NULL")]
+		public int TransactionID
+		{
+			get
+			{
+				return this._TransactionID;
+			}
+			set
+			{
+				if ((this._TransactionID != value))
+				{
+					this._TransactionID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderName", DbType="VarChar(500)")]
+		public string SenderName
+		{
+			get
+			{
+				return this._SenderName;
+			}
+			set
+			{
+				if ((this._SenderName != value))
+				{
+					this._SenderName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecieverName", DbType="VarChar(500)")]
+		public string RecieverName
+		{
+			get
+			{
+				return this._RecieverName;
+			}
+			set
+			{
+				if ((this._RecieverName != value))
+				{
+					this._RecieverName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float")]
+		public System.Nullable<double> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TransactionDate
+		{
+			get
+			{
+				return this._TransactionDate;
+			}
+			set
+			{
+				if ((this._TransactionDate != value))
+				{
+					this._TransactionDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionType", DbType="VarChar(8)")]
+		public string TransactionType
+		{
+			get
+			{
+				return this._TransactionType;
+			}
+			set
+			{
+				if ((this._TransactionType != value))
+				{
+					this._TransactionType = value;
 				}
 			}
 		}

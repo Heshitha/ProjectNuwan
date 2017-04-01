@@ -27,8 +27,8 @@ namespace NetworkDataAccess
                         TranseModel.SenderName = item.SenderName;
                         TranseModel.RecieverName = item.RecieverName;
                         TranseModel.Amount = (float)item.Amount;
-                        TranseModel.Description = item.RecieverName;
-                        TranseModel.TransactionDate = Convert.ToDateTime(item.TransactionDate);
+                        TranseModel.Description = item.Description;
+                        TranseModel.TransactionDate = item.TransactionDate==null?"N/A": Convert.ToDateTime(item.TransactionDate).ToString("g");
                         TranseModel.TransactionType = item.TransactionType;
 
                         retData.Add(TranseModel);

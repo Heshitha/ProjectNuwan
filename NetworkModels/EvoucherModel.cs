@@ -12,8 +12,8 @@ namespace NetworkModels
         public string CreaterName { get; set; }
         public string RecieverName { get; set; }
         public string VoucherCode { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UsedDate { get; set; }
+        public string CreatedDate { get; set; }
+        public string UsedDate { get; set; }
         public bool IsUsed { get; set; }
     }
 }

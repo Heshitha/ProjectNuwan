@@ -12,8 +12,6 @@
                 <form ng-submit="GetEvoucherDetails()">
                     <div class="box-header with-border">
                         <h3 class="box-title">Financial Transaction Form</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4"></div>
@@ -30,7 +28,8 @@
                                 </div>
                             </div>
                         </div>
-
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
                         <table class="table table-bordered table-striped" id="tblAddedItems">
                             <tr>
                                <th style="width: 10%">Evoucher#</th>
@@ -55,6 +54,8 @@
                                 </td>
                             </tr>
                         </table>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
                         <ul class="pagination pagination-sm no-margin pull-right">
                             <li><a href="javascript:return false;" ng-click="pagination.prevPage()">«</a></li>
                             <li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
@@ -62,8 +63,6 @@
                             </li>
                             <li><a href="javascript:return false;" ng-click="pagination.nextPage()">»</a></li>
                         </ul>
-                    </div><!-- /.box-body -->
-                    <div class="box-footer">
                     </div><!-- box-footer -->
 
                 </form>

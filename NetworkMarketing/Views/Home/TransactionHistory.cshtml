@@ -30,13 +30,13 @@
                 <div class="box-body">
                     <table class="table table-bordered table-striped" id="tblAddedItems">
                         <tr>
-                            <th style="width: 10%">Transaction id</th>
+                            <th style="width: 10%">Transaction#</th>
                             <th>Sender Name</th>
                             <th>Reciever Name</th>
                             <th>Amount</th>
                             <th>Description</th>
                             <th>Transaction Date</th>
-                            <th>Transaction Type</th>
+                            @*<th>Transaction Type</th>*@
                         </tr>
                         <tr ng-repeat="item in TransactionData | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" class="quotitemrow" ng-click="openQuotation(item.id)">
                             <td>{{item.TransactionID}}</td>
@@ -45,7 +45,7 @@
                             <td>{{item.Amount}}</td>
                             <td>{{item.Description}}</td>
                             <td>{{item.TransactionDate}}</td>
-                            <td>{{item.TransactionType}}</td>
+                            @*<td>{{item.TransactionType}}</td>*@
                         </tr>
                     </table>
                 </div>
