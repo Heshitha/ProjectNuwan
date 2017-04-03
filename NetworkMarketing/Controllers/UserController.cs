@@ -49,7 +49,7 @@ namespace NetworkMarketing.Controllers
                 else
                 {
                     Session["User"] = UserManager.GetUserDetails(result);
-                    Response.Redirect("~/", false);
+                    Response.Redirect("~/Home/HomePage", false);
                 }
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace NetworkMarketing.Controllers
                 else
                 {
                     Session["User"] = UserManager.GetUserDetails(result);
-                    Response.Redirect("~/", false);
+                    Response.Redirect("~/Home/HomePage", false);
                 }
             }
             catch (Exception ex)

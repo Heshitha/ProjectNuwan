@@ -1,15 +1,8 @@
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\bin\Debug\NetworkModels.dll
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\bin\Debug\NetworkModels.pdb
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.csprojResolveAssemblyReference.cache
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.dll
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkModels\bin\Debug\NetworkModels.dll
 D:\Project Nuwan\ProjectNuwan\NetworkModels\bin\Debug\NetworkModels.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.csprojResolveAssemblyReference.cache
 D:\Project Nuwan\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.dll
 D:\Project Nuwan\ProjectNuwan\NetworkModels\obj\Debug\NetworkModels.pdb
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\bin\Debug\log4net.dll
-E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkModels\bin\Debug\log4net.xml
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\bin\Debug\NetworkModels.dll
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\bin\Debug\NetworkModels.pdb
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkModels\bin\Debug\log4net.dll

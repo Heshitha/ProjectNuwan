@@ -1,5 +1,6 @@
 ﻿var FinancialController = function ($scope, $location, PostFactory) {
     $scope.userID = Number($('#hdnUserID').val());
+    $scope.EpinVal=0;
     debugger;
     $scope.SaveBankDetails = function () {
         var BankTransferModel = {
@@ -17,6 +18,7 @@
                 if (result.success && result.data) {
                     if (result.data == 0) {
                         ShowMessage('danger', 'Invalied Transaction Key.');
+                        $scope.GetUserTransactions();
                     }
                     else {
                         ShowMessage('success', 'Bank Details added.');
@@ -49,6 +51,7 @@
                     }
                     else {
                         ShowMessage('success', 'Epin Generated.');
+                        $scope.GetUserTransactions();
                     }
                 }
                 else {
@@ -57,6 +60,24 @@
             });
         }
     }
+
+    $scope.GetUserTransactions = function () {
+        if ($scope.userID != 0) {
+            var url = '/api/TransactionAPI/GetUserTransactions';
+            var result = PostFactory(url, $scope.userID);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.Points = result.data;
+                }
+                else {
+                    $scope.Points = 0.00;
+                }
+            });
+        }
+    }
+    $scope.GetUserTransactions();
+
 };
 
 

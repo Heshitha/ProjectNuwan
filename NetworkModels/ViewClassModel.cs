@@ -11,6 +11,10 @@ namespace NetworkModels
         public List<ViewClassUser> UserList { get; set; }
         public int ClassID { get; set; }
         public string ClassType { get; set; }
+
+        public string CreatedDate { get; set; }
+
+        public string BrokenDate { get; set; }
     }
 
     public class ViewClassUser

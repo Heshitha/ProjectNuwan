@@ -18,7 +18,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>Welcome @(!nouser ? siteUser.FirstName : "") to FindRICH Marketing Manager</title>
     <base href="http://localhost:4960" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/AdminLTE/css")
@@ -34,7 +34,7 @@
     <input type="hidden" value="@(!nouser ? siteUser.UserID : 0)" id="hdnUserID" />
     <div class="wrapper">
         <header class="main-header fixed">
-            <a href="javascript:return false;" class="logo">
+            <a href="../Home" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>R</b>ICH</span>
                 <!-- logo for regular state and mobile devices -->
@@ -61,6 +61,10 @@
                                     <p>
                                         @(!nouser ? siteUser.FirstName + " " + siteUser.LastName : "")
                                         <small>@(!nouser ? siteUser.Username : "")</small>
+                                        <b>Your Points: <span ng-bind="Points"></span></b>
+                                    </p>
+                                    <p>
+                                        
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -112,12 +116,12 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="subMenuItem Profile"><a href="#/"><i class="fa fa-user"></i> Profile</a></li>
-                            <li class="subMenuItem ViewClass"><a href="#/viewClass"><i class="fa fa-users"></i> View Class</a></li>
-                            <li class="subMenuItem ViewTeam"><a href="#/viewTeam"><i class="fa fa-sitemap"></i> View Team</a></li>
-                            <li class="subMenuItem EVouchers"><a href="#/evouchers"><i class="fa fa-ticket"></i> E-Vouchers</a></li>
-                            <li class="subMenuItem MyEvouchers"><a href="#/myevouchers"><i class="fa fa-envelope"></i> My E-vouchers</a></li>
-                            <li class="subMenuItem EvoucherDetails"><a href="#/evoucherdetails"><i class="fa fa-list-alt"></i> E-voucher Details</a></li>
+                            <li class="subMenuItem Profile"><a href="Home/HomePage/#/"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="subMenuItem ViewClass"><a href="Home/HomePage/#/viewClass"><i class="fa fa-users"></i> View Class</a></li>
+                            <li class="subMenuItem ViewTeam"><a href="Home/HomePage/#/viewTeam"><i class="fa fa-sitemap"></i> View Team</a></li>
+                            <li class="subMenuItem EVouchers"><a href="Home/HomePage/#/evouchers"><i class="fa fa-ticket"></i> E-Vouchers</a></li>
+                            <li class="subMenuItem MyEvouchers"><a href="Home/HomePage/#/myevouchers"><i class="fa fa-envelope"></i> My E-vouchers</a></li>
+                            <li class="subMenuItem EvoucherDetails"><a href="Home/HomePage/#/evoucherdetails"><i class="fa fa-list-alt"></i> E-voucher Details</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -127,42 +131,11 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="subMenuItem TransferPoints"><a href="#/transferPoints"><i class="fa fa-exchange"></i> Transfer Points</a></li>
+                            <li class="subMenuItem TransferPoints"><a href="Home/HomePage/#/transferPoints"><i class="fa fa-exchange"></i> Transfer Points</a></li>
                             <li class="subMenuItem EMoney"><a href="#"><i class="fa fa-money"></i> E-Money</a></li>
-                            <li class="subMenuItem FinancialManager"><a href="#/transactionCode"><i class="fa fa-briefcase"></i> Financial Manager</a></li>
+                            <li class="subMenuItem FinancialManager"><a href="Home/HomePage/#/transactionCode"><i class="fa fa-briefcase"></i> Financial Manager</a></li>
                             <li class="subMenuItem Commissions"><a href="#"><i class="fa fa-percent"></i> Commissions</a></li>
-                            <li class="subMenuItem TransactionHistory"><a href="#/Transactionhistory"><i class="fa fa-history"></i> Transaction History</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="javascript:return false;">
-                            <i class="fa fa-archive"></i>
-                            <span>Inventory</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="treeview">
-                                <a href="javascript:return false;">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span>Purchase Orders</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="subMenuItem searchPurchaseOrder"><a href="#/searchPurchaseOrder"><i class="fa fa-search"></i> Search Purchase Order</a></li>
-                                    <li class="subMenuItem createPurchaseOrder"><a href="#/createInventoryPurchaseOrder"><i class="fa fa-pencil"></i> New Purchase Order</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="javascript:return false;">
-                                    <i class="fa fa-file-text"></i>
-                                    <span>Good Recieved Notes</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="subMenuItem searchGoodRecievedNote"><a href="#/searchGoodRecievedNote"><i class="fa fa-search"></i> Search GRN</a></li>
-                                    <li class="subMenuItem createGoodRecievedNote"><a href="#/createGoodRecievedNote"><i class="fa fa-pencil"></i> New GRN</a></li>
-                                </ul>
-                            </li>
+                            <li class="subMenuItem TransactionHistory"><a href="Home/HomePage/#/Transactionhistory"><i class="fa fa-history"></i> Transaction History</a></li>
                         </ul>
                     </li>
                     

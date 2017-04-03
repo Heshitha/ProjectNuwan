@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace NetworkDataAccess
 {
     public class UserDataAccess
     {
         private static NetworkMarketingDataContext db = GetDataAccess.GetDataContext();
+        private static User findRichUser = db.Users.Where(x => x.UserID == Convert.ToInt32(ConfigurationSettings.AppSettings.Get("findrichUserID"))).FirstOrDefault();
         public static int LoginUser(string userName, string password)
         {
             int retVal = 0;
@@ -92,20 +94,35 @@ namespace NetworkDataAccess
                                 };
                                 db.Users.InsertOnSubmit(newUser);
 
+                                Transaction tran = new Transaction()
+                                {
+                                    Amount = 5,
+                                    Description = "Direct commission from introducing a new member. Member Username : "+newUser.Username,
+                                    Reciever = sponsor,
+                                    Sender = findRichUser,
+                                    TransactionDate = DateTime.Now
+                                };
+                                db.Transactions.InsertOnSubmit(tran);
+
+
                                 var classUserResult = sponsor.ClassUsers.Where(x => x.Class.IsActive == true && x.Class.ClassBrokenDate == null && x.IsActive == true).FirstOrDefault();
 
                                 if (classUserResult != null)
                                 {
                                     var sponsorClass = classUserResult.Class;
 
-                                    LeaderFollower lef = new LeaderFollower()
+                                    if ((sponsorClass.ClassType.HasValue ? sponsorClass.ClassType.Value : 1) != 2)
                                     {
-                                        Class = sponsorClass,
-                                        Leader = sponsor,
-                                        Follower = newUser,
-                                        FollowedDate = DateTime.Today
-                                    };
-                                    db.LeaderFollowers.InsertOnSubmit(lef);
+                                        LeaderFollower lef = new LeaderFollower()
+                                                                            {
+                                                                                Class = sponsorClass,
+                                                                                Leader = sponsor,
+                                                                                Follower = newUser,
+                                                                                FollowedDate = DateTime.Today
+                                                                            };
+                                        db.LeaderFollowers.InsertOnSubmit(lef);
+                                    }
+                                    
 
                                     int? nullPosition = cls.ClassUsers.Select(x => x.Position).Max();
                                     int userPosition = nullPosition.HasValue ? nullPosition.Value + 1 : 1;
@@ -168,6 +185,15 @@ namespace NetworkDataAccess
                 throw ex;
             }
             return retVal;
+        }
+
+        private static void BreaktheClass(int classID)
+        {
+            Class cls = db.Classes.Where(x => x.ClassID == classID).FirstOrDefault();
+            if (cls != null)
+            {
+                BreakTheClass(cls);
+            }
         }
 
         private static void BreakTheClass(Class cls)
@@ -346,6 +372,30 @@ namespace NetworkDataAccess
             BringPrevFollowersForward(cls, rightClass, user);
             db.SubmitChanges();
 
+            double amount = 0;
+            string description = "";
+            if ((cls.ClassType.HasValue ? cls.ClassType.Value : 1) == 1)
+            {
+                amount = 120;
+                description = "Silver step break down. Class ID : " + cls.ClassID;
+            }
+            else
+            {
+                amount = 1500;
+                description = "Gold step break down. Class ID : " + cls.ClassID;
+            }
+
+            Transaction tran = new Transaction()
+            {
+                Amount = amount,
+                Description = description,
+                Reciever = firstUser,
+                Sender = findRichUser,
+                TransactionDate = DateTime.Now
+            };
+            db.Transactions.InsertOnSubmit(tran);
+
+
             int firstUserSponcerID = firstUser.SponserID.HasValue ? firstUser.SponserID.Value : 0;
             if (firstUserSponcerID == 0)
             {
@@ -439,6 +489,7 @@ namespace NetworkDataAccess
                         JoinedDate = DateTime.Now
                     };
                     db.ClassUsers.InsertOnSubmit(cuser);
+                    db.SubmitChanges();
                     if (position == 13)
                     {
                         BreakTheClass(userSponcerActiveClass);
@@ -484,6 +535,7 @@ namespace NetworkDataAccess
                             JoinedDate = DateTime.Now
                         };
                         db.ClassUsers.InsertOnSubmit(cuser);
+                        db.SubmitChanges();
                         if (position == 13)
                         {
                             BreakTheClass(greatClass);
