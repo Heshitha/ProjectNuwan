@@ -1,0 +1,154 @@
+@{
+    NetworkDataAccess.User siteUser = new NetworkDataAccess.User();
+    bool nouser = true;
+    if (Session["User"] != null)
+    {
+        siteUser = (NetworkDataAccess.User)Session["User"];
+        nouser = false;
+    }
+    else
+    {
+        Response.Redirect("~/User/Login");
+        nouser = true;
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome @(!nouser ? siteUser.FirstName : "") to FindRICH Marketing Manager</title>
+    <base href="http://localhost:4960" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/AdminLTE/css")
+    @Styles.Render("~/Content/SiteCSS")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/AdminLTE")
+    @Scripts.Render("~/bundles/angular")
+
+</head>
+<body class="skin-blue sidebar-mini fixed" ng-app="app" ng-controller="LandingPageController">
+    <input type="hidden" value="@(!nouser ? siteUser.UserID : 0)" id="hdnUserID" />
+    <div class="wrapper">
+        <header class="main-header fixed">
+            <a href="../Home" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>R</b>ICH</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Find</b> RICH</span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="javascript:return false;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="javascript:return false;" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Uploads/ProfileImages/@(!nouser ? siteUser.UserID.ToString() + siteUser.ImageExt : "")?@(DateTime.Now.Ticks.ToString())" class="user-image" alt="User Image" onerror="this.onerror = null; this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <span class="hidden-xs">@(!nouser ? siteUser.FirstName + " " + siteUser.LastName : "")</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="~/Uploads/ProfileImages/@(!nouser ? siteUser.UserID.ToString() + siteUser.ImageExt : "")?@(DateTime.Now.Ticks.ToString())" class="img-circle" alt="User Image" onerror="this.onerror = null; this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                    <p>
+                                        @(!nouser ? siteUser.FirstName + " " + siteUser.LastName : "")
+                                        <small>@(!nouser ? siteUser.Username : "")</small>
+                                        <b>Your Points: <span ng-bind="Points"></span></b>
+                                    </p>
+                                    <p>
+                                        
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                @*<li class="user-body">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </li>*@
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/Test/Profile" class="btn btn-default btn-flat"><i class="fa fa-user"></i>&nbsp;Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="javascript:return false" class="btn btn-default btn-flat" ng-click="SignOut()"><i class="fa fa-sign-out"></i>&nbsp;Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/Uploads/ProfileImages/@(!nouser ? siteUser.UserID.ToString() + siteUser.ImageExt : "")?@(DateTime.Now.Ticks.ToString())" class="img-circle" alt="User Image" onerror="this.onerror = null; this.src = baseUrl+'/Uploads/ProfileImages/default-user.jpg'">
+                    </div>
+                    <div class="pull-left info">
+                        <p>@(!nouser ? siteUser.FirstName + " " + siteUser.LastName : "")</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="header">GENERAL</li>
+                    <li class="treeview">
+                        <a href="javascript:return false;">
+                            <i class="fa fa-home"></i>
+                            <span>Home</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="subMenuItem Profile"><a href="Home/HomePage/#/"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="subMenuItem ViewClass"><a href="Home/HomePage/#/viewClass"><i class="fa fa-users"></i> View Class</a></li>
+                            <li class="subMenuItem ViewTeam"><a href="Home/HomePage/#/viewTeam"><i class="fa fa-sitemap"></i> View Team</a></li>
+                            <li class="subMenuItem EVouchers"><a href="Home/HomePage/#/evouchers"><i class="fa fa-ticket"></i> E-Vouchers</a></li>
+                            <li class="subMenuItem MyEvouchers"><a href="Home/HomePage/#/myevouchers"><i class="fa fa-envelope"></i> My E-vouchers</a></li>
+                            <li class="subMenuItem EvoucherDetails"><a href="Home/HomePage/#/evoucherdetails"><i class="fa fa-list-alt"></i> E-voucher Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:return false;">
+                            <i class="fa fa-line-chart"></i>
+                            <span>Financial</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="subMenuItem TransferPoints"><a href="Home/HomePage/#/transferPoints"><i class="fa fa-exchange"></i> Transfer Points</a></li>
+                            <li class="subMenuItem EMoney"><a href="#"><i class="fa fa-money"></i> E-Money</a></li>
+                            <li class="subMenuItem FinancialManager"><a href="Home/HomePage/#/transactionCode"><i class="fa fa-briefcase"></i> Financial Manager</a></li>
+                            <li class="subMenuItem Commissions"><a href="#"><i class="fa fa-percent"></i> Commissions</a></li>
+                            <li class="subMenuItem TransactionHistory"><a href="Home/HomePage/#/Transactionhistory"><i class="fa fa-history"></i> Transaction History</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </section>
+        </aside>
+        @RenderBody()
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Copyright © 2016 <a href="javascript:return false;">Ravana Technologies</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

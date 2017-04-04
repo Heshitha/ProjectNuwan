@@ -12,3 +12,11 @@ F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkService\bin\lo
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkService\obj\Debug\NetworkService.csprojResolveAssemblyReference.cache
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkService\obj\Debug\NetworkService.dll
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkService\obj\Debug\NetworkService.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\bin\NetworkService.dll.config
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\bin\NetworkService.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\bin\NetworkService.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\bin\log4net.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\bin\log4net.xml
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\obj\Debug\NetworkService.csprojResolveAssemblyReference.cache
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\obj\Debug\NetworkService.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkService\obj\Debug\NetworkService.pdb

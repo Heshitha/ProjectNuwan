@@ -132,3 +132,15 @@ F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkMarketing\bin\
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkMarketing\obj\Debug\NetworkMarketing.csprojResolveAssemblyReference.cache
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkMarketing\obj\Debug\NetworkMarketing.dll
 F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkMarketing\obj\Debug\NetworkMarketing.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkMarketing.dll.config
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkMarketing.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkMarketing.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkBussiness.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkDataAccess.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkModels.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkBussiness.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkDataAccess.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\bin\NetworkModels.pdb
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\obj\Debug\NetworkMarketing.csprojResolveAssemblyReference.cache
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\obj\Debug\NetworkMarketing.dll
+E:\Nuwan Project\NetworkMarketing\ProjectNuwan\NetworkMarketing\obj\Debug\NetworkMarketing.pdb

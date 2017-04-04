@@ -1,0 +1,543 @@
+﻿@{
+    Layout = null;
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>View Class <small>#{{classID}} - {{classType}}</small></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                @*<div class="box-header with-border">
+                    <h3 class="box-title">Class Details</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtClassNo">Class No</label>
+                                <input type="text" class="form-control" id="txtClassNo" readonly ng-model="classID">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtClassType">Class Type</label>
+                                <input type="text" class="form-control" id="txtClassType" readonly ng-model="classType">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtCreatedDate">Founded Date</label>
+                                <input type="text" class="form-control" id="txtCreatedDate" readonly ng-model="createdDate">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtCompletedDate">Completed Date</label>
+                                <input type="text" class="form-control" id="txtCompletedDate" readonly ng-model="brokenDate">
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-group pull-right">
+                                <button type="button" ng-class="{true:'btn btn-primary disabled', false:'btn btn-primary'}[currentIndex == (classList.length - 1)]" ng-click="loadPrev()">
+                                    <i class="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;Previous Class
+                                </button>
+                                <button type="button" ng-class="{true:'btn btn-primary disabled', false:'btn btn-primary'}[currentIndex==0]" ng-click="loadNext()">
+                                    Next Class&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- box-footer -->
+            </div>
+
+        </div>
+    </div>
+    
+    @*<div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Class No 30404</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                        </div><!-- box-footer -->
+                </div><!-- /.box -->
+            </div>
+        </div>*@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[0].UserID}}{{classDetails[0].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[0].FirstName}} {{classDetails[0].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[0].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[0].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[0].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[0].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[1].UserID}}{{classDetails[1].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[1].FirstName}} {{classDetails[1].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[1].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[1].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[1].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[1].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[2].UserID}}{{classDetails[2].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[2].FirstName}} {{classDetails[2].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[2].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[2].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[2].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[2].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[3].UserID}}{{classDetails[3].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[3].FirstName}} {{classDetails[3].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[3].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[3].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[3].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[3].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[4].UserID}}{{classDetails[4].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[4].FirstName}} {{classDetails[4].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[4].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[4].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[4].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[4].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[5].UserID}}{{classDetails[5].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[5].FirstName}} {{classDetails[5].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[5].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[5].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[5].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[5].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[6].UserID}}{{classDetails[6].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[6].FirstName}} {{classDetails[6].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[6].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[6].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[6].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[6].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[7].UserID}}{{classDetails[7].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[7].FirstName}} {{classDetails[7].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[7].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[7].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[7].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[7].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[8].UserID}}{{classDetails[8].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[8].FirstName}} {{classDetails[8].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[8].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[8].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[8].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[8].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[9].UserID}}{{classDetails[9].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[9].FirstName}} {{classDetails[9].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[9].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[9].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[9].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[9].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[10].UserID}}{{classDetails[10].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[10].FirstName}} {{classDetails[10].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[10].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[10].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[10].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[10].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[11].UserID}}{{classDetails[11].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[11].FirstName}} {{classDetails[11].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[11].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[11].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[11].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[11].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-2 level4User">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Uploads/ProfileImages/{{classDetails[12].UserID}}{{classDetails[12].ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User profile picture" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+
+                    <h3 class="profile-username text-center">{{classDetails[12].FirstName}} {{classDetails[12].LastName}}</h3>
+
+                    <p class="text-muted text-center">{{classDetails[12].UserName}}</p>
+
+                    <div class="box box-primary collapsed-box" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><b>Followers</b></h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool badge bg-blue" data-widget="collapse">
+                                    {{classDetails[12].FollowerCount}}
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body chat" ng-if="classDetails[12].FollowerCount != 0">
+                            <div class="item" ng-repeat="item in classDetails[12].Followers">
+                                <img src="~/Uploads/ProfileImages/{{item.UserID}}{{item.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="user image" class="online" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'">
+                                <p class="message">
+                                    {{item.Name}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
