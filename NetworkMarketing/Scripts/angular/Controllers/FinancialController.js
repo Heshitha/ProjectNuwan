@@ -94,7 +94,7 @@
             result.then(function (result) {
                 if (result.success) {
                     $scope.EvouchersData = result.data;
-                    $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
+                    $scope.pagination.numPages = Math.ceil($scope.EvouchersData.length / $scope.pagination.perPage);
                 }
                 else {
                     $scope.EvouchersData = null;
@@ -115,7 +115,7 @@
             result.then(function (result) {
                 if (result.success) {
                     $scope.EvouchersData = result.data;
-                    $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
+                    $scope.pagination.numPages = Math.ceil($scope.EvouchersData.length / $scope.pagination.perPage);
                 }
                 else {
                     $scope.EvouchersData = [];

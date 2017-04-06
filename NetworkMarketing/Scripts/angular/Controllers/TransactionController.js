@@ -131,7 +131,7 @@ var UserTransactionsController = function ($scope, $location, GetFactory, PostFa
         if (TransactionKeyVM.userName != "undefined") {
             debugger;
             var url = '/api/TransactionAPI/checkUserName';
-            var result = PostFactory(url, $scope.RecUserName);
+            var result = PostFactory(url, TransactionKeyVM);
             result.then(function (result) {
                 if (result.success && result.data) {
                     if (result.data == "false") {

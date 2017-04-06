@@ -37,7 +37,6 @@ var configFunction = function ($routeProvider, $httpProvider) {
         }).
         when('/transfer/:TransactionKey', {
             //templateUrl: baseUrl + '/Financial/FrmTransferPoints',
-
             templateUrl: function (params) { return baseUrl + '/Financial/FrmTransferPoints?TransactionKey=' + Base64.decode(params.TransactionKey)},
             controller: UserTransactionsController
         }).
@@ -54,7 +53,7 @@ var configFunction = function ($routeProvider, $httpProvider) {
             controller: EvoucherController
         }).
         when('/financialmanager/:TransactionKey', {
-            templateUrl: function (params) { return baseUrl + '/Financial/FinancialManager?TransactionKey=' + params.TransactionKey },
+            templateUrl: function (params) { return baseUrl + '/Financial/FinancialManager?TransactionKey=' + Base64.decode(params.TransactionKey) },
             //templateUrl: baseUrl + '/Financial/FinancialManager',
             controller: FinancialController
         }).
