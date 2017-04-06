@@ -1,0 +1,154 @@
+﻿
+@{
+    Layout = null;
+}
+
+<section class="content">
+    <h2>View Team</h2>
+    <div class="row">
+        <div class="box box-primary">
+            <form ng-submit="loadTeamDetails()">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Search The Team</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>From Date</label>
+
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" data-provide="datepicker" data-date-format="mm/dd/yyyy" ng-model="startDate">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>To Date</label>
+
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" data-provide="datepicker" data-date-format="mm/dd/yyyy" ng-model="endDate">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-floppy-o"></i>
+                        &nbsp;Search Team
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" ng-if="TeamCount > 0">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Team from {{startDate}} - {{endDate}}</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-repeat="item in Team" ng-if="item.TeamMembers.length > 0">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">{{item.UserName}}'s Sponcerships</h4>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="users-list clearfix">
+                                    <li ng-repeat="mem in item.TeamMembers">
+                                        <img src="~/Uploads/ProfileImages/{{mem.UserID}}{{mem.ImageExt}}?@(DateTime.Now.Ticks.ToString())" alt="User Image" onerror="this.src = baseUrl + '/Uploads/ProfileImages/default-user.jpg'" class="profile-user-img">
+                                        <a class="users-list-name" href="javascript:return false;">{{mem.UserName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @*<div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Alexander's Sponcership</h4>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="users-list clearfix">
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Alexander Pierce</a>
+                                        <span class="users-list-date">Today</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Norman</a>
+                                        <span class="users-list-date">Yesterday</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user7-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Jane</a>
+                                        <span class="users-list-date">12 Jan</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Norman's Sponcership</h4>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="users-list clearfix">
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Alexander Pierce</a>
+                                        <span class="users-list-date">Today</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Norman</a>
+                                        <span class="users-list-date">Yesterday</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user7-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Jane</a>
+                                        <span class="users-list-date">12 Jan</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Jane's Sponcership</h4>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="users-list clearfix">
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Alexander Pierce</a>
+                                        <span class="users-list-date">Today</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Norman</a>
+                                        <span class="users-list-date">Yesterday</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/Content/AdminLTE/img/user7-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Jane</a>
+                                        <span class="users-list-date">12 Jan</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+
+            </div>
+        </div>
+    </div>
+</section>

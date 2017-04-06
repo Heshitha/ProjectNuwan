@@ -12,7 +12,7 @@ namespace NetworkDataAccess.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,22 +26,22 @@ namespace NetworkDataAccess.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PUBUDU-PC\\SQLEXPRESS;Initial Catalog=NetworkMaketing;User ID=sa;Passw" +
-            "ord=123456;MultipleActiveResultSets=true;")]
-        public string NetworkMarketingConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql5028.smarterasp.net;Initial Catalog=DB_9AA642_findrich;User ID=DB_" +
+            "9AA642_findrich_admin;Password=findrich123;MultipleActiveResultSets=true;")]
+        public string NetworkMarketingConnectionString {
             get {
-                return ((string)(this["NetworkMarketingConnectionString1"]));
+                return ((string)(this["NetworkMarketingConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PUBUDU-PC\\SQLEXPRESS;Initial Catalog=NetworkMaketing;User ID=sa;Passw" +
-            "ord=123456;MultipleActiveResultSets=true;")]
-        public string NetworkMarketingConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql5028.smarterasp.net;Initial Catalog=DB_9AA642_findrich;User ID=DB_" +
+            "9AA642_findrich_admin;Password=findrich123;MultipleActiveResultSets=true;")]
+        public string NetworkMarketingConnectionString1 {
             get {
-                return ((string)(this["NetworkMarketingConnectionString"]));
+                return ((string)(this["NetworkMarketingConnectionString1"]));
             }
         }
     }
