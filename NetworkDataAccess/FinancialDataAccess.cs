@@ -22,7 +22,8 @@ namespace NetworkDataAccess
                     TransferType = BankDetails.TransferType,
                     AccType = BankDetails.AccType,
                     AccountName = BankDetails.AccountName,
-                    AccountNumber = BankDetails.AccountNumber
+                    AccountNumber = BankDetails.AccountNumber,
+                    Amount = (float)BankDetails.Amount
                 };
                 db.BankDetails.InsertOnSubmit(bnkd);
                 db.SubmitChanges();

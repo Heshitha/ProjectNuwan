@@ -2,4 +2,14 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/NetworkMarketing/bin
+/NetworkMarketing/bin/*
+/NetworkMarketing/obj/*
+/NetworkModels/bin/*
+/NetworkModels/obj/*
+/NetworkService/bin/*
+/NetworkService/obj/*
+/packages/*
+/NetworkDataAccess/bin/*
+/NetworkDataAccess/obj/*
+/NetworkBussiness/bin/*
+/NetworkBussiness/obj/*

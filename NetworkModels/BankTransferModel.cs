@@ -13,5 +13,6 @@ namespace NetworkModels
         public string AccType { get; set; }
         public string AccountName { get; set; }
         public string AccountNumber { get; set; }
+        public float Amount { get; set; }
     }
 }

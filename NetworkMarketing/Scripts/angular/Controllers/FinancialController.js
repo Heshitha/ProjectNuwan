@@ -12,7 +12,8 @@
             TransferType: $scope.TransferType,
             AccType: $scope.AccType,
             AccountName: $scope.AccountName,
-            AccountNumber: $scope.AccountNumber
+            AccountNumber: $scope.AccountNumber,
+            Amount: $scope.Amount
         };
 
         if ($scope.userID != 0) {
