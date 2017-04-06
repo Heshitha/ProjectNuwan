@@ -108,7 +108,6 @@
             userID: $scope.userID,
             Epin: $scope.Epin,
         }
-
         if ($scope.userID != 0) {
             var url = '/api/FinancialAPI/GetAllEvoucherDetails';
             var result = PostFactory(url, EvoucherGetModel);
@@ -119,7 +118,7 @@
                     $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
                 }
                 else {
-                    $scope.EvouchersData = null;
+                    $scope.EvouchersData = [];
                 }
             });
         }
@@ -134,3 +133,44 @@
 
 
 FinancialController.$inject = ['$scope', '$location', 'Pagination', 'PostFactory']
+
+var EvoucherController = function ($scope, $location, PostFactory) {
+    $scope.EvouchersData = [];
+    $scope.VoucherCode = '';
+    $scope.CreaterName = '';
+    $scope.RecieverName = '';
+    $scope.CreatedDate = '';
+    $scope.UsedDate = '';
+    $scope.IsUsed = '';
+    $scope.ShowVoucher = false;
+    $scope.GetEvoucherDetails = function () {
+        var EvoucherGetModel = {
+            Epin: $scope.Epin
+        }
+            var url = '/api/FinancialAPI/GetEvoucherDetails';
+            var result = PostFactory(url, EvoucherGetModel);
+            debugger;
+            result.then(function (result) {
+                if (result.success && result.data.length > 0) {
+                    $scope.ShowVoucher = true;
+                    $scope.VoucherCode = result.data[0].VoucherCode;
+                    $scope.CreaterName = result.data[0].CreaterName;
+                    $scope.RecieverName = result.data[0].RecieverName;
+                    $scope.CreatedDate = result.data[0].CreatedDate;
+                    $scope.UsedDate = result.data[0].UsedDate;
+                    $scope.IsUsed = result.data[0].IsUsed;
+                }
+                else {
+                    $scope.VoucherCode = '';
+                    $scope.CreaterName = '';
+                    $scope.RecieverName = '';
+                    $scope.CreatedDate = '';
+                    $scope.UsedDate = '';
+                    $scope.IsUsed = '';
+                    $scope.ShowVoucher = false;
+                }
+            });
+        }
+};
+
+EvoucherController.$inject = ['$scope', '$location', 'PostFactory']

@@ -3,14 +3,3 @@ D:\Project Nuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkBussiness.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.csprojResolveAssemblyReference.cache
 D:\Project Nuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.dll
 D:\Project Nuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkBussiness.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkBussiness.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\log4net.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkDataAccess.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkModels.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkDataAccess.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\NetworkModels.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\bin\Debug\log4net.xml
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.csprojResolveAssemblyReference.cache
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkBussiness\obj\Debug\NetworkBussiness.pdb

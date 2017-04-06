@@ -38,7 +38,6 @@ namespace NetworkDataAccess
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
@@ -46,20 +45,42 @@ namespace NetworkDataAccess
 
         }
 
+        public static bool checkUserName(string userName)
+        {
+            bool retval = false;
+            User usr = db.Users.Where(x => x.Username == userName).SingleOrDefault();
+            if (usr != null)
+            {
+                if (usr.Username == userName)
+                {
+                    retval = true;
+                }
+                else
+                {
+                    retval = false;
+                }
+            }
+
+            return retval;
+        }
+
         public static int SaveTransaction(TransactionAddModel trans)
         {
+            int retval = 0;
             try
             {
                 DateTime utcTime = DateTime.UtcNow;
                 var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
                 var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
-                var retval = db.usp_Add_New_Transaction((int)trans.userID, trans.RecieverName, (double)trans.Amount, trans.Description, tzTime,trans.TransactionType);
-                return 1;
+                var retval1 = db.usp_Add_New_Transaction((int)trans.userID, trans.RecieverName, (double)trans.Amount, trans.Description, tzTime,trans.TransactionType);
+                retval =1;
             }
             catch (Exception ex)
             {
-                return 0;
+                retval= 0;
+                throw ex;
             }
+            return retval;
         }
 
         public static double GetUserTransactions(int userID)
@@ -72,17 +93,25 @@ namespace NetworkDataAccess
         public static bool CheckTransactionKey(int userID, string TransctionKey)
         {
             bool retval = false;
-            User usr = db.Users.Where(x => x.UserID == userID).SingleOrDefault();
-            if(usr!=null)
+            try
             {
-                if(usr.TransctionKey==TransctionKey)
+                User usr = db.Users.Where(x => x.UserID == userID).SingleOrDefault();
+                if (usr != null)
                 {
-                    retval = true;
+                    if (usr.TransctionKey == TransctionKey)
+                    {
+                        retval = true;
+                    }
+                    else
+                    {
+                        retval = false;
+                    }
                 }
-                else
-                {
-                    retval =false;
-                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
             return retval;

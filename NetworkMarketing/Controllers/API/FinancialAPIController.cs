@@ -14,26 +14,58 @@ namespace NetworkMarketing.Controllers.API
         [HttpPost]
         public int SaveBankDetails([FromBody]BankTransferModel BankDetails)
         {
-            int retval = FinancialManager.SaveBankDetails(BankDetails);
+            int retval = 0;
+            try
+            {
+                retval = FinancialManager.SaveBankDetails(BankDetails);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
             return retval;
         }
 
         [HttpPost]
         public int GenerateEpins([FromBody]EpinGenerateModel EpinModel)
         {
-            int retval = FinancialManager.GenerateEpins(EpinModel);
+            int retval = 0;
+            try
+            {
+                retval = FinancialManager.GenerateEpins(EpinModel);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
             return retval;
         }
         [HttpPost]
         public List<EvoucherModel> GetEvoucherDetails([FromBody]EvoucherGetModel EV)
         {
-            return FinancialManager.GetEvoucherDetails(Convert.ToInt32(EV.userID), EV.Epin);
+            try
+            {
+                return FinancialManager.GetEvoucherDetails(Convert.ToInt32(EV.userID), EV.Epin);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+                return null;
+            }
         }
 
         [HttpPost]
         public List<EvoucherModel> GetALLEvoucherDetails([FromBody]EvoucherGetModel EV)
-        {
-            return FinancialManager.GetAllEvoucherDetails(Convert.ToInt32(EV.userID), EV.Epin);
+        { 
+            try
+            {
+                return FinancialManager.GetAllEvoucherDetails(Convert.ToInt32(EV.userID), EV.Epin);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+                return null;
+            }
         }
     }
 }

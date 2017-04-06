@@ -60,6 +60,12 @@ namespace NetworkMarketing.Controllers.API
             return retval;
         }
 
+        public bool checkUserName([FromBody]TransactionKeyVM trans)
+        {
+            bool retval = TransactionManager.checkUserName(trans.userName);
+            return retval;
+        }
+
         // PUT: api/TransactionAPI/5
         public void Put(int id, [FromBody]string value)
         {

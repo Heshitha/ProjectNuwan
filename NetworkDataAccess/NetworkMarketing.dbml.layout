@@ -114,7 +114,7 @@
         <classShapeMoniker Id="a53a3428-ff8a-4500-a6b2-7b7d2ddfb55d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(0.881824423076925 : 7.57851399739583); (0.881824423076925 : 8.09375); (1.24282051282052 : 8.09375 : JumpStart); (1.40948717948718 : 8.09375 : JumpEnd); (1.86099608974359 : 8.09375 : JumpStart); (2.02766275641025 : 8.09375 : JumpEnd); (6.5 : 8.09375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(0.881824423076925 : 7.57851399739583); (0.881824423076925 : 8.09375); (1.24282051282052 : 8.09375 : JumpStart); (1.40948717948718 : 8.09375 : JumpEnd); (6.5 : 8.09375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/NetworkMarketingDataContext/User/User_LeaderFollower" />
       <nodes>
         <classShapeMoniker Id="8a1dccf4-55b1-4089-961f-f12cf58f84cd" />

@@ -161,13 +161,6 @@ namespace NetworkDataAccess
 			return ((ISingleResult<usp_Get_User_List_Order_By_Performance_For_ClassResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_Evoucher_Details")]
-		public ISingleResult<usp_Get_Evoucher_DetailsResult> usp_Get_Evoucher_Details([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VoucherCode", DbType="VarChar(50)")] string voucherCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), voucherCode, userID);
-			return ((ISingleResult<usp_Get_Evoucher_DetailsResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_All_Evoucher_Details")]
 		public ISingleResult<usp_Get_All_Evoucher_DetailsResult> usp_Get_All_Evoucher_Details([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VoucherCode", DbType="VarChar(50)")] string voucherCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
 		{
@@ -180,6 +173,13 @@ namespace NetworkDataAccess
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
 			return ((ISingleResult<uspGet_All_TransActionsByUserResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.usp_Get_Evoucher_Details")]
+		public ISingleResult<usp_Get_Evoucher_DetailsResult> usp_Get_Evoucher_Details([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VoucherCode", DbType="VarChar(50)")] string voucherCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), voucherCode, userID);
+			return ((ISingleResult<usp_Get_Evoucher_DetailsResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -2605,140 +2605,6 @@ namespace NetworkDataAccess
 		}
 	}
 	
-	public partial class usp_Get_Evoucher_DetailsResult
-	{
-		
-		private int _EVouchersID;
-		
-		private string _Username;
-		
-		private string _RecievedBy;
-		
-		private string _VoucherCode;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private System.Nullable<System.DateTime> _UsedDate;
-		
-		private System.Nullable<bool> _IsUsed;
-		
-		public usp_Get_Evoucher_DetailsResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EVouchersID", DbType="Int NOT NULL")]
-		public int EVouchersID
-		{
-			get
-			{
-				return this._EVouchersID;
-			}
-			set
-			{
-				if ((this._EVouchersID != value))
-				{
-					this._EVouchersID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(500)")]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this._Username = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecievedBy", DbType="VarChar(500)")]
-		public string RecievedBy
-		{
-			get
-			{
-				return this._RecievedBy;
-			}
-			set
-			{
-				if ((this._RecievedBy != value))
-				{
-					this._RecievedBy = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VoucherCode", DbType="VarChar(MAX)")]
-		public string VoucherCode
-		{
-			get
-			{
-				return this._VoucherCode;
-			}
-			set
-			{
-				if ((this._VoucherCode != value))
-				{
-					this._VoucherCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this._CreatedDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsedDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UsedDate
-		{
-			get
-			{
-				return this._UsedDate;
-			}
-			set
-			{
-				if ((this._UsedDate != value))
-				{
-					this._UsedDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsUsed", DbType="Bit")]
-		public System.Nullable<bool> IsUsed
-		{
-			get
-			{
-				return this._IsUsed;
-			}
-			set
-			{
-				if ((this._IsUsed != value))
-				{
-					this._IsUsed = value;
-				}
-			}
-		}
-	}
-	
 	public partial class usp_Get_All_Evoucher_DetailsResult
 	{
 		
@@ -3002,6 +2868,140 @@ namespace NetworkDataAccess
 				if ((this._TransactionType != value))
 				{
 					this._TransactionType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class usp_Get_Evoucher_DetailsResult
+	{
+		
+		private int _EVouchersID;
+		
+		private string _Username;
+		
+		private string _RecievedBy;
+		
+		private string _VoucherCode;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<System.DateTime> _UsedDate;
+		
+		private System.Nullable<bool> _IsUsed;
+		
+		public usp_Get_Evoucher_DetailsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EVouchersID", DbType="Int NOT NULL")]
+		public int EVouchersID
+		{
+			get
+			{
+				return this._EVouchersID;
+			}
+			set
+			{
+				if ((this._EVouchersID != value))
+				{
+					this._EVouchersID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(500)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this._Username = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecievedBy", DbType="VarChar(500)")]
+		public string RecievedBy
+		{
+			get
+			{
+				return this._RecievedBy;
+			}
+			set
+			{
+				if ((this._RecievedBy != value))
+				{
+					this._RecievedBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VoucherCode", DbType="VarChar(MAX)")]
+		public string VoucherCode
+		{
+			get
+			{
+				return this._VoucherCode;
+			}
+			set
+			{
+				if ((this._VoucherCode != value))
+				{
+					this._VoucherCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this._CreatedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UsedDate
+		{
+			get
+			{
+				return this._UsedDate;
+			}
+			set
+			{
+				if ((this._UsedDate != value))
+				{
+					this._UsedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsUsed", DbType="Bit")]
+		public System.Nullable<bool> IsUsed
+		{
+			get
+			{
+				return this._IsUsed;
+			}
+			set
+			{
+				if ((this._IsUsed != value))
+				{
+					this._IsUsed = value;
 				}
 			}
 		}

@@ -3,13 +3,3 @@ D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.dll
 D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.pdb
 D:\Project Nuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojResolveAssemblyReference.cache
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.dll.config
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkDataAccess.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\log4net.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkModels.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\NetworkModels.pdb
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\bin\Debug\log4net.xml
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojResolveAssemblyReference.cache
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.dll
-F:\Sample projects\Project Nuwan\ProjectNuwan\ProjectNuwan\NetworkDataAccess\obj\Debug\NetworkDataAccess.pdb

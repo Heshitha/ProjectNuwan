@@ -39,6 +39,7 @@ namespace NetworkDataAccess
 
         public static int CreateEpins(List<EpinModel> Epins)
         {
+            int retval = 0;
             try
             {
                 foreach (var item in Epins)
@@ -57,12 +58,15 @@ namespace NetworkDataAccess
                     db.EVouchers.InsertOnSubmit(Ev);
                     db.SubmitChanges();
                 }
-                return 1;
+                retval= 1;
             }
             catch (Exception ex)
             {
-                return 0;
+                retval= 0;
+                throw ex;
             }
+
+            return retval;
         }
 
         public static List<EvoucherModel> GetEvoucherDetails(int userID, string Epin)
@@ -90,7 +94,8 @@ namespace NetworkDataAccess
             }
             catch (Exception ex)
             {
-                return null;
+                retData = null;
+                throw ex;
             }
 
             return retData;
@@ -122,7 +127,8 @@ namespace NetworkDataAccess
             }
             catch (Exception ex)
             {
-                return null;
+                retData = null;
+                throw ex;
             }
 
             return retData;

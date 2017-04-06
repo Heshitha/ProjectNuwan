@@ -9,5 +9,6 @@ namespace NetworkMarketing.Models
     {
         public int userID { get; set; }
         public string TransctionKey { get; set; }
+        public string userName { get; set; }
     }
 }

@@ -29,5 +29,10 @@ namespace NetworkBussiness
         {
             return TransactionDataAccess.SaveTransaction(trans);
         }
+
+        public static bool checkUserName(string userName)
+        {
+            return TransactionDataAccess.checkUserName(userName);
+        }
     }
 }
