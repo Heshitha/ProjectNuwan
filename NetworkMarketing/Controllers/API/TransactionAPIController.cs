@@ -19,22 +19,29 @@ namespace NetworkMarketing.Controllers.API
         public List<TransactionModel> GetAllTransactionsByUser([FromBody]int userID)
         {
             List<TransactionModel> retData = new List<TransactionModel>();
-            var result = TransactionManager.GetAllTransactionsByUser(userID);
-            if (result != null)
+            try
             {
-                foreach (var item in result)
+                var result = TransactionManager.GetAllTransactionsByUser(userID);
+                if (result != null)
                 {
-                    TransactionModel TranseModel = new TransactionModel();
-                    TranseModel.TransactionID = item.TransactionID;
-                    TranseModel.SenderName = item.SenderName;
-                    TranseModel.RecieverName = item.RecieverName;
-                    TranseModel.Amount = (float)item.Amount;
-                    TranseModel.Description = item.Description;
-                    TranseModel.TransactionDate = item.TransactionDate==null?"N/A": Convert.ToDateTime(item.TransactionDate).ToString("g");
-                    TranseModel.TransactionType = item.TransactionType;
+                    foreach (var item in result)
+                    {
+                        TransactionModel TranseModel = new TransactionModel();
+                        TranseModel.TransactionID = item.TransactionID;
+                        TranseModel.SenderName = item.SenderName;
+                        TranseModel.RecieverName = item.RecieverName;
+                        TranseModel.Amount = (float)item.Amount;
+                        TranseModel.Description = item.Description;
+                        TranseModel.TransactionDate = item.TransactionDate == null ? "N/A" : Convert.ToDateTime(item.TransactionDate).ToString("g");
+                        TranseModel.TransactionType = item.TransactionType;
 
-                    retData.Add(TranseModel);
+                        retData.Add(TranseModel);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
             }
             return retData;
         }
@@ -42,27 +49,59 @@ namespace NetworkMarketing.Controllers.API
         [HttpPost]
         public bool CheckTransactionKey([FromBody]TransactionKeyVM TransactionKeyData)
         {
-            bool retval = TransactionManager.CheckTransactionKey(TransactionKeyData.userID, TransactionKeyData.TransctionKey);
+            bool retval = false;
+            try
+            {
+                retval = TransactionManager.CheckTransactionKey(TransactionKeyData.userID, TransactionKeyData.TransctionKey);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
             return retval;
         }
 
         [HttpPost]
         public double GetUserTransactions([FromBody]int userID)
         {
-            double retval = TransactionManager.GetUserTransactions(userID);
+            double retval = 0.00;
+            try
+            {
+                retval = TransactionManager.GetUserTransactions(userID);
+            }
+            catch (Exception ex )
+            {
+                LogClass.WriteErrorLog(ex);
+            }
             return retval;
         }
 
         [HttpPost]
         public int SaveTransaction([FromBody]TransactionAddModel trans)
         {
-            int retval = TransactionManager.SaveTransaction(trans);
+            int retval = 0;
+            try
+            {
+                retval = TransactionManager.SaveTransaction(trans);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
             return retval;
         }
 
         public bool checkUserName([FromBody]TransactionKeyVM trans)
         {
-            bool retval = TransactionManager.checkUserName(trans.userName);
+            bool retval = false;
+            try
+            {
+                retval = TransactionManager.checkUserName(trans.userName);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
             return retval;
         }
 

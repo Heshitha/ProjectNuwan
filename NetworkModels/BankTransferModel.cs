@@ -14,5 +14,6 @@ namespace NetworkModels
         public string AccountName { get; set; }
         public string AccountNumber { get; set; }
         public float Amount { get; set; }
+        public string BankName { get; set; }
     }
 }

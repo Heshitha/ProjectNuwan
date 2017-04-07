@@ -48,17 +48,25 @@ namespace NetworkDataAccess
         public static bool checkUserName(string userName)
         {
             bool retval = false;
-            User usr = db.Users.Where(x => x.Username == userName).SingleOrDefault();
-            if (usr != null)
+            try
             {
-                if (usr.Username == userName)
+                User usr = db.Users.Where(x => x.Username == userName).SingleOrDefault();
+                if (usr != null)
                 {
-                    retval = true;
+                    if (usr.Username == userName)
+                    {
+                        retval = true;
+                    }
+                    else
+                    {
+                        retval = false;
+                    }
                 }
-                else
-                {
-                    retval = false;
-                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
 
             return retval;

@@ -65,7 +65,7 @@
       <Association Name="User_User1" Member="Followers" Storage="_Users1" ThisKey="UserID" OtherKey="SponserID" Type="User" />
       <Association Name="User_LeaderFollower" Member="LeaderFollowers" ThisKey="UserID" OtherKey="LeaderID" Type="LeaderFollower" />
       <Association Name="User_LeaderFollower1" Member="RealFollowers" ThisKey="UserID" OtherKey="FollowerID" Type="LeaderFollower" />
-      <Association Name="User_BankDetail1" Member="BankDetails" ThisKey="UserID" OtherKey="UserID" Type="BankDetail" />
+      <Association Name="User_BankDetail" Member="BankDetails" ThisKey="UserID" OtherKey="UserID" Type="BankDetail" />
       <Association Name="User_User" Member="Creater" Storage="_User1" ThisKey="CreatedBy" OtherKey="UserID" Type="User" IsForeignKey="true" />
       <Association Name="User_User1" Member="Sponser" Storage="_User2" ThisKey="SponserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
@@ -102,7 +102,8 @@
       <Column Name="AccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="User_BankDetail1" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Column Name="BankName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_BankDetail" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.usp_Get_User_points" Method="usp_Get_User_points">

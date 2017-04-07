@@ -1585,7 +1585,7 @@ namespace NetworkDataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankDetail1", Storage="_BankDetails", ThisKey="UserID", OtherKey="UserID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankDetail", Storage="_BankDetails", ThisKey="UserID", OtherKey="UserID")]
 		public EntitySet<BankDetail> BankDetails
 		{
 			get
@@ -2322,6 +2322,8 @@ namespace NetworkDataAccess
 		
 		private System.Nullable<double> _Amount;
 		
+		private string _BankName;
+		
 		private EntityRef<User> _User;
 		
     #region Extensibility Method Definitions
@@ -2342,6 +2344,8 @@ namespace NetworkDataAccess
     partial void OnAccountNumberChanged();
     partial void OnAmountChanging(System.Nullable<double> value);
     partial void OnAmountChanged();
+    partial void OnBankNameChanging(string value);
+    partial void OnBankNameChanged();
     #endregion
 		
 		public BankDetail()
@@ -2494,7 +2498,27 @@ namespace NetworkDataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankDetail1", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="VarChar(50)")]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this.OnBankNameChanging(value);
+					this.SendPropertyChanging();
+					this._BankName = value;
+					this.SendPropertyChanged("BankName");
+					this.OnBankNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankDetail", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
 		public User User
 		{
 			get

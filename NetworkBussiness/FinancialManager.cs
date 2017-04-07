@@ -15,18 +15,24 @@ namespace NetworkBussiness
             DateTime utcTime = DateTime.UtcNow;
             var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
             var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
-            TransactionAddModel Tm = new TransactionAddModel()
+            int retval = FinancialDataAccess.SaveBankDetails(BankDetails);
+            if(retval==1)
             {
-                userID = BankDetails.UserID,
-                RecieverName = "admin",
-                Amount = (float)(BankDetails.Amount),
-                Description = "Bank Transfer",
-                TransactionDate = tzTime,
-                TransactionType = "Send"
+                TransactionAddModel Tm = new TransactionAddModel()
+                {
+                    userID = BankDetails.UserID,
+                    RecieverName = "admin",
+                    Amount = (float)(BankDetails.Amount),
+                    Description = "Bank Transfer",
+                    TransactionDate = tzTime,
+                    TransactionType = "Send",
 
-            };
-            int retval2 = TransactionManager.SaveTransaction(Tm);
-            return FinancialDataAccess.SaveBankDetails(BankDetails);
+                };
+                int retval2 = TransactionManager.SaveTransaction(Tm);
+            }
+
+            return retval;
+
         }
 
         public static int GenerateEpins(EpinGenerateModel EpinData)

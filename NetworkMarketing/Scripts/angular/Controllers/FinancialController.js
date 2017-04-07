@@ -13,26 +13,35 @@
             AccType: $scope.AccType,
             AccountName: $scope.AccountName,
             AccountNumber: $scope.AccountNumber,
-            Amount: $scope.Amount
+            Amount: $scope.Amount,
+            BankName: $scope.BankName
         };
 
         if ($scope.userID != 0) {
-            var url = '/api/FinancialAPI/SaveBankDetails';
-            var result = PostFactory(url, BankTransferModel);
-            result.then(function (result) {
-                if (result.success && result.data) {
-                    if (result.data == 0) {
-                        ShowMessage('danger', 'Invalied Transaction Key.');
-                        $scope.GetUserTransactions();
+            if ($scope.Points >= $scope.Amount)
+            {
+                var url = '/api/FinancialAPI/SaveBankDetails';
+                var result = PostFactory(url, BankTransferModel);
+                result.then(function (result) {
+                    if (result.success && result.data) {
+                        if (result.data == 0) {
+                            ShowMessage('danger', 'Invalied Transaction Key.');
+                            $scope.GetUserTransactions();
+                        }
+                        else {
+                            ShowMessage('success', 'Bank Details added.');
+                        }
                     }
                     else {
-                        ShowMessage('success', 'Bank Details added.');
+                        ShowMessage('danger', 'Opps We got an error.');
                     }
-                }
-                else {
-                    ShowMessage('danger', 'Opps We got an error.');
-                }
-            });
+                });
+            }
+            else
+            {
+                ShowMessage('danger', 'Insufficient Amount of Points Please Enter Valied Amount.');
+            }
+
         }
     };
 

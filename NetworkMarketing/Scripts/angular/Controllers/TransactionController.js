@@ -97,12 +97,13 @@ var UserTransactionsController = function ($scope, $location, GetFactory, PostFa
         }
     }
 
-    $scope.SaveTransaction = function () {
+    $scope.SaveTransaction = function ($Description) {
 
         var Transaction = {
             userID: $scope.userID,
             RecieverName: $scope.RecUserName,
-            Amount: $scope.Amount
+            Amount: $scope.Amount,
+            Description: $Description
         }
         if ($scope.Points >= $scope.Amount) {
             var url = '/api/TransactionAPI/SaveTransaction'
