@@ -103,6 +103,8 @@
       <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="BankName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nic" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="User_BankDetail" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>

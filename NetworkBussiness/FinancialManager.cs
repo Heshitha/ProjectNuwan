@@ -21,7 +21,7 @@ namespace NetworkBussiness
                 TransactionAddModel Tm = new TransactionAddModel()
                 {
                     userID = BankDetails.UserID,
-                    RecieverName = "admin",
+                    RecieverName = "FindRichAccounts",
                     Amount = (float)(BankDetails.Amount),
                     Description = "Bank Transfer",
                     TransactionDate = tzTime,

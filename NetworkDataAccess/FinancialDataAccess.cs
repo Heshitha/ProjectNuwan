@@ -24,7 +24,9 @@ namespace NetworkDataAccess
                     AccountName = BankDetails.AccountName,
                     AccountNumber = BankDetails.AccountNumber,
                     Amount = (float)BankDetails.Amount,
-                    BankName = BankDetails.BankName
+                    BankName = BankDetails.BankName,
+                    Nic = BankDetails.Nic,
+                    Address = BankDetails.Address
                 };
                 db.BankDetails.InsertOnSubmit(bnkd);
                 db.SubmitChanges();

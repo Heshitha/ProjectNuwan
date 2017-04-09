@@ -2324,6 +2324,10 @@ namespace NetworkDataAccess
 		
 		private string _BankName;
 		
+		private string _Nic;
+		
+		private string _Address;
+		
 		private EntityRef<User> _User;
 		
     #region Extensibility Method Definitions
@@ -2346,6 +2350,10 @@ namespace NetworkDataAccess
     partial void OnAmountChanged();
     partial void OnBankNameChanging(string value);
     partial void OnBankNameChanged();
+    partial void OnNicChanging(string value);
+    partial void OnNicChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
     #endregion
 		
 		public BankDetail()
@@ -2514,6 +2522,46 @@ namespace NetworkDataAccess
 					this._BankName = value;
 					this.SendPropertyChanged("BankName");
 					this.OnBankNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nic", DbType="VarChar(50)")]
+		public string Nic
+		{
+			get
+			{
+				return this._Nic;
+			}
+			set
+			{
+				if ((this._Nic != value))
+				{
+					this.OnNicChanging(value);
+					this.SendPropertyChanging();
+					this._Nic = value;
+					this.SendPropertyChanged("Nic");
+					this.OnNicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(100)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
 				}
 			}
 		}

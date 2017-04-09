@@ -14,7 +14,9 @@
             AccountName: $scope.AccountName,
             AccountNumber: $scope.AccountNumber,
             Amount: $scope.Amount,
-            BankName: $scope.BankName
+            BankName: $scope.BankName,
+            Nic: $scope.Nic,
+            Address: $scope.Address
         };
 
         if ($scope.userID != 0) {
