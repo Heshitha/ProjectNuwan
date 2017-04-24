@@ -1,6 +1,10 @@
-﻿var FinancialController = function ($scope, $location, PostFactory) {
+﻿var FinancialController = function ($scope, $location, Pagination, PostFactory) {
     $scope.userID = Number($('#hdnUserID').val());
-    $scope.EpinVal=0;
+    $scope.EpinVal = 0;
+    $scope.TransferType = 0;
+    $scope.AccType = 0;
+    $scope.pagination = Pagination.getNew(10);
+    $scope.EvouchersData = [];
     debugger;
     $scope.SaveBankDetails = function () {
         var BankTransferModel = {
@@ -76,9 +80,57 @@
             });
         }
     }
+
+    $scope.GetEvoucherDetails = function () {
+        var EvoucherGetModel = {
+            userID: $scope.userID,
+            Epin: $scope.Epin,
+        }
+
+        if ($scope.userID != 0) {
+            var url = '/api/FinancialAPI/GetEvoucherDetails';
+            var result = PostFactory(url, EvoucherGetModel);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.EvouchersData = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
+                }
+                else {
+                    $scope.EvouchersData = null;
+                }
+            });
+        }
+    }
+
+    $scope.GetAllEvoucherDetails = function () {
+        var EvoucherGetModel = {
+            userID: $scope.userID,
+            Epin: $scope.Epin,
+        }
+
+        if ($scope.userID != 0) {
+            var url = '/api/FinancialAPI/GetAllEvoucherDetails';
+            var result = PostFactory(url, EvoucherGetModel);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.EvouchersData = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.TransactionData.length / $scope.pagination.perPage);
+                }
+                else {
+                    $scope.EvouchersData = null;
+                }
+            });
+        }
+    }
+
+
     $scope.GetUserTransactions();
+
+    $scope.GetAllEvoucherDetails();
 
 };
 
 
-FinancialController.$inject = ['$scope', '$location', 'PostFactory']
+FinancialController.$inject = ['$scope', '$location', 'Pagination', 'PostFactory']
