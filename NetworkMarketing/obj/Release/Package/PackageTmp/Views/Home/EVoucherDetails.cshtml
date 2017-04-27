@@ -3,46 +3,126 @@
     Layout = null;
 }
 
-<section class="content">
-    <h2>E-Voucher Details</h2>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="box box-primary">
-                <form ng-submit="saveUser()">
+<section class="content">
+    <h2>E-vouchers</h2>
+    <form ng-submit="GetEvoucherDetails()">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Financial Transaction Form</h3>
+                        <h3 class="box-title">E-Voucher Details</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>E-Pin Value</label>
-                                    <select class="form-control">
-                                        <option value="0">-- Select Value --</option>
-                                        <option value="1">$120.</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtTransKey">Transaction Key</label>
-                                    <input type="text" class="form-control" id="txtTransKey" placeholder="Enter Transaction Key" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtNoOfKeys">How Many Keys</label>
-                                    <input type="text" class="form-control" id="txtNoOfKeys" placeholder="Enter Number of Keys" required>
-                                </div>
-                            </div>
+                        <div class="form-group has-feedback">
+                            <label for="txtEpin"></label>
+                            <input type="text" class="form-control" id="txtEpin" placeholder="Enter E-Pin" ng-model="Epin" required>
+                            <span class="form-control-feedback"><i class="fa fa-hashtag"></i></span>
                         </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-floppy-o"></i>
-                            &nbsp;Create Pin
+                            <i class="fa fa-search"></i>
+                            &nbsp;Search
                         </button>
                     </div><!-- box-footer -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </form>
+</section>
 
-                </form>
+<section class="content" ng-if="ShowVoucher">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">E-Voucher Details</h3>
+                    <div class="pull-right" ng-switch on="IsUsed">
+                        <label class="pull-left margin-r-5">Active</label>
+                        <img ng-switch-when="true" width="15" height="15" ng-src="~/Content/images/red.jpg" />
+                        <img ng-switch-when="false" width="15" height="15" ng-src="~/Content/images/green.jpg" />
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-feedback">
+                            <label for="txtVoucherCode">Voucher Code</label>
+                            <input id="txtVoucherCode" type="text" class="form-control" ng-model="VoucherCode">
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="txtCreaterName">Creater Name</label>
+                            <input id="txtCreaterName" type="text" class="form-control" ng-model="CreaterName">
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="txtRecieverName">Reciever Name</label>
+                            <input id="txtRecieverName" type="text" class="form-control" ng-model="RecieverName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">                        
+                        <div class="form-group has-feedback">
+                            <label for="txtCreatedDate">Created Date</label>
+                            <input id="txtCreatedDate" type="text" class="form-control" ng-model="CreatedDate">
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="txtUsedDate">Used Date</label>
+                            <input id="txtUsedDate" type="text" class="form-control" ng-model="UsedDate">
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="txtActive">Status</label>
+                            <input id="txtActive" type="text" class="form-control" ng-model="IsUsed">
+                        </div>
+                    </div>
+                </div>
+
+                </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
     </div>
 </section>
+
+
+    @*<section class="content">
+            <h2>E-Voucher Details</h2>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-primary">
+                        <form ng-submit="saveUser()">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Financial Transaction Form</h3>
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>E-Pin Value</label>
+                                            <select class="form-control">
+                                                <option value="0">-- Select Value --</option>
+                                                <option value="1">$120.</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtTransKey">Transaction Key</label>
+                                            <input type="text" class="form-control" id="txtTransKey" placeholder="Enter Transaction Key" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtNoOfKeys">How Many Keys</label>
+                                            <input type="text" class="form-control" id="txtNoOfKeys" placeholder="Enter Number of Keys" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-floppy-o"></i>
+                                    &nbsp;Create Pin
+                                </button>
+                            </div><!-- box-footer -->
+
+                        </form>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </section>*@
