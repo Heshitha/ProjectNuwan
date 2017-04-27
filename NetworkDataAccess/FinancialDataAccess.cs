@@ -41,6 +41,82 @@ namespace NetworkDataAccess
             }
         }
 
+        public static List<BankTransferModel> GetAllBankDetails()
+        {
+            List<BankTransferModel> lBtm = new List<BankTransferModel>();
+            try
+            {
+                var AllBanktransfers = db.BankDetails;
+
+                if (AllBanktransfers != null)
+                {
+                    foreach (var item in AllBanktransfers)
+                    {
+                        BankTransferModel btm = new BankTransferModel();
+
+                        btm.UserID = Convert.ToInt32(item.UserID);
+                        btm.TransferType = item.TransferType;
+                        btm.AccType = item.AccType;
+                        btm.AccountName = item.AccountName;
+                        btm.AccountNumber = item.AccountNumber;
+                        btm.Amount = (float)item.Amount;
+                        btm.BankName = item.BankName;
+                        btm.Nic = item.Nic;
+                        btm.Address = item.Address;
+
+                        lBtm.Add(btm);
+                    }
+
+                }
+            }
+            catch (Exception ex )
+            {
+                lBtm = null;
+                throw ex;
+            }
+
+            return lBtm;
+
+        }
+
+        public static List<BankTransferModel> GetAllBankDetails(string Nic)
+        {
+            List<BankTransferModel> lBtm = new List<BankTransferModel>();
+            try
+            {
+                var AllBanktransfers = db.BankDetails.Where(x => x.Nic == Nic);
+
+                if (AllBanktransfers != null)
+                {
+                    foreach (var item in AllBanktransfers)
+                    {
+                        BankTransferModel btm = new BankTransferModel();
+
+                        btm.UserID = Convert.ToInt32(item.UserID);
+                        btm.TransferType = item.TransferType;
+                        btm.AccType = item.AccType;
+                        btm.AccountName = item.AccountName;
+                        btm.AccountNumber = item.AccountNumber;
+                        btm.Amount = (float)item.Amount;
+                        btm.BankName = item.BankName;
+                        btm.Nic = item.Nic;
+                        btm.Address = item.Address;
+
+                        lBtm.Add(btm);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                lBtm = null;
+                throw ex;
+            }
+
+            return lBtm;
+
+        }
+
         public static int CreateEpins(List<EpinModel> Epins)
         {
             int retval = 0;

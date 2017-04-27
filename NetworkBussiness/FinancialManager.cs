@@ -35,6 +35,16 @@ namespace NetworkBussiness
 
         }
 
+        public static List<BankTransferModel> GetAllBankDetails()
+        {
+            return FinancialDataAccess.GetAllBankDetails();
+        }
+
+        public static List<BankTransferModel> GetAllBankDetails(string Nic)
+        {
+            return FinancialDataAccess.GetAllBankDetails(Nic);
+        }
+
         public static int GenerateEpins(EpinGenerateModel EpinData)
         {
             DateTime utcTime = DateTime.UtcNow;

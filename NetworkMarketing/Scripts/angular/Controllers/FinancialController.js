@@ -136,7 +136,6 @@
         }
     }
 
-
     $scope.GetUserTransactions();
 
     $scope.GetAllEvoucherDetails();
@@ -186,3 +185,45 @@ var EvoucherController = function ($scope, $location, PostFactory) {
 };
 
 EvoucherController.$inject = ['$scope', '$location', 'PostFactory']
+
+var AdminController = function ($scope, $location, Pagination, PostFactory) {
+    $scope.pagination = Pagination.getNew(10);
+    $scope.BankDetails = [];
+
+    $scope.GetAllBankDetails = function () {
+            var url = '/api/FinancialAPI/GetAllBankDetails';
+            var result = PostFactory(url);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.BankDetails = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.BankDetails.length / $scope.pagination.perPage);
+                }
+                else {
+                    $scope.BankDetails = null;
+                }
+            });
+        }
+
+    $scope.GetBankDetailsByUserId = function () {
+        var NicModel = {
+            Nic: $scope.SchNic
+        }
+        var url = '/api/FinancialAPI/GetBankDetailsByUserId';
+        var result = PostFactory(url, NicModel);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.BankDetails = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.BankDetails.length / $scope.pagination.perPage);
+                }
+                else {
+                    $scope.BankDetails = null;
+                }
+            });
+    }
+
+    $scope.GetAllBankDetails();
+
+};
+AdminController.$inject = ['$scope', '$location', 'Pagination', 'PostFactory']

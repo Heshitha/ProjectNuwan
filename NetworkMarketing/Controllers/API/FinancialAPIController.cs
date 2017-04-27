@@ -27,6 +27,36 @@ namespace NetworkMarketing.Controllers.API
         }
 
         [HttpPost]
+        public List<BankTransferModel> GetAllBankDetails()
+        {
+            List<BankTransferModel> lbtm = new List<BankTransferModel>();
+            try
+            {
+                return FinancialManager.GetAllBankDetails();
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+                return null;
+            }            
+        }
+
+        [HttpPost]
+        public List<BankTransferModel> GetBankDetailsByUserId([FromBody]NicModel Nic)
+        {
+            List<BankTransferModel> lbtm = new List<BankTransferModel>();
+            try
+            {
+                return FinancialManager.GetAllBankDetails(Nic.Nic);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+                return null;
+            }
+        }
+
+        [HttpPost]
         public int GenerateEpins([FromBody]EpinGenerateModel EpinModel)
         {
             int retval = 0;

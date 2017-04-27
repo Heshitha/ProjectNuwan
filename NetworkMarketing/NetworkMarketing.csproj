@@ -161,7 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\API\ClassAPIController.cs" />
     <Compile Include="Controllers\API\FinancialAPIController.cs" />
     <Compile Include="Controllers\API\TeamAPIController.cs" />
@@ -179,6 +179,7 @@
     <Compile Include="Models\BankTransferVM.cs" />
     <Compile Include="Models\EvoucherGetModel.cs" />
     <Compile Include="Models\LogClass.cs" />
+    <Compile Include="Models\NicModel.cs" />
     <Compile Include="Models\TeamVM.cs" />
     <Compile Include="Models\TransactionKeyVM.cs" />
     <Compile Include="Models\TransactionVM.cs" />
@@ -1161,6 +1162,7 @@
     <Content Include="Views\Financial\TransactionCode.cshtml" />
     <Content Include="Views\Home\TransactionHistory.cshtml" />
     <Content Include="Views\Financial\FinancialManager.cshtml" />
+    <Content Include="Views\Admin\AllbankDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
