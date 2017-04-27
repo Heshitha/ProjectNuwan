@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<section class="content">
+    <h2>Bank Details</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <form ng-submit="GetBankDetailsByUserId()">
+                    <div class="box-header">
+                        <h3 class="box-title">{{BankDetails.length}} Record(s) Found</h3>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="input-group pull-right">
+                                    <label for="txtEpin"></label>
+                                    <input type="text" class="form-control" id="txtUserId" placeholder="Enter Nic" ng-model="SchNic" required>
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-search"></i>
+                                            &nbsp;Search
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped" id="tblAddedItems">
+                            <tr>
+                                <th style="width: 10%">User#</th>
+                                <th>Transfer Type</th>
+                                <th>Account Type</th>
+                                <th>Account Holder</th>
+                                <th>Nic</th>
+                                <th>Account Number</th>
+                                <th>Bank Name</th>
+                                <th>Address</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr ng-repeat="item in BankDetails | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" class="quotitemrow">
+                                <td>{{item.UserID}}</td>
+                                <td>{{item.TransferType}}</td>
+                                <td>{{item.AccType}}</td>
+                                <td>{{item.AccountName}}</td>
+                                <td>{{item.Nic}}</td>
+                                <td>{{item.AccountNumber}}</td>
+                                <td>{{item.BankName}}</td>
+                                <td>{{item.Address}}</td>
+                                <td>{{item.Amount}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            <li><a href="javascript:return false;" ng-click="pagination.prevPage()">«</a></li>
+                            <li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
+                                <a href="" ng-click="pagination.toPageId(n)">{{n + 1}}</a>
+                            </li>
+                            <li><a href="javascript:return false;" ng-click="pagination.nextPage()">»</a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

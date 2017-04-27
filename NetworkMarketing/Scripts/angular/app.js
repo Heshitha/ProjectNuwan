@@ -57,6 +57,10 @@ var configFunction = function ($routeProvider, $httpProvider) {
             //templateUrl: baseUrl + '/Financial/FinancialManager',
             controller: FinancialController
         }).
+        when('/AllBankDetails', {
+            templateUrl: baseUrl + '/Admin/AllbankDetails',
+            controller: AdminController
+        }).
         when('/', {
             templateUrl: baseUrl + '/User/MyProfile',
             controller: UserController
