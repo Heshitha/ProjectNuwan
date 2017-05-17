@@ -83,10 +83,12 @@ input[type="checkbox"].input-validation-error {
 }
 
 @media (min-width: 992px) {
-    .level4User {
-        width: 14.28571428571429%;
-    }
+    
 }
+
+.level4User {
+        width: 14.28571428571429% !important;
+    }
 
 .chat .item img{
     margin-bottom: 5px;
