@@ -26,7 +26,8 @@ namespace NetworkDataAccess
                     Amount = (float)BankDetails.Amount,
                     BankName = BankDetails.BankName,
                     Nic = BankDetails.Nic,
-                    Address = BankDetails.Address
+                    Address = BankDetails.Address,
+                    IsComplete = false
                 };
                 db.BankDetails.InsertOnSubmit(bnkd);
                 db.SubmitChanges();
@@ -46,15 +47,15 @@ namespace NetworkDataAccess
             List<BankTransferModel> lBtm = new List<BankTransferModel>();
             try
             {
-                var AllBanktransfers = db.BankDetails;
+                var AllBanktransfers = db.usp_Get_All_Bank_Details();
 
                 if (AllBanktransfers != null)
                 {
                     foreach (var item in AllBanktransfers)
                     {
                         BankTransferModel btm = new BankTransferModel();
-
-                        btm.UserID = Convert.ToInt32(item.UserID);
+                        btm.ID = item.ID;
+                        btm.Username = item.Username;
                         btm.TransferType = item.TransferType;
                         btm.AccType = item.AccType;
                         btm.AccountName = item.AccountName;
@@ -79,12 +80,46 @@ namespace NetworkDataAccess
 
         }
 
-        public static List<BankTransferModel> GetAllBankDetails(string Nic)
+        public static BankTransferModel GetBankDetailById(int ID)
+        {
+            BankTransferModel btm = new BankTransferModel();
+            try
+            {
+                var result = db.usp_GetBankDetailsById(ID).SingleOrDefault();
+
+                if (result != null)
+                {
+
+                        btm = new BankTransferModel();
+
+                        btm.Username = result.Username;
+                        btm.TransferType = result.TransferType;
+                        btm.AccType = result.AccType;
+                        btm.AccountName = result.AccountName;
+                        btm.AccountNumber = result.AccountNumber;
+                        btm.Amount = (float)result.Amount;
+                        btm.BankName = result.BankName;
+                        btm.Nic = result.Nic;
+                        btm.Address = result.Address;
+                        btm.ProofUrl = result.ProofUrl;
+                }
+            }
+            catch (Exception ex)
+            {
+                btm = null;
+                throw ex;
+            }
+
+            return btm;
+
+        }
+
+        public static List<BankTransferModel> GetAllBankDetails(string Username)
         {
             List<BankTransferModel> lBtm = new List<BankTransferModel>();
             try
             {
-                var AllBanktransfers = db.BankDetails.Where(x => x.Nic == Nic);
+                var AllBanktransfers = db.usp_GetBankDetailsByUsername(Username);
 
                 if (AllBanktransfers != null)
                 {
@@ -92,7 +127,7 @@ namespace NetworkDataAccess
                     {
                         BankTransferModel btm = new BankTransferModel();
 
-                        btm.UserID = Convert.ToInt32(item.UserID);
+                        btm.Username = item.Username;
                         btm.TransferType = item.TransferType;
                         btm.AccType = item.AccType;
                         btm.AccountName = item.AccountName;
@@ -124,19 +159,24 @@ namespace NetworkDataAccess
             {
                 foreach (var item in Epins)
                 {
-                    DateTime utcTime = DateTime.UtcNow;
-                    var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
-                    var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
-
-                    EVoucher Ev = new EVoucher()
+                    var epin = db.EVouchers.Where(x => x.VoucherCode == item.VoucherCode).SingleOrDefault();
+                    if(epin==null)
                     {
-                        CreaterID = item.CreaterID,
-                        VoucherCode = item.VoucherCode,
-                        CreatedDate = tzTime,
-                        IsUsed = false
-                    };
-                    db.EVouchers.InsertOnSubmit(Ev);
-                    db.SubmitChanges();
+                        DateTime utcTime = DateTime.UtcNow;
+                        var tz = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
+                        var tzTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tz);
+
+                        EVoucher Ev = new EVoucher()
+                        {
+                            CreaterID = item.CreaterID,
+                            VoucherCode = item.VoucherCode,
+                            CreatedDate = tzTime,
+                            EpinValue = item.Epinvalue,
+                            IsUsed = false
+                        };
+                        db.EVouchers.InsertOnSubmit(Ev);
+                        db.SubmitChanges();
+                    }
                 }
                 retval= 1;
             }
@@ -147,6 +187,20 @@ namespace NetworkDataAccess
             }
 
             return retval;
+        }
+
+        public static int uploadProof(string url, int ID)
+        {
+            var bankdetails = db.BankDetails.Where(x => x.ID == ID).FirstOrDefault();
+
+            if(bankdetails!=null)
+            {
+                bankdetails.ProofUrl = url;
+                db.SubmitChanges();
+            }
+
+
+            return 1;
         }
 
         public static List<EvoucherModel> GetEvoucherDetails(int userID, string Epin)

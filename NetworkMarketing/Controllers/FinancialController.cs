@@ -1,7 +1,9 @@
-﻿using NetworkDataAccess;
+﻿using NetworkBussiness;
+using NetworkDataAccess;
 using NetworkMarketing.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,5 +58,26 @@ namespace NetworkMarketing.Controllers
             }
 
         }
+
+        [HttpPost]
+        public JsonResult UploadProof(string imageID,int ID, HttpPostedFileBase file)
+        {
+            int retVal = 0;
+            try
+            {
+                string path = Server.MapPath("~") + "//Uploads//BankProofs//" + imageID + Path.GetExtension(file.FileName);
+                file.SaveAs(path);
+
+                string savePath = "/Uploads/BankProofs/" + imageID + Path.GetExtension(file.FileName);
+
+                retVal = NetworkBussiness.FinancialManager.uploadProof(savePath, ID);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Json(retVal, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

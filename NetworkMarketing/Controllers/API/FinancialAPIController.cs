@@ -42,12 +42,26 @@ namespace NetworkMarketing.Controllers.API
         }
 
         [HttpPost]
-        public List<BankTransferModel> GetBankDetailsByUserId([FromBody]NicModel Nic)
+        public List<BankTransferModel> GetBankDetailsByUserName([FromBody]SearchModel Username)
         {
             List<BankTransferModel> lbtm = new List<BankTransferModel>();
             try
             {
-                return FinancialManager.GetAllBankDetails(Nic.Nic);
+                return FinancialManager.GetAllBankDetails(Username.Username);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+                return null;
+            }
+        }
+
+        [HttpPost]
+        public BankTransferModel GetBankDetailsById([FromBody]SearchModel ID)
+        {
+            try
+            {
+                return FinancialManager.GetBankDetailById(Convert.ToInt32(ID.ID));
             }
             catch (Exception ex)
             {
@@ -70,6 +84,22 @@ namespace NetworkMarketing.Controllers.API
             }
             return retval;
         }
+
+        [HttpPost]
+        public int GenerateAdminEpins([FromBody]EpinGenerateModel EpinModel)
+        {
+            int retval = 0;
+            try
+            {
+                retval = FinancialManager.GenerateAdminEpins(EpinModel);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteErrorLog(ex);
+            }
+            return retval;
+        }
+
         [HttpPost]
         public List<EvoucherModel> GetEvoucherDetails([FromBody]EvoucherGetModel EV)
         {

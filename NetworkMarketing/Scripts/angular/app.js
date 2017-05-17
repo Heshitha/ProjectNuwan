@@ -61,6 +61,15 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: baseUrl + '/Admin/AllbankDetails',
             controller: AdminController
         }).
+        when('/UploadProof/:SelectedID', {
+            templateUrl: function (params) { return baseUrl + '/Admin/UploadProof?SelectedID=' + params.SelectedID },
+            //templateUrl: baseUrl + '/Admin/UploadProof',
+            controller: AdminController
+        }).
+        when('/GenerateEpins', {
+            templateUrl: baseUrl + '/Admin/GenerateEpin',
+            controller: FinancialController
+        }).
         when('/', {
             templateUrl: baseUrl + '/User/MyProfile',
             controller: UserController

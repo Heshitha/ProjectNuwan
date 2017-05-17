@@ -5,8 +5,9 @@ using System.Web;
 
 namespace NetworkMarketing.Models
 {
-    public class NicModel
+    public class SearchModel
     {
-        public string Nic { get; set; }
+        public int ID { get; set; }
+        public string Username { get; set; }
     }
 }

@@ -17,7 +17,7 @@
                             <div class="col-md-4">
                                 <div class="input-group pull-right">
                                     <label for="txtEpin"></label>
-                                    <input type="text" class="form-control" id="txtUserId" placeholder="Enter Nic" ng-model="SchNic" required>
+                                    <input type="text" class="form-control" id="txtUserId" placeholder="Enter Username" ng-model="Username" required>
                                     <span class="input-group-btn">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fa fa-search"></i>
@@ -31,7 +31,8 @@
                     <div class="box-body table-responsive">
                         <table class="table table-bordered table-striped" id="tblAddedItems">
                             <tr>
-                                <th style="width: 10%">User#</th>
+                                <th hidden>#</th>
+                                <th>Username</th>
                                 <th>Transfer Type</th>
                                 <th>Account Type</th>
                                 <th>Account Holder</th>
@@ -41,8 +42,9 @@
                                 <th>Address</th>
                                 <th>Amount</th>
                             </tr>
-                            <tr ng-repeat="item in BankDetails | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" class="quotitemrow">
-                                <td>{{item.UserID}}</td>
+                            <tr ng-repeat="item in BankDetails | filter:Username |startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" ng-click="setSelected(item.ID)" ng-class="{selected: item.ID === SelectedID}" class="quotitemrow">
+                                <td hidden>{{item.ID}}</td>
+                                <td>{{item.Username}}</td>
                                 <td>{{item.TransferType}}</td>
                                 <td>{{item.AccType}}</td>
                                 <td>{{item.AccountName}}</td>

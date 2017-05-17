@@ -40,9 +40,19 @@ namespace NetworkBussiness
             return FinancialDataAccess.GetAllBankDetails();
         }
 
-        public static List<BankTransferModel> GetAllBankDetails(string Nic)
+        public static List<BankTransferModel> GetAllBankDetails(string Username)
         {
-            return FinancialDataAccess.GetAllBankDetails(Nic);
+            return FinancialDataAccess.GetAllBankDetails(Username);
+        }
+
+        public static BankTransferModel GetBankDetailById(int ID)
+        {
+            return FinancialDataAccess.GetBankDetailById(ID);
+        }
+
+        public static int uploadProof(string url, int ID)
+        {
+            return FinancialDataAccess.uploadProof(url,ID);
         }
 
         public static int GenerateEpins(EpinGenerateModel EpinData)
@@ -65,9 +75,11 @@ namespace NetworkBussiness
 
                     Ep.CreaterID = EpinData.userID;
                     Ep.VoucherCode = Ev.ToString();
+                    Ep.Epinvalue = EpinData.EpinVal;
 
                     lstEpin.Add(Ep);
                 }
+
                 int retval = FinancialDataAccess.CreateEpins(lstEpin);
 
                 TransactionAddModel Tm = new TransactionAddModel()
@@ -88,6 +100,28 @@ namespace NetworkBussiness
             {
                 return -1;
             }
+        }
+
+        public static int GenerateAdminEpins(EpinGenerateModel EpinData)
+        {
+            List<EpinModel> lstEpin = new List<EpinModel>();
+            for (int i = 0; i < EpinData.NoOfPins; i++)
+            {
+                EpinModel Ep = new EpinModel();
+                Guid Ev = Guid.NewGuid();
+
+                Ep.CreaterID = EpinData.userID;
+                Ep.VoucherCode = Ev.ToString();
+                Ep.Epinvalue = EpinData.EpinVal;
+
+                lstEpin.Add(Ep);
+
+            }
+
+            int retval = FinancialDataAccess.CreateEpins(lstEpin);
+
+            return retval;
+
         }
 
         public static List<EvoucherModel> GetEvoucherDetails(int userID, string Epin)

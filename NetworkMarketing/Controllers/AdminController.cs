@@ -14,5 +14,21 @@ namespace NetworkMarketing.Controllers
         {
             return View();
         }
+
+        public ActionResult UploadProof()
+        {
+            //pass as a para
+            return View();
+        }
+
+        public ActionResult GenerateEpin()
+        {
+            return View();
+        }
+
+        //public ActionResult UploadProof(int ID)
+        //{
+        //    return View(new SearchModel(ID));
+        //}
     }
 }

@@ -179,7 +179,7 @@
     <Compile Include="Models\BankTransferVM.cs" />
     <Compile Include="Models\EvoucherGetModel.cs" />
     <Compile Include="Models\LogClass.cs" />
-    <Compile Include="Models\NicModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\TeamVM.cs" />
     <Compile Include="Models\TransactionKeyVM.cs" />
     <Compile Include="Models\TransactionVM.cs" />
@@ -1163,9 +1163,12 @@
     <Content Include="Views\Home\TransactionHistory.cshtml" />
     <Content Include="Views\Financial\FinancialManager.cshtml" />
     <Content Include="Views\Admin\AllbankDetails.cshtml" />
+    <Content Include="Views\Admin\UploadProof.cshtml" />
+    <Content Include="Views\Admin\GenerateEpin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\BankProofs\" />
     <Folder Include="Uploads\ProfileImages\" />
   </ItemGroup>
   <ItemGroup>
