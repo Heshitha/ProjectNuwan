@@ -11,7 +11,7 @@
             <div class="box box-primary">
                 <form ng-submit="GetEvoucherDetails()">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Financial Transaction Form</h3>
+                        <h3 class="box-title">E-Voucher Details</h3>
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4"></div>
@@ -42,9 +42,9 @@
                             </tr>
                             <tr ng-repeat="item in EvouchersData | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" class="quotitemrow">
                                 <td>{{item.EVouchersID}}</td>
-                                <td>{{item.CreaterName}}</td>
-                                <td>{{item.VoucherCode}}</td>
+                                <td>{{item.CreaterName}}</td>                                
                                 <td>{{item.RecieverName}}</td>
+                                <td>{{item.VoucherCode}}</td>
                                 <td>{{item.CreatedDate}}</td>
                                 <td>{{item.UsedDate}}</td>
                                 <td><div class="text-center" ng-switch on="{{item.IsUsed}}">

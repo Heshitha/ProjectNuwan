@@ -41,7 +41,7 @@
             }
             else
             {
-                ShowMessage('danger', 'Insufficient Amount of Points Please Enter Valied Amount.');
+                ShowMessage('danger', 'Insufficient Amount of Points Please Enter Valid Amount.');
             }
 
         }
@@ -76,6 +76,33 @@
             });
         }
     }
+
+    $scope.GenerateAdminEpins = function () {
+        var EpinGenerateModel = {
+            userID: $scope.userID,
+            EpinVal: $scope.EpinVal,
+            NoOfPins: $scope.NoOfPins,
+        };
+        if ($scope.userID != 0) {
+            var url = '/api/FinancialAPI/GenerateEpins';
+            var result = PostFactory(url, EpinGenerateModel);
+            result.then(function (result) {
+                if (result.success && result.data) {
+                    if (result.data == 0) {
+                        ShowMessage('danger', 'Opps We got an error.');
+                    }
+                    else {
+                        ShowMessage('success', 'Epin Generated.');
+                        $scope.GetUserTransactions();
+                    }
+                }
+                else {
+                    ShowMessage('danger', 'Opps We got an error.');
+                }
+            });
+        }
+    }
+
 
     $scope.GetUserTransactions = function () {
         if ($scope.userID != 0) {
@@ -136,7 +163,6 @@
         }
     }
 
-
     $scope.GetUserTransactions();
 
     $scope.GetAllEvoucherDetails();
@@ -186,3 +212,137 @@ var EvoucherController = function ($scope, $location, PostFactory) {
 };
 
 EvoucherController.$inject = ['$scope', '$location', 'PostFactory']
+
+var AdminController = function ($scope, $location, Pagination, PostFactory) {
+    $scope.SelectedID = null;
+    $scope.pagination = Pagination.getNew(10);
+    $scope.BankDetails = [];
+
+    $scope.GetAllBankDetails = function () {
+            var url = '/api/FinancialAPI/GetAllBankDetails';
+            var result = PostFactory(url);
+            debugger;
+            result.then(function (result) {
+                if (result.success) {
+                    $scope.BankDetails = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.BankDetails.length / $scope.pagination.perPage);
+                }
+                else {
+                    $scope.BankDetails = null;
+                }
+            });
+        }
+
+    $scope.GetBankDetailsByUserId = function () {
+        var SearchModel = {
+            Username: $scope.Username
+        }
+        var url = '/api/FinancialAPI/GetBankDetailsByUserName';
+        var result = PostFactory(url, SearchModel);
+            debugger;
+            result.then(function (result) {
+                alert(result);
+                if (result.success) {
+                    $scope.BankDetails = result.data;
+                    $scope.pagination.numPages = Math.ceil($scope.BankDetails.length / $scope.pagination.perPage);
+                }
+                else {
+                    $scope.BankDetails = null;
+                }
+            });
+    }
+
+    $scope.setSelected = function (SelectedID) {
+        
+        $scope.SelectedID = SelectedID
+        alert($scope.SelectedID);
+        //$scope.GetBankDetailsById($scope.SelectedID);
+        var uri = baseUrl + '/Home/HomePage/#/UploadProof/' + $scope.SelectedID;
+        window.location = uri;
+
+    };
+
+    $scope.GetBankDetailsById = function (SelectedID) {
+        $scope.Amount = '';
+        $scope.TransferType = '';
+        $scope.AccType = '';
+        $scope.Nic = '';
+        $scope.BankName = '';
+        $scope.AccountName = '';
+        $scope.AccountNumber = '';
+        $scope.Address = '';
+        $scope.ProofUrl = '';
+        $scope.SelectedID = SelectedID
+        var SearchModel = {
+            ID: $scope.SelectedID
+        }
+        var url = '/api/FinancialAPI/GetBankDetailsById';
+        var result = PostFactory(url, SearchModel);
+        debugger;
+        result.then(function (result) {
+            if (result.success) {
+                console.log(result);
+                alert(result.data.TransferType);
+                $scope.Amount = result.data.Amount;
+                $scope.TransferType = result.data.TransferType;
+                $scope.AccType = result.data.AccType;
+                $scope.Nic = result.data.Nic;
+                $scope.BankName = result.data.BankName;
+                $scope.AccountName = result.data.Amount;
+                $scope.AccountNumber = result.data.AccountName;
+                $scope.Address = result.data.Address;
+                $scope.ProofUrl = result.data.ProofUrl;
+            }
+            //else {
+            //    $scope.BankDetails = null;
+            //}
+        });
+    }
+
+    function createGuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    $scope.uploadProof = function (id) {
+        var uploader = $('#txtChooseFile')[0];
+        if (uploader.files && uploader.files[0]) {
+            var imageID = createGuid();
+            var data = new FormData();
+            data.append('ID', id);
+            data.append('imageID', imageID);
+            data.append('file', uploader.files[0]);
+            debugger;
+            var url = 'Financial/UploadProof';
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    ShowMessage('success', 'Image uploaded successfully.');
+                    console.log(data);
+                    location.reload();
+                },
+                error: function () {
+                    ShowMessage('danger', 'Error occured while uploading. Please try again.');
+                }
+            });
+
+        } else {
+            ShowMessage('danger', 'Select image before uploading.');
+        }
+    }
+
+
+
+    //$scope.GetBankDetailsByUserId($scope.SelectedID);
+    $scope.GetAllBankDetails();
+    //$scope.GetBankDetailsById();
+
+};
+AdminController.$inject = ['$scope', '$location', 'Pagination', 'PostFactory']

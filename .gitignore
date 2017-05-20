@@ -13,3 +13,5 @@
 /NetworkDataAccess/obj/*
 /NetworkBussiness/bin/*
 /NetworkBussiness/obj/*
+*.dll
+*.dll
